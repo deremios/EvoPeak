@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { region } from "@/config";
 import { useCart } from "@/lib/cart-context";
 import { MobileMenu } from "./mobile-menu";
@@ -25,10 +26,15 @@ export function Header() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <span className="text-xl font-bold text-brand-green">
-              {region.brandName}
-            </span>
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/logo.webp"
+              alt={region.brandName}
+              width={140}
+              height={26}
+              priority
+              className="h-7 w-auto"
+            />
           </Link>
 
           {/* Desktop Nav */}

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { region } from "@/config";
 
 const footerLinks = {
@@ -37,9 +38,13 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand */}
           <div>
-            <h3 className="text-lg font-bold text-white mb-4">
-              {region.brandName}
-            </h3>
+            <Image
+              src="/logo.webp"
+              alt={region.brandName}
+              width={140}
+              height={26}
+              className="h-7 w-auto brightness-0 invert mb-4"
+            />
             <p className="text-sm text-white/60 leading-relaxed mb-4">
               {region.country}&apos;s premium supplier of 3rd-party tested
               research peptides. HPLC/MS + endotoxin tested. cGMP-grade where
