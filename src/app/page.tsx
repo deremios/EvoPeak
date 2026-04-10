@@ -1,4 +1,5 @@
 import { HeroSection } from "@/components/home/hero-section";
+import { TrustpilotBand } from "@/components/home/trustpilot-band";
 import { CategoryTiles } from "@/components/home/category-tiles";
 import { TrustBadges } from "@/components/home/trust-badges";
 import { BundlesSection } from "@/components/home/bundles-section";
@@ -10,6 +11,7 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
+      <TrustpilotBand />
       <TrustBadges />
       <CategoryTiles />
       <BundlesSection />

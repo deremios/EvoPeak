@@ -6,14 +6,14 @@ interface LogoProps {
 }
 
 const sizes = {
-  sm: "text-xl",
-  md: "text-2xl",
-  lg: "text-3xl",
+  sm: "text-2xl",
+  md: "text-3xl",
+  lg: "text-4xl",
 };
 
 export function Logo({ size = "md", invert = false }: LogoProps) {
   return (
-    <Link href="/" className={`inline-flex items-baseline ${sizes[size]} font-extrabold tracking-tight`}>
+    <Link href="/" className={`inline-flex items-baseline ${sizes[size]} font-semibold tracking-tight`}>
       <span className={invert ? "text-white" : "text-brand-green"}>Evo</span>
       <span className="text-brand-orange">Peak</span>
     </Link>

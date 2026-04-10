@@ -1,36 +1,39 @@
+import Image from "next/image";
 import Link from "next/link";
 import { region } from "@/config";
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-brand-navy via-brand-navy-dark to-brand-green-dark">
-      {/* Subtle grid overlay */}
-      <div
-        className="absolute inset-0 opacity-5"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
-        }}
+    <section className="relative overflow-hidden bg-bg-primary">
+      {/* Hero background image */}
+      <Image
+        src="/images/hero-bg.webp"
+        alt=""
+        fill
+        priority
+        className="object-cover object-right-bottom"
+        sizes="100vw"
       />
+      {/* Light overlay for text readability */}
+      <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-white/60 to-transparent" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 sm:py-28 lg:py-36">
-        <div className="max-w-3xl">
+        <div className="max-w-2xl">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-sm text-white/80 mb-8 backdrop-blur-sm border border-white/10">
+          <div className="inline-flex items-center gap-2 rounded-full bg-brand-green/10 px-4 py-1.5 text-sm text-brand-green mb-8 border border-brand-green/15">
             <span className="inline-block w-2 h-2 rounded-full bg-brand-orange animate-pulse" />
             {region.country}&apos;s Premium Research Peptide Supplier
           </div>
 
           {/* Headline */}
-          <h1 className="text-4xl sm:text-5xl lg:text-hero font-bold text-white leading-tight tracking-tight mb-6">
+          <h1 className="text-4xl sm:text-5xl lg:text-hero font-bold text-text-primary leading-tight tracking-tight mb-6">
             Research-Grade Peptides.{" "}
             <span className="text-brand-orange">Triple Tested.</span>{" "}
             {region.country} Shipped.
           </h1>
 
           {/* Subheading */}
-          <p className="text-lg sm:text-xl text-white/70 leading-relaxed mb-10 max-w-2xl">
+          <p className="text-lg sm:text-xl text-text-secondary leading-relaxed mb-10 max-w-xl">
             HPLC/MS verified, endotoxin tested, cGMP-grade where possible.
             Shipped from local stock in {region.shipping.domesticEstimate}.
             Every vial includes a downloadable Certificate of Analysis.
@@ -40,7 +43,7 @@ export function HeroSection() {
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
               href="/shop"
-              className="inline-flex items-center justify-center rounded-lg bg-brand-orange px-8 py-3.5 text-base font-semibold text-white hover:bg-brand-orange-light transition-colors shadow-lg shadow-brand-orange/25"
+              className="inline-flex items-center justify-center rounded-lg bg-brand-green px-8 py-3.5 text-base font-semibold text-white hover:bg-brand-green-light transition-colors shadow-lg shadow-brand-green/20"
             >
               Browse Peptides
               <svg
@@ -59,7 +62,7 @@ export function HeroSection() {
             </Link>
             <Link
               href="/guide"
-              className="inline-flex items-center justify-center rounded-lg bg-white/10 px-8 py-3.5 text-base font-semibold text-white hover:bg-white/20 transition-colors backdrop-blur-sm border border-white/10"
+              className="inline-flex items-center justify-center rounded-lg bg-brand-orange px-8 py-3.5 text-base font-semibold text-white hover:bg-brand-orange-light transition-colors shadow-lg shadow-brand-orange/20"
             >
               New? Start Here
             </Link>
@@ -73,10 +76,10 @@ export function HeroSection() {
               { value: region.shipping.domesticEstimate, label: "Delivery" },
             ].map((stat) => (
               <div key={stat.label}>
-                <p className="text-2xl sm:text-3xl font-bold text-white">
+                <p className="text-2xl sm:text-3xl font-bold text-text-primary">
                   {stat.value}
                 </p>
-                <p className="text-sm text-white/50 mt-1">{stat.label}</p>
+                <p className="text-sm text-text-muted mt-1">{stat.label}</p>
               </div>
             ))}
           </div>

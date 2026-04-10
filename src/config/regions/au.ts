@@ -17,7 +17,7 @@ export const au: RegionConfig = {
 
   shipping: {
     carrier: "Australia Post",
-    domesticEstimate: "1–3 business days",
+    domesticEstimate: "3–5 business days",
     coldChain: true,
     sameDayCutoff: "2:00 PM AEST",
   },
