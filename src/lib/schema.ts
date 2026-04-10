@@ -9,7 +9,7 @@ export function productSchema(product: Product, variantIndex = 0) {
     "@type": "Product",
     name: product.name,
     description: product.shortDescription,
-    image: `https://optimiseau.com.au${product.imageUrl}`,
+    image: `https://evopeak.io${product.imageUrl}`,
     sku: variant.sku,
     brand: {
       "@type": "Brand",
@@ -22,7 +22,7 @@ export function productSchema(product: Product, variantIndex = 0) {
       availability: v.inStock
         ? "https://schema.org/InStock"
         : "https://schema.org/OutOfStock",
-      url: `https://optimiseau.com.au/shop/${product.slug}`,
+      url: `https://evopeak.io/shop/${product.slug}`,
     })),
   };
 }
@@ -51,7 +51,7 @@ export function organizationSchema() {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: region.brandName,
-    url: "https://optimiseau.com.au",
+    url: "https://evopeak.io",
     description: region.meta.defaultDescription,
     contactPoint: {
       "@type": "ContactPoint",

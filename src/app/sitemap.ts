@@ -3,7 +3,7 @@ import { getAllProducts } from "@/lib/products";
 import { seedPosts } from "@/data/blog-posts";
 import { bundles } from "@/data/bundles";
 
-const BASE_URL = "https://optimiseau.com.au";
+const BASE_URL = "https://evopeak.io";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [

@@ -356,7 +356,7 @@ export function CheckoutContent() {
                 <div className="flex justify-between text-sm">
                   <span className="text-text-muted">Pay to (PayID)</span>
                   <span className="font-mono font-bold text-text-primary">
-                    payments@optimiseau.com.au
+                    payments@evopeak.io
                   </span>
                 </div>
                 <div className="flex justify-between text-sm">

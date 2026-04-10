@@ -149,7 +149,7 @@ export function ConfirmationContent() {
             </h3>
             <p className="text-xs text-amber-700 leading-relaxed">
               Send <strong>{formatPrice(order.total)}</strong> to PayID{" "}
-              <strong>payments@optimiseau.com.au</strong> with reference{" "}
+              <strong>payments@evopeak.io</strong> with reference{" "}
               <strong>{order.payIdReference}</strong>. Your order will be
               processed once payment is verified.
             </p>

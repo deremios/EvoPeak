@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/admin/", "/auth/", "/checkout/", "/cart", "/account"],
       },
     ],
-    sitemap: "https://optimiseau.com.au/sitemap.xml",
+    sitemap: "https://evopeak.io/sitemap.xml",
   };
 }

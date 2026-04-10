@@ -2,8 +2,8 @@ import type { RegionConfig } from "@/types/region";
 
 export const au: RegionConfig = {
   id: "au",
-  brandName: "OptimiseAU Research",
-  tagline: "Purity. Performance. Australian Made Trust.",
+  brandName: "EvoPeak",
+  tagline: "Research-Grade Peptides. Triple Tested.",
   country: "Australia",
   countryCode: "AU",
   locale: "en-AU",
@@ -37,12 +37,12 @@ export const au: RegionConfig = {
   },
 
   support: {
-    email: "support@optimiseau.com.au",
+    email: "support@evopeak.io",
     liveChatEnabled: true,
   },
 
   meta: {
-    defaultTitle: "OptimiseAU Research — Premium Australian Research Peptides",
+    defaultTitle: "EvoPeak — Premium Australian Research Peptides",
     defaultDescription:
       "Australia's premium supplier of 3rd-party tested research peptides. HPLC/MS tested, cGMP-grade, fast AU shipping. BPC-157, Semaglutide, Tirzepatide & more.",
     defaultKeywords: [
