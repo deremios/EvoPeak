@@ -2,9 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import { region } from "@/config";
 import { useCart } from "@/lib/cart-context";
+import { Logo } from "@/components/shared/logo";
 import { MobileMenu } from "./mobile-menu";
 
 const navLinks = [
@@ -26,16 +25,7 @@ export function Header() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
-            <Image
-              src="/logo.webp"
-              alt={region.brandName}
-              width={140}
-              height={26}
-              priority
-              className="h-7 w-auto"
-            />
-          </Link>
+          <Logo size="md" />
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-8">

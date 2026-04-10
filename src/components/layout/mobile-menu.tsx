@@ -2,8 +2,8 @@
 
 import { useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { useCart } from "@/lib/cart-context";
+import { Logo } from "@/components/shared/logo";
 
 interface MobileMenuProps {
   open: boolean;
@@ -44,7 +44,7 @@ export function MobileMenu({ open, onClose, links }: MobileMenuProps) {
       {/* Panel */}
       <div className="fixed inset-y-0 right-0 w-full max-w-sm bg-white shadow-xl">
         <div className="flex items-center justify-between px-6 py-4 border-b border-border-default">
-          <Image src="/logo.webp" alt="EvoPeak" width={120} height={22} className="h-6 w-auto" />
+          <Logo size="sm" />
           <button
             type="button"
             onClick={onClose}
