@@ -1,15 +1,19 @@
 import { Metadata } from "next";
 import { region } from "@/config";
+import { createSeoMetadata } from "@/lib/seo";
+import { faqSchema } from "@/lib/schema";
 
-export const metadata: Metadata = {
-  title: `FAQ — ${region.brandName}`,
-  description: `Frequently asked questions about ${region.brandName} — shipping, payments, peptide storage, reconstitution, and more.`,
-  openGraph: {
-    title: `FAQ — ${region.brandName}`,
-    description: `Answers to common questions about research peptides and ordering from ${region.brandName}.`,
-    type: "website",
-  },
-};
+export const metadata: Metadata = createSeoMetadata({
+  title: `Research Peptide FAQ Australia — ${region.brandName}`,
+  description: `Frequently asked questions about ${region.brandName}: Australian shipping, PayID, COAs, peptide storage, reconstitution, and research-only use.`,
+  path: "/faq",
+  keywords: [
+    "research peptide FAQ",
+    "peptide storage Australia",
+    "peptide reconstitution",
+    "peptide COA",
+  ],
+});
 
 const faqs = [
   {
@@ -79,8 +83,16 @@ const faqs = [
 ];
 
 export default function FaqPage() {
+  const faqItems = faqs.flatMap((section) => section.items);
+
   return (
     <div className="bg-bg-primary min-h-screen py-12 sm:py-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqSchema(faqItems)),
+        }}
+      />
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         <h1 className="text-3xl sm:text-4xl font-bold text-text-primary mb-2">
           Frequently Asked Questions

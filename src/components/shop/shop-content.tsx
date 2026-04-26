@@ -16,10 +16,11 @@ const sortOptions: { value: SortOption; label: string }[] = [
 export function ShopContent() {
   const searchParams = useSearchParams();
   const initialCategory = searchParams.get("category") || "all";
+  const initialQuery = searchParams.get("search") || "";
 
   const [activeCategory, setActiveCategory] = useState(initialCategory);
   const [sort, setSort] = useState<SortOption>("popular");
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState(initialQuery);
 
   const categories = getAllCategories();
   const allProducts = getAllProducts();

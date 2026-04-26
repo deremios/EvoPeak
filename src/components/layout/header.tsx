@@ -9,8 +9,8 @@ import { MobileMenu } from "./mobile-menu";
 const navLinks = [
   { href: "/shop", label: "Shop" },
   { href: "/bundles", label: "Bundles" },
-  { href: "/shop?category=weight-loss", label: "Weight Loss" },
-  { href: "/shop?category=recovery", label: "Recovery" },
+  { href: "/shop/weight-loss", label: "Weight Loss" },
+  { href: "/shop/recovery", label: "Recovery" },
   { href: "/blog", label: "Research" },
   { href: "/about", label: "About" },
   { href: "/guide", label: "New Here?" },

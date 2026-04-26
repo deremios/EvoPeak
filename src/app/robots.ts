@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/admin/", "/auth/", "/checkout/", "/cart", "/account"],
+        disallow: ["/admin/"],
       },
     ],
     sitemap: "https://evopeak.io/sitemap.xml",

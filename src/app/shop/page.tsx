@@ -2,17 +2,19 @@ import { Suspense } from "react";
 import { Metadata } from "next";
 import { region } from "@/config";
 import { ShopContent } from "@/components/shop/shop-content";
+import { createSeoMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: `Shop Research Peptides — ${region.brandName}`,
-  description: `Browse ${region.brandName}'s curated range of 3rd-party tested research peptides. Filter by goal: Weight Loss, Recovery, Performance, Cognitive. All with downloadable COAs.`,
-  openGraph: {
-    title: `Shop Research Peptides — ${region.brandName}`,
-    description: `Browse ${region.brandName}'s curated range of 3rd-party tested research peptides.`,
-    type: "website",
-  },
-  twitter: { card: "summary", title: `Shop Research Peptides — ${region.brandName}` },
-};
+export const metadata: Metadata = createSeoMetadata({
+  title: `Research Peptides Australia — Shop ${region.brandName}`,
+  description: `Browse ${region.brandName}'s curated range of third-party tested research peptides in Australia. HPLC/MS verified, endotoxin screened, COAs available, and shipped locally.`,
+  path: "/shop",
+  keywords: [
+    "research peptides Australia",
+    "buy research peptides Australia",
+    "peptide supplier Australia",
+    "HPLC tested peptides",
+  ],
+});
 
 export default function ShopPage() {
   return (

@@ -1,16 +1,20 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { region } from "@/config";
+import { createSeoMetadata } from "@/lib/seo";
+import { faqSchema } from "@/lib/schema";
 
-export const metadata: Metadata = {
-  title: `New User Guide — ${region.brandName}`,
-  description: `New to research peptides? ${region.brandName}'s step-by-step guide covers everything — choosing compounds, reconstitution, storage, and getting started safely.`,
-  openGraph: {
-    title: `New User Guide — ${region.brandName}`,
-    description: `Step-by-step beginner guide to research peptides from ${region.brandName}.`,
-    type: "website",
-  },
-};
+export const metadata: Metadata = createSeoMetadata({
+  title: `Beginner Guide to Research Peptides Australia — ${region.brandName}`,
+  description: `New to research peptides? Learn how to choose compounds, review COAs, handle reconstitution, store peptides, and order from ${region.brandName}.`,
+  path: "/guide",
+  keywords: [
+    "research peptide guide for beginners",
+    "how to buy research peptides Australia",
+    "how to store peptides",
+    "how to reconstitute peptides",
+  ],
+});
 
 const steps = [
   {
@@ -70,6 +74,12 @@ const faqs = [
 export default function GuidePage() {
   return (
     <div className="bg-bg-primary min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqSchema(faqs)),
+        }}
+      />
       {/* Hero */}
       <section className="bg-gradient-to-br from-brand-navy to-brand-green-dark py-16 sm:py-20">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">

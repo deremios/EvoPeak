@@ -1,10 +1,13 @@
 import { Metadata } from "next";
 import { LegalPage } from "@/components/shared/legal-page";
 import { region } from "@/config";
+import { createSeoMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createSeoMetadata({
   title: `Terms of Service — ${region.brandName}`,
-};
+  description: `Terms for using ${region.brandName}, including research-only product conditions, payment, shipping, refunds, and compliance requirements.`,
+  path: "/terms",
+});
 
 export default function TermsPage() {
   return (

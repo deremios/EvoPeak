@@ -1,10 +1,13 @@
 import { Metadata } from "next";
 import { LegalPage } from "@/components/shared/legal-page";
 import { region } from "@/config";
+import { createSeoMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createSeoMetadata({
   title: `Refund Policy — ${region.brandName}`,
-};
+  description: `Refund and replacement policy for ${region.brandName} orders, including damaged shipments, incorrect items, quality concerns, and cancellation rules.`,
+  path: "/refund-policy",
+});
 
 export default function RefundPolicyPage() {
   return (

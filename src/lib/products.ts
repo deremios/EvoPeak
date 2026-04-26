@@ -11,8 +11,9 @@ export function getProductBySlug(slug: string): Product | undefined {
 }
 
 export function getProductsByCategory(categorySlug: string): Product[] {
+  const category = getCategoryBySlug(categorySlug);
   return products.filter(
-    (p) => p.categoryId === categorySlug && p.published
+    (p) => p.categoryId === (category?.id ?? categorySlug) && p.published
   );
 }
 

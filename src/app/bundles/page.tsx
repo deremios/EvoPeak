@@ -4,16 +4,20 @@ import { region } from "@/config";
 import { bundles } from "@/data/bundles";
 import { products } from "@/data/products";
 import { formatPrice } from "@/config";
+import { createSeoMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: `Research Stacks & Bundles — ${region.brandName}`,
-  description: `Save 15% with curated research peptide bundles. Beginner, Fat Loss, and Recovery stacks designed for specific research goals.`,
-  openGraph: {
-    title: `Research Stacks & Bundles — ${region.brandName}`,
-    description: `Save 15% with curated research peptide bundles from ${region.brandName}.`,
-    type: "website",
-  },
-};
+export const metadata: Metadata = createSeoMetadata({
+  title: `Research Peptide Stacks & Bundles Australia — ${region.brandName}`,
+  description:
+    "Curated research peptide bundles for beginner, metabolic, and recovery-focused laboratory research. Triple-tested with COAs and shipped from Australia.",
+  path: "/bundles",
+  keywords: [
+    "research peptide bundles Australia",
+    "peptide stacks Australia",
+    "BPC-157 TB-500 bundle",
+    "GLP-1 research stack",
+  ],
+});
 
 function getBundlePrice(variantIds: string[]) {
   let total = 0;

@@ -4,11 +4,11 @@ import { Logo } from "@/components/shared/logo";
 
 const footerLinks = {
   shop: [
-    { href: "/shop?category=weight-loss", label: "Weight Loss" },
-    { href: "/shop?category=recovery", label: "Recovery & Healing" },
-    { href: "/shop?category=performance", label: "Performance" },
-    { href: "/shop?category=cognitive", label: "Cognitive" },
-    { href: "/shop?category=blends", label: "Blends & Stacks" },
+    { href: "/shop/weight-loss", label: "Weight Loss" },
+    { href: "/shop/recovery", label: "Recovery & Healing" },
+    { href: "/shop/performance", label: "Performance" },
+    { href: "/shop/cognitive", label: "Cognitive" },
+    { href: "/shop/blends", label: "Blends & Stacks" },
   ],
   company: [
     { href: "/about", label: "About Us" },

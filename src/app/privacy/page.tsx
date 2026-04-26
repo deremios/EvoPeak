@@ -1,10 +1,13 @@
 import { Metadata } from "next";
 import { LegalPage } from "@/components/shared/legal-page";
 import { region } from "@/config";
+import { createSeoMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createSeoMetadata({
   title: `Privacy Policy — ${region.brandName}`,
-};
+  description: `How ${region.brandName} collects, uses, secures, and manages customer information for accounts, orders, support, and compliance.`,
+  path: "/privacy",
+});
 
 export default function PrivacyPage() {
   return (

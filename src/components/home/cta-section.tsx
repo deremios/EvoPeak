@@ -24,7 +24,7 @@ export function CtaSection() {
             href="/guide"
             className="inline-flex items-center justify-center rounded-lg bg-white/10 px-8 py-3.5 text-base font-semibold text-white hover:bg-white/20 transition-colors border border-white/20"
           >
-            Download Starter Guide
+            Read Starter Guide
           </Link>
         </div>
       </div>

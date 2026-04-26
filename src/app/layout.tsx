@@ -7,8 +7,9 @@ import { AgeGate } from "@/components/shared/age-gate";
 import { WelcomeBanner } from "@/components/shared/welcome-banner";
 import { CartProvider } from "@/lib/cart-context";
 import { TawkChat } from "@/components/shared/tawk-chat";
-import { organizationSchema } from "@/lib/schema";
+import { organizationSchema, websiteSchema } from "@/lib/schema";
 import { region } from "@/config";
+import { createSeoMetadata, SITE_URL } from "@/lib/seo";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -17,21 +18,13 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: `${region.brandName} — ${region.tagline}`,
-  description: region.meta.defaultDescription,
-  keywords: region.meta.defaultKeywords,
-  openGraph: {
+  metadataBase: new URL(SITE_URL),
+  ...createSeoMetadata({
     title: `${region.brandName} — ${region.tagline}`,
     description: region.meta.defaultDescription,
-    type: "website",
-    siteName: region.brandName,
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: `${region.brandName} — ${region.tagline}`,
-    description: region.meta.defaultDescription,
-  },
-  robots: { index: true, follow: true },
+    path: "/",
+    keywords: region.meta.defaultKeywords,
+  }),
 };
 
 export default function RootLayout({
@@ -40,12 +33,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang={region.locale.split("-")[0]} className={inter.variable}>
+    <html lang={region.locale} className={inter.variable}>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(organizationSchema()),
+            __html: JSON.stringify([organizationSchema(), websiteSchema()]),
           }}
         />
       </head>

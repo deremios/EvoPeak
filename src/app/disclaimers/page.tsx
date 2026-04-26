@@ -1,10 +1,13 @@
 import { Metadata } from "next";
 import { LegalPage } from "@/components/shared/legal-page";
 import { region } from "@/config";
+import { createSeoMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: `Disclaimers — ${region.brandName}`,
-};
+export const metadata: Metadata = createSeoMetadata({
+  title: `Research Use Disclaimers — ${region.brandName}`,
+  description: `${region.brandName} products are sold strictly for laboratory research use only and are not intended for human consumption, injection, or therapeutic use.`,
+  path: "/disclaimers",
+});
 
 export default function DisclaimersPage() {
   return (

@@ -1,15 +1,17 @@
 import { Metadata } from "next";
 import { region } from "@/config";
+import { createSeoMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: `About Us — ${region.brandName}`,
-  description: `${region.brandName} is ${region.country}'s premium research peptide supplier. Learn about our mission, quality standards, and commitment to purity.`,
-  openGraph: {
-    title: `About Us — ${region.brandName}`,
-    description: `${region.brandName} — ${region.country}'s premium research peptide supplier.`,
-    type: "website",
-  },
-};
+export const metadata: Metadata = createSeoMetadata({
+  title: `About ${region.brandName} — Australian Research Peptide Supplier`,
+  description: `${region.brandName} is ${region.country}'s research peptide supplier focused on third-party testing, HPLC/MS verification, COA transparency, and local Australian shipping.`,
+  path: "/about",
+  keywords: [
+    "Australian research peptide supplier",
+    "third-party tested peptides Australia",
+    "HPLC tested peptides",
+  ],
+});
 
 export default function AboutPage() {
   return (

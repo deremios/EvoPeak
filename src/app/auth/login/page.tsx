@@ -1,10 +1,14 @@
 import { Metadata } from "next";
 import { region } from "@/config";
 import { LoginForm } from "@/components/auth/login-form";
+import { createSeoMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createSeoMetadata({
   title: `Sign In — ${region.brandName}`,
-};
+  description: `Sign in to your ${region.brandName} account.`,
+  path: "/auth/login",
+  noIndex: true,
+});
 
 export default function LoginPage() {
   return (
