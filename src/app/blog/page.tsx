@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { region } from "@/config";
 import { BlogList } from "@/components/blog/blog-list";
 import { createSeoMetadata } from "@/lib/seo";
@@ -27,24 +28,36 @@ export default function BlogPage() {
   return (
     <div className="bg-bg-primary min-h-screen">
       {/* ── Hero ── */}
-      <div className="bg-brand-navy relative overflow-hidden">
-        {/* decorative blobs */}
-        <div className="pointer-events-none absolute -top-32 -right-32 h-96 w-96 rounded-full bg-brand-green/10 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-16 -left-16 h-64 w-64 rounded-full bg-brand-green/5 blur-2xl" />
+      <div className="relative overflow-hidden min-h-[420px] sm:min-h-[500px] flex items-center">
+        {/* Background image */}
+        <Image
+          src="/images/blog-hero.webp"
+          alt="Peptide research molecular structures"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+        {/* Dark overlay — stronger on the left so text stays readable */}
+        <div className="absolute inset-0 bg-gradient-to-r from-brand-navy/95 via-brand-navy/80 to-brand-navy/30" />
+        {/* Bottom fade into page background */}
+        <div className="absolute bottom-0 inset-x-0 h-16 bg-gradient-to-t from-bg-primary to-transparent" />
 
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
           <div className="flex flex-col gap-6 max-w-2xl">
-            <div className="inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-medium text-white/70 backdrop-blur-sm">
+            <div className="inline-flex w-fit items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-medium text-white/80 backdrop-blur-sm">
               <span className="h-1.5 w-1.5 rounded-full bg-brand-green animate-pulse" />
               {articleCount} research articles · Australia
             </div>
 
-            <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-[1.08]">
+            <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-[1.08] drop-shadow-md">
               Research<br />
-              <span className="text-brand-green">Insights</span>
+              <span className="text-brand-green drop-shadow-[0_0_20px_rgba(34,197,94,0.5)]">
+                Insights
+              </span>
             </h1>
 
-            <p className="text-lg sm:text-xl text-white/60 leading-relaxed max-w-xl">
+            <p className="text-lg sm:text-xl text-white/75 leading-relaxed max-w-xl drop-shadow">
               In-depth guides on peptide mechanisms, quality verification, protocols,
               and compound research — written for serious researchers.
             </p>
@@ -53,7 +66,7 @@ export default function BlogPage() {
               {["Recovery", "Weight Loss", "Performance", "Cognitive", "Research Guide"].map((cat) => (
                 <span
                   key={cat}
-                  className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-white/60 hover:text-white hover:border-white/30 transition-colors"
+                  className="rounded-full border border-white/20 bg-white/10 backdrop-blur-sm px-3 py-1 text-xs font-medium text-white/70 hover:text-white hover:border-white/40 hover:bg-white/15 transition-all"
                 >
                   {cat}
                 </span>
