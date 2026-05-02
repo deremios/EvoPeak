@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import Link from "next/link";
 import { useCart } from "@/lib/cart-context";
 import { Logo } from "@/components/shared/logo";
+import { researchCollections } from "@/data/collections";
 
 interface MobileMenuProps {
   open: boolean;
@@ -67,7 +68,28 @@ export function MobileMenu({ open, onClose, links }: MobileMenuProps) {
           </button>
         </div>
 
-        <nav className="px-6 py-6 space-y-1">
+        <nav className="h-[calc(100vh-73px)] space-y-6 overflow-y-auto px-6 py-6">
+          <div className="grid grid-cols-2 gap-3">
+            <Link
+              href="/men"
+              onClick={onClose}
+              className="rounded-2xl bg-brand-navy px-4 py-4 text-sm font-bold text-white"
+            >
+              Men&apos;s Research
+            </Link>
+            <Link
+              href="/women"
+              onClick={onClose}
+              className="rounded-2xl bg-brand-green px-4 py-4 text-sm font-bold text-white"
+            >
+              Women&apos;s Research
+            </Link>
+          </div>
+
+          <div>
+            <p className="mb-2 px-4 text-xs font-semibold uppercase tracking-[0.2em] text-text-muted">
+              Main
+            </p>
           {links.map((link) => (
             <Link
               key={link.href}
@@ -78,8 +100,27 @@ export function MobileMenu({ open, onClose, links }: MobileMenuProps) {
               {link.label}
             </Link>
           ))}
+          </div>
 
-          <div className="pt-4 border-t border-border-default mt-4 space-y-1">
+          <div>
+            <p className="mb-2 px-4 text-xs font-semibold uppercase tracking-[0.2em] text-text-muted">
+              Use cases
+            </p>
+            <div className="space-y-1">
+              {researchCollections.map((collection) => (
+                <Link
+                  key={collection.slug}
+                  href={`/collections/${collection.slug}`}
+                  onClick={onClose}
+                  className="block rounded-lg px-4 py-3 text-sm font-medium text-text-primary hover:bg-brand-green/5 hover:text-brand-green transition-colors"
+                >
+                  {collection.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div className="pt-4 border-t border-border-default space-y-1">
             <Link
               href="/account"
               onClick={onClose}

@@ -3,18 +3,25 @@ import { region } from "@/config";
 import { Logo } from "@/components/shared/logo";
 
 const footerLinks = {
-  shop: [
-    { href: "/shop/weight-loss", label: "Weight Loss" },
-    { href: "/shop/recovery", label: "Recovery & Healing" },
-    { href: "/shop/performance", label: "Performance" },
-    { href: "/shop/cognitive", label: "Cognitive" },
-    { href: "/shop/blends", label: "Blends & Stacks" },
+  audience: [
+    { href: "/men", label: "Men's Research" },
+    { href: "/women", label: "Women's Research" },
+    { href: "/shop", label: "All Products" },
+    { href: "/bundles", label: "Bundles & Stacks" },
   ],
-  company: [
-    { href: "/about", label: "About Us" },
+  useCases: [
+    { href: "/collections/metabolic-research", label: "Metabolic Research" },
+    { href: "/collections/recovery-repair", label: "Recovery & Repair" },
+    { href: "/collections/performance-gh-axis", label: "GH Axis" },
+    { href: "/collections/cognitive-longevity", label: "Cognitive & Longevity" },
+    { href: "/collections/skin-appearance", label: "Skin & Appearance" },
+    { href: "/collections/supplies", label: "Research Supplies" },
+  ],
+  research: [
     { href: "/blog", label: "Research Insights" },
     { href: "/guide", label: "New User Guide" },
     { href: "/faq", label: "FAQ" },
+    { href: "/about", label: "About Us" },
   ],
   legal: [
     { href: "/terms", label: "Terms of Service" },
@@ -52,13 +59,12 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Shop */}
           <div>
             <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">
-              Shop
+              Shop by Audience
             </h4>
             <ul className="space-y-2">
-              {footerLinks.shop.map((link) => (
+              {footerLinks.audience.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
@@ -71,13 +77,12 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Company */}
           <div>
             <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">
-              Company
+              Shop by Use Case
             </h4>
             <ul className="space-y-2">
-              {footerLinks.company.map((link) => (
+              {footerLinks.useCases.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
@@ -90,12 +95,21 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Legal */}
           <div>
             <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">
-              Legal
+              Research & Legal
             </h4>
             <ul className="space-y-2">
+              {footerLinks.research.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-white/60 hover:text-brand-orange transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
               {footerLinks.legal.map((link) => (
                 <li key={link.href}>
                   <Link

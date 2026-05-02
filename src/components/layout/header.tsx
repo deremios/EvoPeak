@@ -5,15 +5,16 @@ import Link from "next/link";
 import { useCart } from "@/lib/cart-context";
 import { Logo } from "@/components/shared/logo";
 import { MobileMenu } from "./mobile-menu";
+import { researchCollections } from "@/data/collections";
 
 const navLinks = [
   { href: "/shop", label: "Shop" },
-  { href: "/bundles", label: "Bundles" },
-  { href: "/shop/weight-loss", label: "Weight Loss" },
-  { href: "/shop/recovery", label: "Recovery" },
-  { href: "/blog", label: "Research" },
+  { href: "/men", label: "Men" },
+  { href: "/women", label: "Women" },
+  { href: "/collections/metabolic-research", label: "Use Cases" },
+  { href: "/bundles", label: "Stacks" },
+  { href: "/blog", label: "Research Hub" },
   { href: "/about", label: "About" },
-  { href: "/guide", label: "New Here?" },
 ];
 
 export function Header() {
@@ -28,15 +29,36 @@ export function Header() {
           <Logo size="md" />
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-7">
             {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-text-secondary hover:text-brand-green transition-colors"
-              >
-                {link.label}
-              </Link>
+              <div key={link.href} className="group relative">
+                <Link
+                  href={link.href}
+                  className="text-sm font-medium text-text-secondary hover:text-brand-green transition-colors"
+                >
+                  {link.label}
+                </Link>
+                {link.label === "Use Cases" && (
+                  <div className="invisible absolute left-1/2 top-full z-50 mt-5 w-[760px] -translate-x-1/2 rounded-3xl border border-border-default bg-white p-5 opacity-0 shadow-2xl transition-all duration-200 group-hover:visible group-hover:opacity-100">
+                    <div className="grid grid-cols-2 gap-3">
+                      {researchCollections.map((collection) => (
+                        <Link
+                          key={collection.slug}
+                          href={`/collections/${collection.slug}`}
+                          className="rounded-2xl p-4 transition-colors hover:bg-brand-green/5"
+                        >
+                          <p className="font-bold text-text-primary">
+                            {collection.name}
+                          </p>
+                          <p className="mt-1 text-sm leading-5 text-text-secondary">
+                            {collection.description}
+                          </p>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
             ))}
           </nav>
 

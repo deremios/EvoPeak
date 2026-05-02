@@ -3,6 +3,7 @@
 import { useState, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
 import { getAllProducts, getAllCategories, sortProducts, searchProducts } from "@/lib/products";
+import { getAllCollections } from "@/lib/collections";
 import type { SortOption } from "@/types/product";
 import { ProductCard } from "./product-card";
 
@@ -16,24 +17,35 @@ const sortOptions: { value: SortOption; label: string }[] = [
 export function ShopContent() {
   const searchParams = useSearchParams();
   const initialCategory = searchParams.get("category") || "all";
+  const initialCollection = searchParams.get("collection") || "all";
   const initialQuery = searchParams.get("search") || "";
 
   const [activeCategory, setActiveCategory] = useState(initialCategory);
+  const [activeCollection, setActiveCollection] = useState(initialCollection);
   const [sort, setSort] = useState<SortOption>("popular");
   const [query, setQuery] = useState(initialQuery);
 
   const categories = getAllCategories();
+  const collections = getAllCollections();
   const allProducts = getAllProducts();
 
   const filtered = useMemo(() => {
     let items = query ? searchProducts(query) : allProducts;
 
+    if (activeCollection !== "all") {
+      const collection = collections.find((item) => item.slug === activeCollection);
+      if (collection) {
+        items = items.filter((product) => collection.productIds.includes(product.id));
+      }
+    }
+
     if (activeCategory !== "all") {
-      items = items.filter((p) => p.categoryId === activeCategory);
+      const category = categories.find((item) => item.slug === activeCategory);
+      items = items.filter((p) => p.categoryId === (category?.id ?? activeCategory));
     }
 
     return sortProducts(items, sort);
-  }, [allProducts, activeCategory, sort, query]);
+  }, [allProducts, activeCategory, activeCollection, categories, collections, sort, query]);
 
   return (
     <div className="flex flex-col lg:flex-row gap-8">
@@ -65,10 +77,45 @@ export function ShopContent() {
           </div>
         </div>
 
+        {/* Use Cases */}
+        <div className="mb-8">
+          <h3 className="text-xs font-semibold text-text-muted uppercase tracking-wider mb-3">
+            Use Case
+          </h3>
+          <nav className="space-y-1">
+            <button
+              onClick={() => setActiveCollection("all")}
+              className={`w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                activeCollection === "all"
+                  ? "bg-brand-green text-white"
+                  : "text-text-secondary hover:bg-brand-green/5 hover:text-brand-green"
+              }`}
+            >
+              All Use Cases
+            </button>
+            {collections.map((collection) => (
+              <button
+                key={collection.slug}
+                onClick={() => setActiveCollection(collection.slug)}
+                className={`w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                  activeCollection === collection.slug
+                    ? "bg-brand-green text-white"
+                    : "text-text-secondary hover:bg-brand-green/5 hover:text-brand-green"
+                }`}
+              >
+                {collection.shortName}
+                <span className="float-right text-xs opacity-70">
+                  {collection.productIds.length}
+                </span>
+              </button>
+            ))}
+          </nav>
+        </div>
+
         {/* Categories */}
         <div>
           <h3 className="text-xs font-semibold text-text-muted uppercase tracking-wider mb-3">
-            Category
+            Product Category
           </h3>
           <nav className="space-y-1">
             <button

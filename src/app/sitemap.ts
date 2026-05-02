@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { getAllCategories, getAllProducts } from "@/lib/products";
 import { seedPosts } from "@/data/blog-posts";
 import { bundles } from "@/data/bundles";
+import { getAllCollections } from "@/lib/collections";
 import { SITE_URL } from "@/lib/seo";
 
 const SITE_UPDATED_AT = new Date("2026-04-26");
@@ -9,6 +10,8 @@ const SITE_UPDATED_AT = new Date("2026-04-26");
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
     { url: SITE_URL, lastModified: SITE_UPDATED_AT, changeFrequency: "weekly", priority: 1 },
+    { url: `${SITE_URL}/men`, lastModified: SITE_UPDATED_AT, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${SITE_URL}/women`, lastModified: SITE_UPDATED_AT, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE_URL}/shop`, lastModified: SITE_UPDATED_AT, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE_URL}/blog`, lastModified: SITE_UPDATED_AT, changeFrequency: "weekly", priority: 0.8 },
     { url: `${SITE_URL}/bundles`, lastModified: SITE_UPDATED_AT, changeFrequency: "weekly", priority: 0.75 },
@@ -51,5 +54,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...categoryPages, ...productPages, ...blogPages, ...bundlePages];
+  const collectionPages: MetadataRoute.Sitemap = getAllCollections().map((collection) => ({
+    url: `${SITE_URL}/collections/${collection.slug}`,
+    lastModified: SITE_UPDATED_AT,
+    changeFrequency: "weekly" as const,
+    priority: 0.86,
+  }));
+
+  return [
+    ...staticPages,
+    ...collectionPages,
+    ...categoryPages,
+    ...productPages,
+    ...blogPages,
+    ...bundlePages,
+  ];
 }
