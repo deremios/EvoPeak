@@ -255,40 +255,48 @@ export default function HomePage() {
         </div>
       </div>
 
-      <section className="relative overflow-hidden bg-[#ebe4d5]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_20%,rgba(33,76,55,0.16),transparent_28%),radial-gradient(circle_at_82%_18%,rgba(236,130,62,0.18),transparent_26%)]" />
-        <div className="relative mx-auto flex min-h-[720px] max-w-7xl flex-col items-center justify-center px-4 py-20 text-center sm:px-6 lg:px-8">
-          <p className="mb-8 text-sm font-bold uppercase tracking-[0.32em] text-brand-green">
-            {region.brandName} Research Pathways
+      <section className="relative min-h-[780px] overflow-hidden text-white">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('/images/hero-home.jpg')" }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/55 to-black/80" />
+        <div className="relative mx-auto flex min-h-[780px] max-w-7xl flex-col items-center justify-center px-4 py-24 text-center sm:px-6 lg:px-8">
+          <p className="mb-8 text-sm font-black uppercase tracking-[0.36em] text-brand-green">
+            {region.brandName} — Australian Research Peptides
           </p>
-          <h1 className="max-w-5xl text-6xl font-black leading-[0.92] tracking-[-0.06em] text-brand-navy sm:text-8xl lg:text-[7.8rem]">
+          <h1 className="max-w-6xl text-6xl font-black leading-[0.92] tracking-[-0.05em] sm:text-8xl lg:text-[7.5rem]">
             Research organized around your model
           </h1>
+          <p className="mx-auto mt-8 max-w-2xl text-lg leading-8 text-white/75">
+            Third-party tested compounds organized by research pathway, audience,
+            and mechanism. Laboratory research use only.
+          </p>
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
             <Link
               href="/women"
-              className="rounded-full bg-brand-navy px-8 py-4 text-sm font-black uppercase tracking-[0.18em] text-white transition-colors hover:bg-brand-green"
+              className="rounded-full bg-white px-8 py-4 text-sm font-black uppercase tracking-[0.18em] text-brand-navy transition-colors hover:bg-brand-green hover:text-white"
             >
               Women&apos;s Research
             </Link>
             <Link
               href="/men"
-              className="rounded-full border border-brand-navy px-8 py-4 text-sm font-black uppercase tracking-[0.18em] text-brand-navy transition-colors hover:bg-white"
+              className="rounded-full border border-white/50 px-8 py-4 text-sm font-black uppercase tracking-[0.18em] text-white transition-colors hover:bg-white/10"
             >
               Men&apos;s Research
             </Link>
           </div>
-          <div className="mt-14 grid w-full max-w-5xl gap-4 md:grid-cols-3">
+          <div className="mt-16 grid w-full max-w-5xl gap-4 md:grid-cols-3">
             {collections.slice(0, 3).map((collection) => (
               <Link
                 key={collection.slug}
                 href={`/collections/${collection.slug}`}
-                className="rounded-[1.5rem] border border-black/10 bg-white/65 p-5 text-left backdrop-blur transition-all hover:-translate-y-1 hover:bg-white"
+                className="rounded-[1.5rem] border border-white/15 bg-white/10 p-5 text-left backdrop-blur transition-all hover:-translate-y-1 hover:bg-white/20"
               >
-                <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand-green">
+                <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand-orange">
                   {collection.shortName}
                 </p>
-                <p className="mt-3 text-lg font-black text-brand-navy">
+                <p className="mt-3 text-lg font-black text-white">
                   {collection.eyebrow}
                 </p>
               </Link>
