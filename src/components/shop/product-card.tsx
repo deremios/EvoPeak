@@ -7,20 +7,10 @@ interface ProductCardProps {
   product: Product;
 }
 
-const categoryGradients: Record<string, string> = {
-  "weight-loss": "from-emerald-950 via-brand-navy to-slate-950",
-  recovery: "from-sky-950 via-brand-navy to-slate-950",
-  performance: "from-indigo-950 via-brand-navy to-slate-950",
-  cognitive: "from-violet-950 via-brand-navy to-slate-950",
-  blends: "from-brand-navy via-slate-900 to-black",
-  supplies: "from-slate-800 via-slate-900 to-slate-950",
-};
-
 export function ProductCard({ product }: ProductCardProps) {
   const lowestPrice = getLowestPrice(product);
   const hasMultipleVariants = product.variants.length > 1;
   const hasComparePrice = product.variants.some((v) => v.compareAtPrice);
-  const gradient = categoryGradients[product.categoryId] ?? "from-brand-navy to-slate-950";
 
   return (
     <Link
@@ -28,38 +18,12 @@ export function ProductCard({ product }: ProductCardProps) {
       className="group flex flex-col overflow-hidden rounded-[1.75rem] border border-border-default bg-white transition-all duration-300 hover:-translate-y-1 hover:border-brand-green/30 hover:shadow-2xl"
     >
       {/* Image area */}
-      <div className={`relative aspect-[4/3] overflow-hidden bg-gradient-to-br ${gradient}`}>
-        {/* Molecular decoration */}
-        <div className="absolute inset-0 flex items-center justify-center opacity-20">
-          <svg className="h-32 w-32 text-white" fill="none" viewBox="0 0 120 120" stroke="currentColor" strokeWidth="0.8">
-            <circle cx="60" cy="60" r="18" />
-            <circle cx="20" cy="30" r="8" />
-            <circle cx="100" cy="30" r="8" />
-            <circle cx="20" cy="90" r="8" />
-            <circle cx="100" cy="90" r="8" />
-            <circle cx="60" cy="10" r="6" />
-            <circle cx="60" cy="110" r="6" />
-            <line x1="42" y1="51" x2="28" y2="37" />
-            <line x1="78" y1="51" x2="92" y2="37" />
-            <line x1="42" y1="69" x2="28" y2="83" />
-            <line x1="78" y1="69" x2="92" y2="83" />
-            <line x1="60" y1="42" x2="60" y2="16" />
-            <line x1="60" y1="78" x2="60" y2="104" />
-          </svg>
-        </div>
-
-        {/* Radial glow */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(90,200,120,0.18),transparent_60%)]" />
-
-        {/* Product name overlay */}
-        <div className="absolute bottom-0 left-0 right-0 p-4">
-          <p className="text-xs font-black uppercase tracking-[0.22em] text-white/50">
-            {product.categoryId.replace("-", " ")}
-          </p>
-          <p className="mt-1 text-lg font-black leading-tight text-white">
-            {product.name}
-          </p>
-        </div>
+      <div className="relative aspect-[4/3] overflow-hidden bg-white">
+        <img
+          src="/images/product-placeholder.png"
+          alt={product.name}
+          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
 
         {/* Top badges */}
         <div className="absolute left-3 top-3 flex flex-col gap-1.5">
