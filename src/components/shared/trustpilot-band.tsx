@@ -76,15 +76,7 @@ export function TrustpilotBand() {
             </div>
           </div>
           <p className="text-sm text-text-secondary">
-            Based on{" "}
-            <Link
-              href="https://www.trustpilot.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-bold text-[#00B67A] hover:underline"
-            >
-              verified customer reviews
-            </Link>
+            Based on <span className="font-bold text-[#00B67A]">verified customer reviews</span>
           </p>
         </div>
 
@@ -122,11 +114,7 @@ export function TrustpilotBand() {
         </div>
 
         <p className="mt-6 text-center text-xs text-text-muted">
-          Representative of verified researcher feedback. For full reviews visit{" "}
-          <Link href="https://www.trustpilot.com" target="_blank" rel="noopener noreferrer" className="text-[#00B67A] hover:underline">
-            Trustpilot
-          </Link>
-          .
+          Representative of verified researcher feedback.
         </p>
       </div>
     </section>
