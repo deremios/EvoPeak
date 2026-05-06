@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { region } from "@/config";
@@ -139,10 +140,20 @@ export function HomeClient({ collections }: { collections: ResearchCollection[] 
       </div>
 
       {/* ── Hero ── */}
-      <section className="relative min-h-[800px] overflow-hidden text-white">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/images/hero-home.jpg')" }} />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/55 to-black/85" />
-        <div className="relative mx-auto flex min-h-[800px] max-w-7xl flex-col items-center justify-center px-4 py-28 text-center sm:px-6 lg:px-8">
+      <section className="relative min-h-[600px] overflow-hidden text-white sm:min-h-[720px] lg:min-h-[800px]">
+        {/* Background image – priority loaded for LCP */}
+        <Image
+          src="/images/hero-home.webp"
+          alt="EvoPeak research peptides — vial and box on dark background"
+          fill
+          priority
+          quality={85}
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+        {/* Gradient overlay – heavier at top/bottom for text legibility on all screens */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black/85" />
+        <div className="relative mx-auto flex min-h-[600px] max-w-7xl flex-col items-center justify-center px-4 py-20 text-center sm:min-h-[720px] sm:px-6 sm:py-24 lg:min-h-[800px] lg:px-8 lg:py-28">
           <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }} className="mb-6 text-sm font-black uppercase tracking-[0.36em] text-brand-green">
             {region.brandName} — Australian Research Peptides
           </motion.p>
