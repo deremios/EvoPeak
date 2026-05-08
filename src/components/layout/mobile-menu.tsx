@@ -39,18 +39,23 @@ export function MobileMenu({ open, onClose, links }: MobileMenuProps) {
   const mainLinks = links.filter((l) => !AUDIENCE_HREFS.has(l.href));
 
   return (
-    <div className="fixed inset-0 z-50 md:hidden" role="dialog" aria-modal="true" aria-label="Navigation menu">
-      {/* Backdrop */}
+    <div
+      className="fixed inset-0 z-50 md:hidden flex justify-end"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Navigation menu"
+    >
+      {/* Backdrop — absolute within the fixed wrapper */}
       <div
-        className="fixed inset-0 bg-black/50"
+        className="absolute inset-0 bg-black/50"
         onClick={onClose}
         aria-hidden="true"
       />
 
-      {/* Panel */}
-      <div className="fixed inset-y-0 right-0 w-full max-w-sm bg-white shadow-2xl flex flex-col">
+      {/* Panel — relative so it stacks above the backdrop, h-full fills the wrapper */}
+      <div className="relative z-10 flex h-full w-full max-w-sm flex-col bg-white shadow-2xl">
         {/* Header */}
-        <div className="flex items-center justify-between px-5 py-4 border-b border-border-default shrink-0">
+        <div className="flex shrink-0 items-center justify-between border-b border-border-default px-5 py-4">
           <Logo size="sm" />
           <button
             type="button"
@@ -65,17 +70,13 @@ export function MobileMenu({ open, onClose, links }: MobileMenuProps) {
               strokeWidth="2"
               stroke="currentColor"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6 18L18 6M6 6l12 12"
-              />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
         </div>
 
-        {/* Scrollable content */}
-        <nav className="flex-1 overflow-y-auto px-5 py-5 space-y-6">
+        {/* Scrollable nav */}
+        <nav className="min-h-0 flex-1 overflow-y-auto px-5 py-5 space-y-6">
           {/* Audience shortcuts */}
           <div className="grid grid-cols-2 gap-3">
             <Link
@@ -94,7 +95,7 @@ export function MobileMenu({ open, onClose, links }: MobileMenuProps) {
             </Link>
           </div>
 
-          {/* Main nav links (deduplicated) */}
+          {/* Main nav links */}
           <div>
             <p className="mb-1 px-1 text-[11px] font-bold uppercase tracking-widest text-text-muted">
               Menu
@@ -133,19 +134,19 @@ export function MobileMenu({ open, onClose, links }: MobileMenuProps) {
           </div>
         </nav>
 
-        {/* Fixed footer */}
-        <div className="shrink-0 border-t border-border-default px-5 py-4 space-y-2 bg-white">
+        {/* Footer CTA buttons */}
+        <div className="shrink-0 border-t border-border-default bg-white px-5 py-4 space-y-2">
           <Link
             href="/account"
             onClick={onClose}
-            className="flex items-center justify-center rounded-lg px-4 py-3 text-base font-medium text-text-primary border border-border-default hover:bg-gray-50 transition-colors"
+            className="flex items-center justify-center rounded-lg border border-border-default px-4 py-3 text-base font-medium text-text-primary hover:bg-gray-50 transition-colors"
           >
             Account
           </Link>
           <Link
             href="/cart"
             onClick={onClose}
-            className="flex items-center justify-center rounded-lg px-4 py-3 text-base font-semibold text-white bg-brand-green hover:bg-brand-green-light transition-colors"
+            className="flex items-center justify-center rounded-lg bg-brand-green px-4 py-3 text-base font-semibold text-white hover:bg-brand-green-light transition-colors"
           >
             {itemCount > 0 ? `View Cart (${itemCount})` : "Cart"}
           </Link>
