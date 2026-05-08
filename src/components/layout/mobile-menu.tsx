@@ -12,8 +12,11 @@ interface MobileMenuProps {
   links: { href: string; label: string }[];
 }
 
+const AUDIENCE_HREFS = new Set(["/men", "/women", "/collections/metabolic-research"]);
+
 export function MobileMenu({ open, onClose, links }: MobileMenuProps) {
   const { itemCount } = useCart();
+
   useEffect(() => {
     if (open) {
       document.body.style.overflow = "hidden";
@@ -33,30 +36,33 @@ export function MobileMenu({ open, onClose, links }: MobileMenuProps) {
 
   if (!open) return null;
 
+  const mainLinks = links.filter((l) => !AUDIENCE_HREFS.has(l.href));
+
   return (
     <div className="fixed inset-0 z-50 md:hidden" role="dialog" aria-modal="true" aria-label="Navigation menu">
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-black/40 backdrop-blur-sm"
+        className="fixed inset-0 bg-black/50"
         onClick={onClose}
         aria-hidden="true"
       />
 
       {/* Panel */}
-      <div className="fixed inset-y-0 right-0 w-full max-w-sm bg-white shadow-xl">
-        <div className="flex items-center justify-between px-6 py-4 border-b border-border-default">
+      <div className="fixed inset-y-0 right-0 w-full max-w-sm bg-white shadow-2xl flex flex-col">
+        {/* Header */}
+        <div className="flex items-center justify-between px-5 py-4 border-b border-border-default shrink-0">
           <Logo size="sm" />
           <button
             type="button"
             onClick={onClose}
-            className="rounded-md p-2 text-text-secondary hover:text-brand-green"
+            className="rounded-lg p-2 text-text-primary hover:bg-gray-100 transition-colors"
             aria-label="Close menu"
           >
             <svg
-              className="h-6 w-6"
+              className="h-5 w-5"
               fill="none"
               viewBox="0 0 24 24"
-              strokeWidth="1.5"
+              strokeWidth="2"
               stroke="currentColor"
             >
               <path
@@ -68,75 +74,82 @@ export function MobileMenu({ open, onClose, links }: MobileMenuProps) {
           </button>
         </div>
 
-        <nav className="h-[calc(100vh-73px)] space-y-6 overflow-y-auto px-6 py-6">
+        {/* Scrollable content */}
+        <nav className="flex-1 overflow-y-auto px-5 py-5 space-y-6">
+          {/* Audience shortcuts */}
           <div className="grid grid-cols-2 gap-3">
             <Link
               href="/men"
               onClick={onClose}
-              className="rounded-2xl bg-brand-navy px-4 py-4 text-sm font-bold text-white"
+              className="rounded-xl bg-brand-navy px-4 py-4 text-sm font-bold text-white text-center leading-snug"
             >
-              Men&apos;s Research
+              Men&apos;s<br />Research
             </Link>
             <Link
               href="/women"
               onClick={onClose}
-              className="rounded-2xl bg-brand-green px-4 py-4 text-sm font-bold text-white"
+              className="rounded-xl bg-brand-orange px-4 py-4 text-sm font-bold text-white text-center leading-snug"
             >
-              Women&apos;s Research
+              Women&apos;s<br />Research
             </Link>
           </div>
 
+          {/* Main nav links (deduplicated) */}
           <div>
-            <p className="mb-2 px-4 text-xs font-semibold uppercase tracking-[0.2em] text-text-muted">
-              Main
+            <p className="mb-1 px-1 text-[11px] font-bold uppercase tracking-widest text-text-muted">
+              Menu
             </p>
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={onClose}
-              className="block rounded-lg px-4 py-3 text-base font-medium text-text-primary hover:bg-brand-green/5 hover:text-brand-green transition-colors"
-            >
-              {link.label}
-            </Link>
-          ))}
-          </div>
-
-          <div>
-            <p className="mb-2 px-4 text-xs font-semibold uppercase tracking-[0.2em] text-text-muted">
-              Use cases
-            </p>
-            <div className="space-y-1">
-              {researchCollections.map((collection) => (
+            <div className="space-y-0.5">
+              {mainLinks.map((link) => (
                 <Link
-                  key={collection.slug}
-                  href={`/collections/${collection.slug}`}
+                  key={link.href}
+                  href={link.href}
                   onClick={onClose}
-                  className="block rounded-lg px-4 py-3 text-sm font-medium text-text-primary hover:bg-brand-green/5 hover:text-brand-green transition-colors"
+                  className="flex items-center rounded-lg px-3 py-3 text-base font-medium text-text-primary hover:bg-gray-50 hover:text-brand-green transition-colors"
                 >
-                  {collection.name}
+                  {link.label}
                 </Link>
               ))}
             </div>
           </div>
 
-          <div className="pt-4 border-t border-border-default space-y-1">
-            <Link
-              href="/account"
-              onClick={onClose}
-              className="block rounded-lg px-4 py-3 text-base font-medium text-text-primary hover:bg-brand-green/5 hover:text-brand-green transition-colors"
-            >
-              Account
-            </Link>
-            <Link
-              href="/cart"
-              onClick={onClose}
-              className="block rounded-lg px-4 py-3 text-base font-semibold text-white bg-brand-green text-center hover:bg-brand-green-light transition-colors"
-            >
-              Cart{itemCount > 0 ? ` (${itemCount})` : ""}
-            </Link>
+          {/* Research collections */}
+          <div>
+            <p className="mb-1 px-1 text-[11px] font-bold uppercase tracking-widest text-text-muted">
+              Research Areas
+            </p>
+            <div className="space-y-0.5">
+              {researchCollections.map((collection) => (
+                <Link
+                  key={collection.slug}
+                  href={`/collections/${collection.slug}`}
+                  onClick={onClose}
+                  className="flex items-center rounded-lg px-3 py-3 text-sm font-medium text-text-primary hover:bg-gray-50 hover:text-brand-green transition-colors"
+                >
+                  {collection.shortName}
+                </Link>
+              ))}
+            </div>
           </div>
         </nav>
+
+        {/* Fixed footer */}
+        <div className="shrink-0 border-t border-border-default px-5 py-4 space-y-2 bg-white">
+          <Link
+            href="/account"
+            onClick={onClose}
+            className="flex items-center justify-center rounded-lg px-4 py-3 text-base font-medium text-text-primary border border-border-default hover:bg-gray-50 transition-colors"
+          >
+            Account
+          </Link>
+          <Link
+            href="/cart"
+            onClick={onClose}
+            className="flex items-center justify-center rounded-lg px-4 py-3 text-base font-semibold text-white bg-brand-green hover:bg-brand-green-light transition-colors"
+          >
+            {itemCount > 0 ? `View Cart (${itemCount})` : "Cart"}
+          </Link>
+        </div>
       </div>
     </div>
   );
