@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import { getProductImageFallback } from "@/lib/products";
 
@@ -7,20 +8,45 @@ interface ProductImageProps {
   src: string;
   alt: string;
   className?: string;
+  fill?: boolean;
+  sizes?: string;
+  priority?: boolean;
+  width?: number;
+  height?: number;
+  onImageError?: () => void;
+  skipFallback?: boolean;
 }
 
-export function ProductImage({ src, alt, className = "" }: ProductImageProps) {
+export function ProductImage({
+  src,
+  alt,
+  className = "",
+  fill = false,
+  sizes,
+  priority = false,
+  width,
+  height,
+  onImageError,
+  skipFallback = false,
+}: ProductImageProps) {
   const [currentSrc, setCurrentSrc] = useState(src);
+  const fallback = getProductImageFallback();
+
+  const imageProps = fill
+    ? { fill: true as const, sizes: sizes ?? "(max-width: 768px) 100vw, 33vw" }
+    : { width: width ?? 400, height: height ?? 400 };
 
   return (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img
+    <Image
+      {...imageProps}
       src={currentSrc}
       alt={alt}
       className={className}
+      priority={priority}
       onError={() => {
-        if (currentSrc !== getProductImageFallback()) {
-          setCurrentSrc(getProductImageFallback());
+        onImageError?.();
+        if (!skipFallback && currentSrc !== fallback) {
+          setCurrentSrc(fallback);
         }
       }}
     />

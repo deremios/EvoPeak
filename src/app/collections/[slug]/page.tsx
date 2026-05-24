@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CollectionLanding } from "@/components/collections/collection-landing";
+import { region } from "@/config";
 import { breadcrumbSchema, collectionPageSchema, faqSchema, itemListSchema } from "@/lib/schema";
 import {
   getAllCollections,
@@ -22,7 +23,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const collection = getCollectionBySlug(slug);
 
-  if (!collection) return { title: "Collection Not Found" };
+  if (!collection) {
+    return createSeoMetadata({
+      title: `Collection Not Found — ${region.brandName}`,
+      description: "This research collection could not be found.",
+      path: `/collections/${slug}`,
+      noIndex: true,
+    });
+  }
 
   return createSeoMetadata({
     title: collection.seoTitle,

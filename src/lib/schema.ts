@@ -1,4 +1,5 @@
 import { region } from "@/config";
+import { business } from "@/config/business";
 import type { Product } from "@/types/product";
 import type { ProductCategory } from "@/types/product";
 import type { BlogPost } from "@/types/blog";
@@ -77,13 +78,24 @@ export function articleSchema(post: BlogPost) {
 }
 
 export function organizationSchema() {
+  const { legalName, address } = business;
+
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
     "@id": `${SITE_URL}#organization`,
     name: region.brandName,
+    legalName,
     url: SITE_URL,
     description: region.meta.defaultDescription,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: address.street,
+      addressLocality: address.locality,
+      postalCode: address.postalCode,
+      addressRegion: address.region,
+      addressCountry: address.countryCode,
+    },
     contactPoint: {
       "@type": "ContactPoint",
       email: region.support.email,

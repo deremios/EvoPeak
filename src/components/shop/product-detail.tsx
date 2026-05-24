@@ -48,7 +48,7 @@ export function ProductDetail({ product }: ProductDetailProps) {
           {category && (
             <>
               <Link
-                href={`/shop?category=${category.slug}`}
+                href={`/shop/${category.slug}`}
                 className="hover:text-brand-green transition-colors"
               >
                 {category.name}

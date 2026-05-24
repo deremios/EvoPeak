@@ -48,7 +48,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     });
   }
 
-  if (!product) return { title: "Product Not Found" };
+  if (!product) {
+    return createSeoMetadata({
+      title: `Product Not Found — ${region.brandName}`,
+      description: "This research product could not be found.",
+      path: `/shop/${slug}`,
+      noIndex: true,
+    });
+  }
 
   return createSeoMetadata({
     title: `${product.name} Research Peptide Australia — ${region.brandName}`,
@@ -102,6 +109,16 @@ export default async function ProductPage({ params }: Props) {
   const product = getProductBySlug(slug);
   if (!product) notFound();
 
+  const productCategory = getCategoryBySlug(product.categoryId);
+  const breadcrumbItems = [
+    { name: "Home", path: "/" },
+    { name: "Shop", path: "/shop" },
+    ...(productCategory
+      ? [{ name: productCategory.name, path: `/shop/${productCategory.slug}` }]
+      : []),
+    { name: product.name, path: `/shop/${product.slug}` },
+  ];
+
   return (
     <>
       <script
@@ -113,13 +130,7 @@ export default async function ProductPage({ params }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
-            breadcrumbSchema([
-              { name: "Home", path: "/" },
-              { name: "Shop", path: "/shop" },
-              { name: product.name, path: `/shop/${product.slug}` },
-            ])
-          ),
+          __html: JSON.stringify(breadcrumbSchema(breadcrumbItems)),
         }}
       />
       <ProductDetail product={product} />

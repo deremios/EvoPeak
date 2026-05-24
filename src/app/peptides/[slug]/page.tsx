@@ -26,7 +26,14 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const landing = getLandingByPeptideSlug(slug);
-  if (!landing) return { title: "Not Found" };
+  if (!landing) {
+    return createSeoMetadata({
+      title: `Peptide Guide Not Found — ${region.brandName}`,
+      description: "This peptide research guide could not be found.",
+      path: `/peptides/${slug}`,
+      noIndex: true,
+    });
+  }
 
   return createSeoMetadata({
     title: `${landing.seoTitle} — ${region.brandName}`,

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { region } from "@/config";
 import { Logo } from "@/components/shared/logo";
+import { business, formatBusinessAddress } from "@/config/business";
 
 const footerLinks = {
   audience: [
@@ -49,9 +50,9 @@ export function Footer() {
             <div className="mb-4">
               <Logo size="lg" invert />
             </div>
-            <p className="text-sm font-medium text-white/80 mb-1">EvoPeak Ltd</p>
+            <p className="text-sm font-medium text-white/80 mb-1">{business.legalName}</p>
             <address className="text-sm text-white/60 not-italic leading-relaxed mb-4">
-              10 Manning st, South Brisbane, 1210, Queensland, Australia
+              {formatBusinessAddress()}
             </address>
             <p className="text-sm text-white/60 leading-relaxed mb-4">
               {region.country}&apos;s premium supplier of 3rd-party tested

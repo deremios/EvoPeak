@@ -34,11 +34,14 @@ export function ProductGallery({ product }: ProductGalleryProps) {
 
   return (
     <div className="space-y-4">
-      <div className="aspect-square overflow-hidden rounded-2xl border border-border-default bg-white">
+      <div className="relative aspect-square overflow-hidden rounded-2xl border border-border-default bg-white">
         <ProductImage
           src={selectedSrc}
           alt={`${product.name} research peptide`}
-          className="h-full w-full object-contain p-6"
+          fill
+          sizes="(max-width: 1024px) 100vw, 50vw"
+          priority
+          className="object-contain p-6"
         />
       </div>
 
@@ -50,19 +53,22 @@ export function ProductGallery({ product }: ProductGalleryProps) {
                 key={src}
                 type="button"
                 onClick={() => setSelectedSrc(src)}
-                className={`h-20 w-20 shrink-0 overflow-hidden rounded-xl border bg-white transition-colors ${
+                className={`relative h-20 w-20 shrink-0 overflow-hidden rounded-xl border bg-white transition-colors ${
                   selectedSrc === src
                     ? "border-brand-green ring-2 ring-brand-green/20"
                     : "border-border-default hover:border-brand-green/40"
                 }`}
                 aria-label={`View ${product.name} product image`}
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <ProductImage
                   src={src}
                   alt=""
-                  className="h-full w-full object-contain p-2"
-                  onError={() => markFailed(src)}
+                  width={80}
+                  height={80}
+                  sizes="80px"
+                  className="object-contain p-2"
+                  skipFallback
+                  onImageError={() => markFailed(src)}
                 />
               </button>
             )
