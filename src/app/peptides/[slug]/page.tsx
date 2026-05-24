@@ -16,30 +16,30 @@ import {
 import { createSeoMetadata } from "@/lib/seo";
 
 interface Props {
-  params: Promise<{ peptide: string }>;
+  params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
-  return getAllLandingSlugs().map((slug) => ({ peptide: slug }));
+  return getAllLandingSlugs().map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { peptide } = await params;
-  const landing = getLandingByPeptideSlug(peptide);
+  const { slug } = await params;
+  const landing = getLandingByPeptideSlug(slug);
   if (!landing) return { title: "Not Found" };
 
   return createSeoMetadata({
     title: `${landing.seoTitle} — ${region.brandName}`,
     description: landing.seoDescription,
-    path: getLandingPath(peptide),
+    path: getLandingPath(slug),
     keywords: landing.keywords,
     image: landing.ogImage,
   });
 }
 
 export default async function PeptideLandingPage({ params }: Props) {
-  const { peptide } = await params;
-  const landing = getLandingByPeptideSlug(peptide);
+  const { slug } = await params;
+  const landing = getLandingByPeptideSlug(slug);
   if (!landing) notFound();
 
   const product = getProductBySlug(landing.productId);
@@ -49,7 +49,7 @@ export default async function PeptideLandingPage({ params }: Props) {
     .map((id) => getProductBySlug(id))
     .filter((p): p is NonNullable<typeof p> => p !== undefined);
 
-  const path = getLandingPath(peptide);
+  const path = getLandingPath(slug);
 
   return (
     <>
@@ -66,6 +66,7 @@ export default async function PeptideLandingPage({ params }: Props) {
             faqSchema(landing.faqs),
             breadcrumbSchema([
               { name: "Home", path: "/" },
+              { name: "Peptide Guides", path: "/peptides" },
               { name: landing.heroHeadline, path },
             ]),
           ]),
