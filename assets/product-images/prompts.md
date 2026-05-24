@@ -35,12 +35,10 @@ Replace `{name}` with the product name and `{dosage}` with the largest variant s
 - [ ] EVOPEAK branding (not PeakPeptides)
 - [ ] Blue wave + tagline present
 - [ ] "For research use only" visible
-- [ ] Export JPG ~1200×1200px, optimized for web
+- [ ] Export WebP ~1200px wide, quality 82 (`cwebp -q 82`)
 
 ## Output paths
 
 Save to `public/images/products/`:
 
-- `{id}.jpg` — primary (shop card + gallery)
-- `{id}-vial.jpg` — vial close-up
-- `{id}-flatlay.jpg` — flat lay
+- `{id}.webp` — primary (shop card + product detail)

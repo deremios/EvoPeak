@@ -15,7 +15,7 @@ function extractProductIds(source: string): string[] {
   const re = /imageUrl:\s*"\/images\/products\/([^"]+)"/g;
   let match: RegExpExecArray | null;
   while ((match = re.exec(source)) !== null) {
-    ids.push(match[1].replace(/\.(jpg|jpeg|png|webp)$/i, ""));
+    ids.push(match[1].replace(/\.(webp|jpg|jpeg|png)$/i, ""));
   }
   return ids;
 }
@@ -28,7 +28,7 @@ let missing = 0;
 console.log("Checking shop product images...\n");
 
 for (const id of productIds) {
-  const filename = `${id}.jpg`;
+  const filename = `${id}.webp`;
   const path = join(IMAGES_DIR, filename);
   if (!existsSync(path)) {
     console.log(`✗ ${id} — missing ${filename}`);
