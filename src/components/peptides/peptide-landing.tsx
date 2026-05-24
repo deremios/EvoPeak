@@ -214,7 +214,7 @@ export function PeptideLanding({
       {/* Mechanism */}
       <section className="bg-white py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+          <div className={`grid gap-10 ${sections.mechanism.image ? "lg:grid-cols-2 lg:items-center" : ""}`}>
             {sections.mechanism.image && (
               <FadeIn>
                 <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] border border-border-default bg-bg-primary">
@@ -228,7 +228,7 @@ export function PeptideLanding({
                 </div>
               </FadeIn>
             )}
-            <FadeIn delay={0.1}>
+            <FadeIn delay={sections.mechanism.image ? 0.1 : 0}>
               <p className="text-sm font-black uppercase tracking-[0.28em] text-brand-orange">
                 Mechanism
               </p>
