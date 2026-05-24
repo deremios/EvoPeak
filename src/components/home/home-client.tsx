@@ -160,7 +160,7 @@ export function HomeClient({ collections }: { collections: ResearchCollection[] 
           <motion.h1 initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1], delay: 0.1 }} className="max-w-6xl text-6xl font-black leading-[0.92] tracking-[-0.05em] sm:text-8xl lg:text-[7rem]">
             Research peptides organized around your model
           </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: 0.22 }} className="mx-auto mt-8 max-w-2xl text-lg leading-8 text-white/75">
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: 0.22 }} className="mx-auto mt-8 max-w-2xl text-lg leading-8 text-black">
             Australia&apos;s research peptide supplier — third-party tested compounds by pathway, audience, and mechanism. Laboratory research use only.
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: 0.32 }} className="mt-10 flex flex-col gap-3 sm:flex-row">
