@@ -5,6 +5,7 @@ import Link from "next/link";
 import type { Product } from "@/types/product";
 import { formatPrice, region } from "@/config";
 import { getCategoryBySlug } from "@/lib/products";
+import { getLandingByPeptideSlug, getLandingPath } from "@/data/peptide-landings";
 import { useCart } from "@/lib/cart-context";
 import { TripleTestedBadge } from "@/components/shared/triple-tested-badge";
 import { CoaModal } from "@/components/shared/coa-modal";
@@ -18,6 +19,7 @@ export function ProductDetail({ product }: ProductDetailProps) {
   const [added, setAdded] = useState(false);
   const { addItem } = useCart();
   const category = getCategoryBySlug(product.categoryId);
+  const landing = getLandingByPeptideSlug(product.slug);
 
   function handleAddToCart() {
     addItem({
@@ -99,6 +101,18 @@ export function ProductDetail({ product }: ProductDetailProps) {
             <p className="mt-3 text-text-secondary leading-relaxed">
               {product.shortDescription}
             </p>
+
+            {landing && (
+              <Link
+                href={getLandingPath(product.slug)}
+                className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-brand-green hover:text-brand-green-light transition-colors"
+              >
+                Complete guide to {product.name} in Australia
+                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+              </Link>
+            )}
 
             {/* Trust badges row */}
             <div className="mt-4 flex flex-wrap gap-3">

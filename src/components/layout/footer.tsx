@@ -18,6 +18,7 @@ const footerLinks = {
     { href: "/collections/supplies", label: "Research Supplies" },
   ],
   research: [
+    { href: "/peptides", label: "Peptide Guides" },
     { href: "/blog", label: "Research Insights" },
     { href: "/guide", label: "New User Guide" },
     { href: "/faq", label: "FAQ" },

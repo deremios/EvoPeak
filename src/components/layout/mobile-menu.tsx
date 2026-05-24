@@ -6,6 +6,8 @@ import Link from "next/link";
 import { useCart } from "@/lib/cart-context";
 import { Logo } from "@/components/shared/logo";
 import { researchCollections } from "@/data/collections";
+import { getAllLandings, getLandingPath } from "@/data/peptide-landings";
+import { getProductBySlug } from "@/lib/products";
 
 interface MobileMenuProps {
   open: boolean;
@@ -115,6 +117,34 @@ export function MobileMenu({ open, onClose, links }: MobileMenuProps) {
                   {link.label}
                 </Link>
               ))}
+            </div>
+          </div>
+
+          <div>
+            <p className="mb-1 px-1 text-[11px] font-bold uppercase tracking-widest text-text-muted">
+              Peptide Guides
+            </p>
+            <div className="space-y-0.5">
+              <Link
+                href="/peptides"
+                onClick={onClose}
+                className="flex items-center rounded-lg px-3 py-3 text-base font-medium text-text-primary hover:bg-gray-50 hover:text-brand-green transition-colors"
+              >
+                All guides
+              </Link>
+              {getAllLandings().map((landing) => {
+                const product = getProductBySlug(landing.productId);
+                return (
+                  <Link
+                    key={landing.peptideSlug}
+                    href={getLandingPath(landing.peptideSlug)}
+                    onClick={onClose}
+                    className="flex items-center rounded-lg px-3 py-3 pl-6 text-sm font-medium text-text-secondary hover:bg-gray-50 hover:text-brand-green transition-colors"
+                  >
+                    {product?.name ?? landing.heroHeadline}
+                  </Link>
+                );
+              })}
             </div>
           </div>
 

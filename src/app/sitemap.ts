@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getAllCategories, getAllProducts } from "@/lib/products";
+import { getAllLandings, getLandingPath } from "@/data/peptide-landings";
 import { seedPosts } from "@/data/blog-posts";
 import { bundles } from "@/data/bundles";
 import { getAllCollections } from "@/lib/collections";
@@ -13,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/men`, lastModified: SITE_UPDATED_AT, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE_URL}/women`, lastModified: SITE_UPDATED_AT, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE_URL}/shop`, lastModified: SITE_UPDATED_AT, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${SITE_URL}/peptides`, lastModified: SITE_UPDATED_AT, changeFrequency: "weekly", priority: 0.88 },
     { url: `${SITE_URL}/blog`, lastModified: SITE_UPDATED_AT, changeFrequency: "weekly", priority: 0.8 },
     { url: `${SITE_URL}/bundles`, lastModified: SITE_UPDATED_AT, changeFrequency: "weekly", priority: 0.75 },
     { url: `${SITE_URL}/guide`, lastModified: SITE_UPDATED_AT, changeFrequency: "monthly", priority: 0.7 },
@@ -61,8 +63,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.86,
   }));
 
+  const peptideLandingPages: MetadataRoute.Sitemap = getAllLandings().map((landing) => ({
+    url: `${SITE_URL}${getLandingPath(landing.peptideSlug)}`,
+    lastModified: SITE_UPDATED_AT,
+    changeFrequency: "weekly" as const,
+    priority: 0.9,
+  }));
+
   return [
     ...staticPages,
+    ...peptideLandingPages,
     ...collectionPages,
     ...categoryPages,
     ...productPages,

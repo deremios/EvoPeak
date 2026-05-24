@@ -45,6 +45,7 @@ export default function RootLayout({
   return (
     <html lang={region.locale} className={inter.variable}>
       <head>
+        <GoogleAnalytics />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -65,7 +66,6 @@ export default function RootLayout({
           <Header />
           <main id="main-content" className="flex-1">{children}</main>
           <Footer />
-          <GoogleAnalytics />
           <TawkChat />
         </CartProvider>
       </body>

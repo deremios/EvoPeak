@@ -189,3 +189,39 @@ export function collectionPageSchema({
     },
   };
 }
+
+export function peptideLandingPageSchema({
+  name,
+  description,
+  path,
+  image,
+}: {
+  name: string;
+  description: string;
+  path: string;
+  image?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${absoluteUrl(path)}#webpage`,
+    name,
+    description,
+    url: absoluteUrl(path),
+    inLanguage: region.locale,
+    isPartOf: {
+      "@id": `${SITE_URL}#website`,
+    },
+    about: {
+      "@type": "Thing",
+      name,
+      description,
+    },
+    ...(image && {
+      primaryImageOfPage: {
+        "@type": "ImageObject",
+        url: absoluteUrl(image),
+      },
+    }),
+  };
+}

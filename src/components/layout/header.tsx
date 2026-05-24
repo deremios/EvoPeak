@@ -6,9 +6,12 @@ import { useCart } from "@/lib/cart-context";
 import { Logo } from "@/components/shared/logo";
 import { MobileMenu } from "./mobile-menu";
 import { researchCollections } from "@/data/collections";
+import { getAllLandings, getLandingPath } from "@/data/peptide-landings";
+import { getProductBySlug } from "@/lib/products";
 
 const navLinks = [
   { href: "/shop", label: "Shop" },
+  { href: "/peptides", label: "Peptide Guides" },
   { href: "/men", label: "Men" },
   { href: "/women", label: "Women" },
   { href: "/collections/metabolic-research", label: "Use Cases" },
@@ -38,6 +41,35 @@ export function Header() {
                 >
                   {link.label}
                 </Link>
+                {link.label === "Peptide Guides" && (
+                  <div className="invisible absolute left-1/2 top-full z-50 mt-5 w-[420px] -translate-x-1/2 rounded-3xl border border-border-default bg-white p-5 opacity-0 shadow-2xl transition-all duration-200 group-hover:visible group-hover:opacity-100">
+                    <Link
+                      href="/peptides"
+                      className="mb-3 block rounded-2xl p-3 font-bold text-brand-navy transition-colors hover:bg-brand-green/5"
+                    >
+                      All peptide guides →
+                    </Link>
+                    <div className="space-y-1 border-t border-border-default pt-3">
+                      {getAllLandings().map((landing) => {
+                        const product = getProductBySlug(landing.productId);
+                        return (
+                          <Link
+                            key={landing.peptideSlug}
+                            href={getLandingPath(landing.peptideSlug)}
+                            className="block rounded-xl px-3 py-2.5 transition-colors hover:bg-brand-green/5"
+                          >
+                            <p className="font-semibold text-text-primary">
+                              {product?.name ?? landing.heroHeadline}
+                            </p>
+                            <p className="text-xs text-text-muted">
+                              {landing.heroHeadline}
+                            </p>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
                 {link.label === "Use Cases" && (
                   <div className="invisible absolute left-1/2 top-full z-50 mt-5 w-[760px] -translate-x-1/2 rounded-3xl border border-border-default bg-white p-5 opacity-0 shadow-2xl transition-all duration-200 group-hover:visible group-hover:opacity-100">
                     <div className="grid grid-cols-2 gap-3">
