@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useCart } from "@/lib/cart-context";
-import { createOrder, calculateShipping } from "@/lib/orders";
+import { createOrder, calculateShipping, getOrderById } from "@/lib/orders";
 import { formatPrice, region } from "@/config";
 import {
   AU_STATES,
@@ -31,9 +31,18 @@ export function CheckoutContent() {
   });
   const [payIdRef, setPayIdRef] = useState("");
   const [orderId, setOrderId] = useState("");
+  const [placedOrderTotal, setPlacedOrderTotal] = useState<number | null>(null);
 
   const shippingCost = calculateShipping(subtotal);
   const total = subtotal + shippingCost;
+  const paymentTotal = placedOrderTotal ?? total;
+
+  useEffect(() => {
+    if (step === "payid" && orderId && placedOrderTotal === null) {
+      const order = getOrderById(orderId);
+      if (order) setPlacedOrderTotal(order.total);
+    }
+  }, [step, orderId, placedOrderTotal]);
 
   if (items.length === 0 && step !== "payid") {
     return (
@@ -74,6 +83,7 @@ export function CheckoutContent() {
     const order = createOrder(items, address, "guest", "guest@example.com");
     setPayIdRef(order.payIdReference);
     setOrderId(order.id);
+    setPlacedOrderTotal(order.total);
     clearCart();
     setStep("payid");
   }
@@ -416,7 +426,7 @@ export function CheckoutContent() {
                 <div className="flex justify-between text-sm">
                   <span className="text-text-muted">Amount</span>
                   <span className="font-bold text-brand-green text-lg">
-                    {formatPrice(total)}
+                    {formatPrice(paymentTotal)}
                   </span>
                 </div>
                 <div className="flex justify-between text-sm">
@@ -429,7 +439,7 @@ export function CheckoutContent() {
                   <p className="text-xs text-text-muted leading-relaxed">
                     Open your banking app, select PayID, enter the email
                     above, use reference <strong>{payIdRef}</strong>, and send{" "}
-                    <strong>{formatPrice(total)}</strong>. We&apos;ll verify
+                    <strong>{formatPrice(paymentTotal)}</strong>. We&apos;ll verify
                     your payment and begin processing your order.
                   </p>
                 </div>
