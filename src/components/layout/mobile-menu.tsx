@@ -15,7 +15,12 @@ interface MobileMenuProps {
   links: { href: string; label: string }[];
 }
 
-const AUDIENCE_HREFS = new Set(["/men", "/women", "/collections/metabolic-research"]);
+const MAIN_MENU_EXCLUDED_HREFS = new Set([
+  "/men",
+  "/women",
+  "/collections/metabolic-research",
+  "/peptides",
+]);
 
 export function MobileMenu({ open, onClose, links }: MobileMenuProps) {
   const { itemCount } = useCart();
@@ -44,7 +49,7 @@ export function MobileMenu({ open, onClose, links }: MobileMenuProps) {
 
   if (!open || !mounted) return null;
 
-  const mainLinks = links.filter((l) => !AUDIENCE_HREFS.has(l.href));
+  const mainLinks = links.filter((l) => !MAIN_MENU_EXCLUDED_HREFS.has(l.href));
 
   return createPortal(
     <div
