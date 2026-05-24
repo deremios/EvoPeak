@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "check:product-images": "npx tsx scripts/check-product-images.ts"
   },
   "dependencies": {
     "@react-email/components": "^1.0.12",

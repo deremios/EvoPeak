@@ -27,6 +27,8 @@ export interface Product {
   researchSummary: string;
   variants: ProductVariant[];
   imageUrl: string;
+  /** Optional override; defaults to imageUrl + -vial + -flatlay variants */
+  galleryImages?: string[];
   coaUrl?: string;
   tags: string[];
   featured: boolean;

@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Product } from "@/types/product";
 import { formatPrice } from "@/config";
 import { getLowestPrice } from "@/lib/products";
+import { ProductImage } from "@/components/shop/product-image";
 
 interface ProductCardProps {
   product: Product;
@@ -19,8 +20,8 @@ export function ProductCard({ product }: ProductCardProps) {
     >
       {/* Image area */}
       <div className="relative aspect-[4/3] overflow-hidden bg-white">
-        <img
-          src="/images/product-placeholder.png"
+        <ProductImage
+          src={product.imageUrl}
           alt={product.name}
           className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
         />

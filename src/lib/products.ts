@@ -62,3 +62,14 @@ export function getCategoryBySlug(slug: string) {
 export function getLowestPrice(product: Product): number {
   return Math.min(...product.variants.map((v) => v.price));
 }
+
+const PLACEHOLDER_IMAGE = "/images/product-placeholder.png";
+
+export function getProductImages(product: Product): string[] {
+  if (product.galleryImages?.length) return product.galleryImages;
+  return [product.imageUrl];
+}
+
+export function getProductImageFallback(): string {
+  return PLACEHOLDER_IMAGE;
+}
