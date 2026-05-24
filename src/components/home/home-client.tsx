@@ -4,6 +4,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { region } from "@/config";
 import { TrustpilotBand } from "@/components/shared/trustpilot-band";
+import { PayIdLogo } from "@/components/shared/payid-logo";
 import { AnimatedCounter } from "@/components/shared/animated-counter";
 import { FadeIn, StaggerGrid, StaggerItem } from "@/components/shared/fade-in";
 import type { ResearchCollection } from "@/data/collections";
@@ -154,9 +155,24 @@ export function HomeClient({ collections }: { collections: ResearchCollection[] 
         {/* Gradient overlay – lighter so packaging shows through; enough contrast for hero text */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/55" />
         <div className="relative mx-auto flex min-h-[600px] max-w-7xl flex-col items-center justify-center px-4 py-20 text-center sm:min-h-[720px] sm:px-6 sm:py-24 lg:min-h-[800px] lg:px-8 lg:py-28">
-          <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }} className="mb-6 text-sm font-black uppercase tracking-[0.36em] text-brand-green">
+          <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }} className="mb-4 text-sm font-black uppercase tracking-[0.36em] text-brand-green">
             {region.brandName} — Australian Research Peptides
           </motion.p>
+          {region.payment.payIdEnabled && (
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: 0.05 }}
+              className="mb-6"
+            >
+              <div className="inline-flex items-center gap-3 rounded-full border border-white/30 bg-white px-4 py-2.5 shadow-lg">
+                <PayIdLogo className="h-6 w-auto" />
+                <span className="text-[11px] font-black uppercase tracking-[0.2em] text-brand-navy">
+                  PayID accepted
+                </span>
+              </div>
+            </motion.div>
+          )}
           <motion.h1 initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1], delay: 0.1 }} className="max-w-6xl text-6xl font-black leading-[0.92] tracking-[-0.05em] sm:text-8xl lg:text-[7rem]">
             Research organized around your model
           </motion.h1>
