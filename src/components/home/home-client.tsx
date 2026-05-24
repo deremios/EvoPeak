@@ -144,7 +144,7 @@ export function HomeClient({ collections }: { collections: ResearchCollection[] 
         {/* Background image – priority loaded for LCP */}
         <Image
           src="/images/hero-home.webp"
-          alt="EvoPeak research peptides — vial and box on dark background"
+          alt="EvoPeak research peptides — laboratory glassware and molecular structures on dark background"
           fill
           priority
           quality={85}
@@ -220,7 +220,7 @@ export function HomeClient({ collections }: { collections: ResearchCollection[] 
             </FadeIn>
             <FadeIn direction="right" delay={0.12}>
               <div className="relative overflow-hidden rounded-[2.5rem]">
-                <img src="/images/product-flatlay.jpg" alt="EvoPeak research compounds" className="w-full object-cover" />
+                <img src="/images/product-flatlay.webp" alt="EvoPeak research compounds — laboratory flatlay" className="w-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                 <div className="absolute bottom-6 left-6 right-6">
                   <span className="rounded-full border border-white/30 bg-black/40 px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-white backdrop-blur">
