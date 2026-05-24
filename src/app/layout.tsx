@@ -7,6 +7,7 @@ import { AgeGate } from "@/components/shared/age-gate";
 import { WelcomeBanner } from "@/components/shared/welcome-banner";
 import { CartProvider } from "@/lib/cart-context";
 import { TawkChat } from "@/components/shared/tawk-chat";
+import { GoogleAnalytics } from "@/components/shared/google-analytics";
 import { organizationSchema, websiteSchema } from "@/lib/schema";
 import { region } from "@/config";
 import { createSeoMetadata, SITE_URL } from "@/lib/seo";
@@ -64,6 +65,7 @@ export default function RootLayout({
           <Header />
           <main id="main-content" className="flex-1">{children}</main>
           <Footer />
+          <GoogleAnalytics />
           <TawkChat />
         </CartProvider>
       </body>
