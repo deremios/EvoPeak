@@ -49,6 +49,12 @@ export function Header() {
                     >
                       All peptide guides →
                     </Link>
+                    <Link
+                      href="/peptide-calculator"
+                      className="mt-0.5 block shrink-0 rounded-xl px-3 py-2.5 text-sm font-bold text-brand-navy transition-colors hover:bg-brand-green/5"
+                    >
+                      Peptide calculator →
+                    </Link>
                     <div className="mt-2 max-h-[min(70vh,24rem)] overflow-y-auto overscroll-contain border-t border-border-default pt-2">
                       <ul className="space-y-0.5">
                         {getAllLandings().map((landing) => {

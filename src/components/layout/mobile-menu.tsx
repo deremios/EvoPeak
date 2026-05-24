@@ -137,6 +137,13 @@ export function MobileMenu({ open, onClose, links }: MobileMenuProps) {
               >
                 All guides
               </Link>
+              <Link
+                href="/peptide-calculator"
+                onClick={onClose}
+                className="flex items-center rounded-lg px-3 py-3 text-base font-medium text-text-primary hover:bg-gray-50 hover:text-brand-green transition-colors"
+              >
+                Peptide calculator
+              </Link>
               {getAllLandings().map((landing) => {
                 const product = getProductById(landing.productId);
                 const fullName =
