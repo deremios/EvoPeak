@@ -2,8 +2,11 @@ import { NextResponse, type NextRequest } from "next/server";
 import { getAllLandingSlugs } from "@/data/peptide-landings";
 import { updateSession } from "@/lib/supabase/middleware";
 
+const landingSlugs = getAllLandingSlugs();
+const landingSlugSet = new Set(landingSlugs);
+
 const landingRewrites = new Map(
-  getAllLandingSlugs().map((slug) => [`/${slug}-australia`, `/peptides/${slug}`])
+  landingSlugs.map((slug) => [`/${slug}-australia`, `/peptides/${slug}`])
 );
 
 function applySecurityHeaders(response: NextResponse) {
@@ -23,7 +26,19 @@ function applySecurityHeaders(response: NextResponse) {
 }
 
 export async function middleware(request: NextRequest) {
-  const rewritePath = landingRewrites.get(request.nextUrl.pathname);
+  const { pathname } = request.nextUrl;
+
+  const peptideDirectMatch = pathname.match(/^\/peptides\/([^/]+)$/);
+  if (peptideDirectMatch && landingSlugSet.has(peptideDirectMatch[1])) {
+    return applySecurityHeaders(
+      NextResponse.redirect(
+        new URL(`/${peptideDirectMatch[1]}-australia`, request.url),
+        301
+      )
+    );
+  }
+
+  const rewritePath = landingRewrites.get(pathname);
 
   const response = rewritePath
     ? NextResponse.rewrite(new URL(rewritePath, request.url))

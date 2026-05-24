@@ -2,7 +2,7 @@ import { region } from "@/config";
 import type { Product } from "@/types/product";
 import type { ProductCategory } from "@/types/product";
 import type { BlogPost } from "@/types/blog";
-import { absoluteUrl, DEFAULT_OG_IMAGE, SITE_URL } from "@/lib/seo";
+import { absoluteUrl, SITE_URL } from "@/lib/seo";
 
 export function productSchema(product: Product, variantIndex = 0) {
   const variant = product.variants[variantIndex];
@@ -13,7 +13,7 @@ export function productSchema(product: Product, variantIndex = 0) {
     name: product.name,
     alternateName: product.alternateName,
     description: product.description,
-    image: absoluteUrl(DEFAULT_OG_IMAGE),
+    image: absoluteUrl(product.imageUrl),
     sku: variant.sku,
     category: product.categoryId,
     brand: {
