@@ -144,15 +144,15 @@ export function HomeClient({ collections }: { collections: ResearchCollection[] 
         {/* Background image – priority loaded for LCP */}
         <Image
           src="/images/hero-home.webp"
-          alt="EvoPeak research peptides — laboratory glassware and molecular structures on dark background"
+          alt="EvoPeak research peptides — vial and box on light laboratory background"
           fill
           priority
           quality={85}
           sizes="100vw"
           className="object-cover object-center"
         />
-        {/* Gradient overlay – heavier at top/bottom for text legibility on all screens */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black/85" />
+        {/* Gradient overlay – lighter so packaging shows through; enough contrast for hero text */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/55" />
         <div className="relative mx-auto flex min-h-[600px] max-w-7xl flex-col items-center justify-center px-4 py-20 text-center sm:min-h-[720px] sm:px-6 sm:py-24 lg:min-h-[800px] lg:px-8 lg:py-28">
           <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }} className="mb-6 text-sm font-black uppercase tracking-[0.36em] text-brand-green">
             {region.brandName} — Australian Research Peptides
