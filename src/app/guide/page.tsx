@@ -6,11 +6,13 @@ import { faqSchema } from "@/lib/schema";
 
 export const metadata: Metadata = createSeoMetadata({
   title: `Beginner Guide to Research Peptides Australia — ${region.brandName}`,
-  description: `New to research peptides? Learn how to choose compounds, review COAs, handle reconstitution, store peptides, and order from ${region.brandName}.`,
+  description: `New to research peptides in Australia? Learn how to choose compounds, review COAs, use our peptide calculator, handle reconstitution, store peptides, and order from ${region.brandName}.`,
   path: "/guide",
   keywords: [
     "research peptide guide for beginners",
     "how to buy research peptides Australia",
+    "where to buy peptides australia",
+    "peptide calculator australia",
     "how to store peptides",
     "how to reconstitute peptides",
   ],
@@ -45,6 +47,12 @@ const steps = [
     title: "Receive & Store",
     description:
       "Your order arrives in 1–3 business days with cold-chain packaging. Store lyophilised peptides at -20°C, reconstituted at 2–8°C.",
+  },
+  {
+    number: "06",
+    title: "Use the Peptide Calculator",
+    description:
+      "Use our free peptide reconstitution calculator to determine mcg/mL concentration and draw volume after reconstituting with bacteriostatic water.",
   },
 ];
 
@@ -161,6 +169,12 @@ export default function GuidePage() {
               className="inline-flex items-center justify-center rounded-lg bg-brand-green px-8 py-3.5 text-base font-semibold text-white hover:bg-brand-green-light transition-colors"
             >
               Browse Peptides
+            </Link>
+            <Link
+              href="/peptide-calculator"
+              className="inline-flex items-center justify-center rounded-lg border border-border-default bg-white px-8 py-3.5 text-base font-semibold text-text-primary hover:bg-gray-50 transition-colors"
+            >
+              Peptide Calculator
             </Link>
             <Link
               href="/auth/login"

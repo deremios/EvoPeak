@@ -57,11 +57,37 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     });
   }
 
+  const productSeoOverrides: Record<
+    string,
+    { title?: string; description?: string; keywords?: string[] }
+  > = {
+    retatrutide: {
+      title: `Buy Retatrutide Australia — Research Peptide — ${region.brandName}`,
+      description:
+        "Buy Retatrutide research peptide in Australia from $259 AUD. Triple GLP-1/GIP/Glucagon agonist with HPLC/MS testing, batch COA, PayID checkout, and local dispatch. Research use only.",
+      keywords: [
+        "retatrutide",
+        "buy retatrutide australia",
+        "retatrutide cost",
+        "retatrutide for sale",
+        "retatrutide peptide buy",
+        "retatrutide australia",
+        "retatrutide peptide",
+      ],
+    },
+  };
+
+  const seoOverride = productSeoOverrides[product.slug];
+
   return createSeoMetadata({
-    title: `${product.name} Research Peptide Australia — ${region.brandName}`,
-    description: `${product.shortDescription} Third-party HPLC/MS tested with COA documentation. For laboratory research use only. Shipped from Australia.`,
+    title:
+      seoOverride?.title ??
+      `${product.name} Research Peptide Australia — ${region.brandName}`,
+    description:
+      seoOverride?.description ??
+      `${product.shortDescription} Third-party HPLC/MS tested with COA documentation. For laboratory research use only. Shipped from Australia.`,
     path: `/shop/${product.slug}`,
-    keywords: [
+    keywords: seoOverride?.keywords ?? [
       product.name,
       `${product.name} Australia`,
       `${product.name} research peptide`,

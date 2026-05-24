@@ -18,6 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/blog`, lastModified: SITE_UPDATED_AT, changeFrequency: "weekly", priority: 0.8 },
     { url: `${SITE_URL}/bundles`, lastModified: SITE_UPDATED_AT, changeFrequency: "weekly", priority: 0.75 },
     { url: `${SITE_URL}/guide`, lastModified: SITE_UPDATED_AT, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${SITE_URL}/peptide-calculator`, lastModified: SITE_UPDATED_AT, changeFrequency: "monthly", priority: 0.82 },
     { url: `${SITE_URL}/faq`, lastModified: SITE_UPDATED_AT, changeFrequency: "monthly", priority: 0.6 },
     { url: `${SITE_URL}/about`, lastModified: SITE_UPDATED_AT, changeFrequency: "monthly", priority: 0.6 },
     { url: `${SITE_URL}/terms`, lastModified: SITE_UPDATED_AT, changeFrequency: "yearly", priority: 0.3 },

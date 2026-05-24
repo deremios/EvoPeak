@@ -5,16 +5,17 @@ import { breadcrumbSchema, collectionPageSchema } from "@/lib/schema";
 import { createSeoMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createSeoMetadata({
-  title: `Peptide Guides Australia — Research Peptide Information — ${region.brandName}`,
+  title: `Peptides Australia — Research Peptide Guides & Information — ${region.brandName}`,
   description:
-    "Browse in-depth Australia peptide guides covering mechanism, dosage, side effects, reconstitution, and ordering. Guides for Retatrutide and more research peptides from EvoPeak.",
+    "Peptides Australia guides from EvoPeak — in-depth compound information covering mechanism, dosage, side effects, reconstitution, and ordering. Retatrutide, BPC-157, GHK-Cu, and more.",
   path: "/peptides",
   keywords: [
+    "peptides australia",
+    "australia research peptides",
     "peptide guides australia",
     "research peptides australia",
     "retatrutide australia",
     "peptide dosage guide",
-    "peptide side effects",
   ],
 });
 

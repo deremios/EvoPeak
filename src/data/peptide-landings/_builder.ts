@@ -263,7 +263,7 @@ export function buildLandingFromProduct(
         ],
       },
     },
-    faqs: overrides.faqs ?? defaultFaqs(product),
+    faqs: [...defaultFaqs(product), ...(overrides.faqs ?? [])],
     relatedProductIds: overrides.relatedProductIds ?? [],
     relatedBlogSlugs: overrides.relatedBlogSlugs,
     ogImage: overrides.heroImage ?? cat.heroImage,

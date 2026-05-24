@@ -71,13 +71,16 @@ export function PeptidesHubContent() {
             Australia peptide guides
           </p>
           <h1 className="mt-5 max-w-4xl text-4xl font-black leading-[0.95] tracking-[-0.04em] sm:text-6xl">
-            Peptide Guides Australia
+            Peptides Australia — Research Guides
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-white/75">
-            In-depth guides for every research peptide we supply — covering
-            mechanism, published dosage protocols, side effect profiles,
-            reconstitution, and how to order in Australia. For laboratory
-            research use only.
+            In-depth Australia peptide guides for every compound we supply —
+            mechanism, published dosage protocols, side effects,
+            reconstitution, and ordering. Use our{" "}
+            <Link href="/peptide-calculator" className="text-brand-orange hover:underline">
+              peptide calculator
+            </Link>{" "}
+            for reconstitution math. Laboratory research use only.
           </p>
         </div>
       </section>

@@ -9,6 +9,8 @@ export const metadata: Metadata = createSeoMetadata({
   path: "/faq",
   keywords: [
     "research peptide FAQ",
+    "where to buy peptides australia",
+    "peptide calculator australia",
     "peptide storage Australia",
     "peptide reconstitution",
     "peptide COA",
@@ -19,6 +21,10 @@ const faqs = [
   {
     category: "Orders & Shipping",
     items: [
+      {
+        q: "Where can I buy peptides in Australia?",
+        a: "EvoPeak supplies third-party tested research peptides to Australian researchers with batch-specific COA documentation, PayID checkout, and domestic dispatch from Queensland. Browse the shop at evopeak.io/shop or read our buying guide for supplier evaluation criteria. All products are for laboratory research use only.",
+      },
       {
         q: "How long does shipping take?",
         a: `Domestic orders within ${region.country} are delivered in ${region.shipping.domesticEstimate} via ${region.shipping.carrier}. Orders placed before ${region.shipping.sameDayCutoff} on business days ship same day.`,
@@ -64,6 +70,15 @@ const faqs = [
       {
         q: "Is my payment information secure?",
         a: `${region.payment.methods[0]} transfers go directly through your bank's secure infrastructure. We never see or store your banking credentials.`,
+      },
+    ],
+  },
+  {
+    category: "Research Tools",
+    items: [
+      {
+        q: "Do you have a peptide calculator?",
+        a: "Yes. EvoPeak provides a free peptide reconstitution and dosage volume calculator at evopeak.io/peptide-calculator. Enter your vial size and bacteriostatic water volume to calculate mcg/mL concentration and insulin syringe units for laboratory protocols.",
       },
     ],
   },

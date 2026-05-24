@@ -947,8 +947,8 @@ export const seedPosts: BlogPost[] = [
 
 <h3>What is cold-chain shipping and why does it matter?</h3>
 <p>Cold-chain shipping uses insulated packaging (foam or reflective mailers) combined with gel ice packs to maintain a temperature range of 2–15°C inside the package during transit. This matters primarily during hot weather (Australian summer), when ambient temperatures in transit can stress even lyophilised peptide materials. For reconstituted solutions, cold-chain shipping is important regardless of season. Ask your supplier about their cold-chain practices, particularly for summer ordering.</p>`,
-    metaTitle: "Buying Research Peptides in Australia: 2026 Guide",
-    metaDescription: "Complete 2026 guide to buying research peptides in Australia. Covers legal status, supplier evaluation, payment methods, shipping, and quality red flags to avoid.",
+    metaTitle: "Where to Buy Research Peptides in Australia — 2026 Guide",
+    metaDescription: "Where to buy peptides in Australia in 2026. Complete guide covering legal status, supplier evaluation, PayID payment, shipping, quality red flags, and how to choose a research peptide supplier.",
     tags: ["australia", "guide", "buying", "beginner", "2026"],
     published: true,
     createdAt: "2026-04-10T10:00:00Z",
@@ -1513,5 +1513,89 @@ export const seedPosts: BlogPost[] = [
     published: true,
     createdAt: "2026-04-16T10:00:00Z",
     updatedAt: "2026-04-26T10:00:00Z",
+  },
+  {
+    id: "post-16",
+    title: "5-Amino-1MQ Research Guide: NNMT Inhibitor Overview for Australian Researchers",
+    slug: "5-amino-1mq-research-guide-australia",
+    excerpt: "What is 5-Amino-1MQ? A research overview of the NNMT inhibitor peptide studied in metabolic and cellular energy pathways — mechanism, published research context, and how it relates to compounds available in Australia.",
+    ogImage: "/images/molecular-banner.jpg",
+    content: `<h2>What Is 5-Amino-1MQ?</h2>
+<p>5-Amino-1MQ (5-amino-1-methylquinolinium) is a small-molecule NNMT (nicotinamide N-methyltransferase) inhibitor that has attracted research interest in metabolic biology, cellular energy regulation, and adipose tissue modelling. Unlike most peptides in the research catalog space, 5-Amino-1MQ is not a peptide — it is a quinolinium compound studied for its effects on NAD+ metabolism and NNMT enzyme activity in preclinical models.</p>
+<p>In research communities, 5-Amino-1MQ is sometimes grouped alongside metabolic research compounds because of its proposed role in modulating nicotinamide metabolism — a pathway that intersects with energy expenditure, mitochondrial function, and cellular redox balance. Understanding this distinction (small molecule vs peptide) is important when evaluating supplier catalogues and research protocols.</p>
+<figure><img src="/images/molecular-banner.jpg" alt="Molecular research illustration for metabolic compound studies" loading="lazy" /></figure>
+
+<h2>Mechanism of Action — NNMT Inhibition</h2>
+<p>NNMT is an enzyme that methylates nicotinamide using S-adenosylmethionine (SAM) as a methyl donor, producing 1-methylnicotinamide (1-MNA) and S-adenosylhomocysteine (SAH). Elevated NNMT activity in adipose tissue has been associated with reduced NAD+ availability and altered metabolic signalling in published preclinical research.</p>
+<p>5-Amino-1MQ acts as an NNMT inhibitor in cell culture and animal models, with research suggesting:</p>
+<ul>
+<li>Increased NAD+ availability in adipocytes and other cell types studied</li>
+<li>Reduced 1-MNA production via NNMT pathway blockade</li>
+<li>Effects on adipocyte size and lipid accumulation in rodent models</li>
+<li>Potential interaction with sirtuin and mitochondrial energy pathways downstream of NAD+ metabolism</li>
+</ul>
+<p>These findings position 5-Amino-1MQ as a tool compound for studying NNMT-dependent metabolic regulation rather than as a direct analogue of incretin or GH-axis peptides.</p>
+
+<h2>Published Research Context</h2>
+<p>Research on 5-Amino-1MQ remains primarily preclinical. Key research themes in the literature include:</p>
+<ul>
+<li><strong>Adipose tissue models:</strong> NNMT upregulation in obesity-associated adipose tissue and the effect of NNMT inhibition on adipocyte metabolism</li>
+<li><strong>NAD+ metabolism:</strong> The relationship between NNMT activity, nicotinamide flux, and intracellular NAD+ pools</li>
+<li><strong>Energy expenditure:</strong> Some rodent studies report changes in energy balance parameters following NNMT inhibition, though mechanisms and reproducibility vary across models</li>
+<li><strong>Combination research:</strong> NNMT inhibition studied alongside other metabolic pathway modulators in multi-endpoint protocols</li>
+</ul>
+<p>As with all research compounds outside established clinical pipelines, the preclinical dataset for 5-Amino-1MQ should be evaluated critically — effect sizes, model systems, and publication quality vary significantly.</p>
+
+<h2>5-Amino-1MQ vs Peptide Metabolic Research Compounds</h2>
+<p>Researchers comparing 5-Amino-1MQ to peptide metabolic compounds should note fundamental mechanistic differences:</p>
+<ul>
+<li><strong>GLP-1 class peptides</strong> (Semaglutide, Tirzepatide, Retatrutide): incretin receptor agonists acting on appetite, glucose, and energy balance via gut-brain-pancreatic signalling. See EvoPeak guides for <a href="/retatrutide-australia">Retatrutide Australia</a> and related GLP-1 research compounds.</li>
+<li><strong>AOD-9604 / hGH fragments:</strong> lipolysis-focused peptides acting on adipose tissue via GH fragment pathways without full hGH receptor activation</li>
+<li><strong>5-Amino-1MQ:</strong> small-molecule NNMT inhibitor acting on nicotinamide metabolism — a distinct and non-overlapping mechanism from incretin or GH-axis peptides</li>
+</ul>
+<p>For metabolic pathway research where NNMT inhibition is the specific research question, 5-Amino-1MQ is the relevant tool compound. For incretin or GH-axis research, peptide compounds with established receptor mechanisms are the appropriate starting materials.</p>
+
+<h2>Legal and Research-Only Context in Australia</h2>
+<p>In Australia, research chemicals sold for laboratory use with appropriate research-only disclaimers operate outside the TGA therapeutic goods framework when not marketed for human consumption or therapeutic use. This applies regardless of whether the compound is a peptide or a small molecule.</p>
+<p>Researchers sourcing 5-Amino-1MQ or any research compound in Australia should apply the same quality criteria used for peptide sourcing:</p>
+<ul>
+<li>Batch-specific Certificate of Analysis with identity verification (HPLC and/or mass spectrometry as appropriate for the compound class)</li>
+<li>Third-party testing from an independent analytical laboratory</li>
+<li>Clear research-only positioning from the supplier — no therapeutic claims or human use instructions</li>
+<li>Local Australian fulfilment where possible to reduce transit time and customs risk</li>
+</ul>
+
+<h2>Related Metabolic Research Compounds at EvoPeak</h2>
+<p>EvoPeak supplies third-party tested metabolic research peptides for Australian researchers, including compounds commonly studied alongside or in comparison to NNMT pathway research:</p>
+<ul>
+<li><a href="/retatrutide-australia">Retatrutide</a> — triple GLP-1/GIP/Glucagon agonist for advanced metabolic pathway research</li>
+<li><a href="/semaglutide-australia">Semaglutide</a> — GLP-1 receptor agonist, extensive published research dataset</li>
+<li><a href="/tirzepatide-australia">Tirzepatide</a> — dual GIP/GLP-1 receptor agonist</li>
+<li><a href="/aod-9604-australia">AOD-9604</a> — hGH fragment for lipolysis research models</li>
+</ul>
+<p>All EvoPeak products are sold strictly for laboratory research use. Browse the full <a href="/collections/metabolic-research">metabolic research collection</a> for available compounds with HPLC/MS verification and batch-specific COA documentation.</p>
+
+<h2>Frequently Asked Questions</h2>
+
+<h3>Is 5-Amino-1MQ a peptide?</h3>
+<p>No. 5-Amino-1MQ (5-amino-1-methylquinolinium) is a small-molecule quinolinium compound, not a peptide. It is classified as an NNMT inhibitor and is structurally and mechanistically distinct from peptide research compounds.</p>
+
+<h3>What does 5-Amino-1MQ do in research models?</h3>
+<p>In published preclinical research, 5-Amino-1MQ inhibits NNMT (nicotinamide N-methyltransferase), which affects nicotinamide metabolism and NAD+ availability in studied cell types. Research has explored effects on adipocyte metabolism, energy balance parameters, and downstream NAD+-dependent signalling pathways in rodent models.</p>
+
+<h3>Can I buy 5-Amino-1MQ in Australia?</h3>
+<p>5-Amino-1MQ is not currently in the EvoPeak catalog. Australian researchers seeking metabolic research compounds can browse EvoPeak's metabolic collection for third-party tested peptides including Retatrutide, Semaglutide, Tirzepatide, and AOD-9604. This guide is provided for research education only.</p>
+
+<h3>How does 5-Amino-1MQ compare to Retatrutide?</h3>
+<p>They act on entirely different pathways. Retatrutide is a triple incretin receptor agonist peptide (GLP-1, GIP, glucagon) studied for metabolic effects via gut-brain-pancreatic signalling. 5-Amino-1MQ is a small-molecule NNMT inhibitor studied for effects on nicotinamide and NAD+ metabolism. They are not interchangeable research tools.</p>
+
+<h3>What quality documentation should I expect for research compounds in Australia?</h3>
+<p>Regardless of compound class, expect batch-specific COA documentation with identity verification (HPLC and/or MS as appropriate), purity analysis, and endotoxin screening where applicable. Third-party testing from an independent laboratory is preferred over in-house-only certification. See EvoPeak's <a href="/blog/understanding-certificates-of-analysis">COA reading guide</a> for evaluation criteria.</p>`,
+    metaTitle: "5-Amino-1MQ Australia — NNMT Inhibitor Research Guide",
+    metaDescription: "What is 5-Amino-1MQ? Research guide for Australian scientists covering NNMT inhibition mechanism, metabolic research context, and related compounds available from EvoPeak.",
+    tags: ["metabolic", "research guide", "australia", "5-amino-1mq"],
+    published: true,
+    createdAt: "2026-05-25T10:00:00Z",
+    updatedAt: "2026-05-25T10:00:00Z",
   },
 ];

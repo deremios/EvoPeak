@@ -13,6 +13,12 @@ export const retatrutideLanding: PeptideLandingContent = {
     "retatrutide peptide",
     "reta peptide",
     "reta",
+    "retatrutide buy",
+    "buy retatrutide australia",
+    "retatrutide cost",
+    "retatrutide for sale",
+    "retatrutide buying",
+    "retatrutide peptide buy",
     "retatrutide dosage",
     "retatrutide dose",
     "retatrutide side effects",
@@ -101,14 +107,36 @@ export const retatrutideLanding: PeptideLandingContent = {
         "Bacteriostatic water is available from EvoPeak in the Research Supplies category. Store reconstituted Retatrutide at 2–8°C and lyophilised powder at −20°C.",
     },
     howToGet: {
-      title: "How to Get Retatrutide in Australia",
+      title: "How to Buy Retatrutide in Australia",
       content:
-        "Researchers in Australia can source Retatrutide peptide through EvoPeak — a local supplier offering third-party tested research compounds with batch-specific COA documentation and domestic shipping.",
+        "Researchers in Australia can buy Retatrutide peptide through EvoPeak — a local supplier offering third-party tested research compounds with batch-specific COA documentation, PayID checkout, and domestic shipping from Queensland.",
       steps: [
         "Browse Retatrutide variants (5 mg and 10 mg) on the EvoPeak product page",
         "Review the certificate of analysis (COA) for HPLC purity and mass spectrometry identity verification",
         "Select your vial size and add to cart — prices include GST with same-day Australian dispatch",
-        "Receive your order with batch-specific quality documentation for laboratory traceability",
+        "Complete checkout via PayID and receive your order with batch-specific quality documentation",
+      ],
+    },
+    pricing: {
+      title: "Retatrutide Cost in Australia",
+      intro:
+        "EvoPeak Retatrutide pricing is listed in AUD and includes GST. All vials are third-party HPLC/MS tested with batch-specific COA documentation. Prices below are for laboratory research compounds only.",
+      rows: [
+        {
+          label: "5 mg vial",
+          price: "$259 AUD",
+          detail: "$51.80 per mg — suitable for initial receptor activation and titration studies",
+        },
+        {
+          label: "10 mg vial",
+          price: "$459 AUD",
+          detail: "$45.90 per mg — lower per-mg cost for extended dose-response research protocols",
+        },
+        {
+          label: "Shipping",
+          price: "From $0",
+          detail: "Domestic Australia Post dispatch — 3–5 business days, cold-chain packaging available",
+        },
       ],
     },
   },
@@ -140,6 +168,18 @@ export const retatrutideLanding: PeptideLandingContent = {
     {
       q: "Can I buy Retatrutide in Australia?",
       a: "Yes. EvoPeak supplies research-grade Retatrutide peptide to Australian researchers with HPLC/MS verification, batch-specific COA documentation, and domestic shipping. Products are for laboratory research use only.",
+    },
+    {
+      q: "How much does Retatrutide cost in Australia?",
+      a: "EvoPeak Retatrutide is priced at $259 AUD for a 5 mg vial and $459 AUD for a 10 mg vial. Prices include GST and cover third-party HPLC/MS testing with batch-specific COA documentation. All pricing is for research compounds only.",
+    },
+    {
+      q: "Where can I buy Retatrutide peptide in Australia?",
+      a: "Order directly from the EvoPeak shop page at evopeak.io/shop/retatrutide. Select your preferred vial size (5 mg or 10 mg), review the COA, and checkout with PayID for local Australian fulfilment. Same-day dispatch is available for orders placed before the daily cutoff.",
+    },
+    {
+      q: "Is Retatrutide for sale to Australian researchers?",
+      a: "Yes — Retatrutide is available for purchase by Australian researchers through EvoPeak. All products are sold strictly for laboratory research use and are not intended for human consumption, injection, or therapeutic use.",
     },
     {
       q: "How do I get Retatrutide in Australia for research?",

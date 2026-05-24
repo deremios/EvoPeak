@@ -20,6 +20,7 @@ const footerLinks = {
   ],
   research: [
     { href: "/peptides", label: "Peptide Guides" },
+    { href: "/peptide-calculator", label: "Peptide Calculator" },
     { href: "/blog", label: "Research Insights" },
     { href: "/guide", label: "New User Guide" },
     { href: "/faq", label: "FAQ" },
@@ -51,6 +52,7 @@ export function Footer() {
               <Logo size="lg" invert />
             </div>
             <p className="text-sm font-medium text-white/80 mb-1">{business.legalName}</p>
+            <p className="text-sm text-white/60 mb-1">ACN {business.acn}</p>
             <address className="text-sm text-white/60 not-italic leading-relaxed mb-4">
               {formatBusinessAddress()}
             </address>

@@ -62,9 +62,9 @@ const qualityPoints = [
 ];
 
 const educationCards = [
+  { title: "Peptide Calculator", role: "Research Tools", body: "Calculate reconstitution concentration and dosage draw volume for lyophilised vials.", href: "/peptide-calculator", img: "/images/product-vial.jpg" },
   { title: "COA Verification", role: "Quality Documentation", body: "How to evaluate certificates of analysis, purity data, and batch traceability.", href: "/blog/understanding-certificates-of-analysis", img: "/images/quality-lab.jpg" },
-  { title: "Storage Guidance", role: "Handling Basics", body: "Storage and handling context before working with lyophilised research compounds.", href: "/blog/peptide-storage-guide", img: "/images/product-vial.jpg" },
-  { title: "Research Hub", role: "Education Library", body: "Compound guides, comparison articles, and pathway explainers.", href: "/blog", img: "/images/molecular-banner.jpg" },
+  { title: "Storage Guidance", role: "Handling Basics", body: "Storage and handling context before working with lyophilised research compounds.", href: "/blog/peptide-storage-guide", img: "/images/molecular-banner.jpg" },
   { title: "New User Guide", role: "Start Here", body: "Understand EvoPeak's research-only positioning, product structure, and quality expectations.", href: "/guide", img: "/images/product-flatlay.jpg" },
 ];
 
@@ -155,13 +155,13 @@ export function HomeClient({ collections }: { collections: ResearchCollection[] 
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/55" />
         <div className="relative mx-auto flex min-h-[600px] max-w-7xl flex-col items-center justify-center px-4 py-20 text-center sm:min-h-[720px] sm:px-6 sm:py-24 lg:min-h-[800px] lg:px-8 lg:py-28">
           <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }} className="mb-6 text-sm font-black uppercase tracking-[0.36em] text-brand-green">
-            {region.brandName} — Australian Research Peptides
+            Peptides Australia — Third-Party Tested
           </motion.p>
           <motion.h1 initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1], delay: 0.1 }} className="max-w-6xl text-6xl font-black leading-[0.92] tracking-[-0.05em] sm:text-8xl lg:text-[7rem]">
-            Research organized around your model
+            Research peptides organized around your model
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: 0.22 }} className="mx-auto mt-8 max-w-2xl text-lg leading-8 text-white/75">
-            Third-party tested compounds organized by research pathway, audience, and mechanism. Laboratory research use only.
+            Australia&apos;s research peptide supplier — third-party tested compounds by pathway, audience, and mechanism. Laboratory research use only.
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: 0.32 }} className="mt-10 flex flex-col gap-3 sm:flex-row">
             <Link href="/women" className="rounded-full bg-white px-9 py-4 text-sm font-black uppercase tracking-[0.18em] text-brand-navy transition-all hover:bg-brand-green hover:text-white hover:shadow-xl">

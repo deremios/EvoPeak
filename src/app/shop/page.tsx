@@ -5,14 +5,15 @@ import { ShopContent } from "@/components/shop/shop-content";
 import { createSeoMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createSeoMetadata({
-  title: `Research Peptides Australia by Use Case — ${region.brandName}`,
-  description: `Browse ${region.brandName}'s third-party tested research peptides by audience, use case, product category, and mechanism. HPLC/MS verified, COA documented, and shipped locally in Australia.`,
+  title: `Buy Research Peptides Australia by Use Case — ${region.brandName}`,
+  description: `Buy third-party tested research peptides in Australia from ${region.brandName}. Browse by audience, use case, category, and mechanism. HPLC/MS verified, COA documented, PayID checkout, and local AU shipping.`,
   path: "/shop",
   keywords: [
+    "buy peptides australia",
+    "peptides australia",
     "research peptides Australia",
     "buy research peptides Australia",
-    "metabolic research peptides",
-    "recovery research peptides",
+    "australia research peptides",
     "HPLC tested peptides",
   ],
 });
@@ -26,7 +27,7 @@ export default function ShopPage() {
             All Research Compounds
           </p>
           <h1 className="mt-3 sm:mt-4 max-w-3xl text-2xl sm:text-4xl lg:text-6xl font-bold tracking-tight">
-            Browse products by pathway, category, or compound name.
+            Buy research peptides in Australia
           </h1>
           <p className="mt-3 sm:mt-5 max-w-2xl text-sm sm:text-base text-white/70 hidden sm:block">
             Use the filters below to compare EvoPeak&apos;s existing catalog by

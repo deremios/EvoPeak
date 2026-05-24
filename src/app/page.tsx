@@ -5,16 +5,18 @@ import { createSeoMetadata } from "@/lib/seo";
 import { HomeClient } from "@/components/home/home-client";
 
 export const metadata: Metadata = createSeoMetadata({
-  title: `${region.brandName} — Research Peptides Organized by Pathway`,
+  title: `${region.brandName} — Research Peptides Australia`,
   description:
-    "Shop third-party tested research peptides in Australia by men, women, and use-case pathways including metabolic, recovery, GH-axis, cognitive, skin, stacks, and supplies research.",
+    "Buy third-party tested research peptides in Australia. Shop by pathway — metabolic, recovery, GH-axis, cognitive, skin, and stacks. HPLC/MS verified, COAs, PayID checkout, and local AU dispatch.",
   path: "/",
   keywords: [
+    "peptides australia",
     "research peptides Australia",
-    "metabolic research peptides",
-    "recovery research peptides",
-    "third-party tested peptides",
+    "buy peptides australia",
     "buy research peptides Australia",
+    "australia research peptides",
+    "peptides au",
+    "third-party tested peptides",
   ],
 });
 

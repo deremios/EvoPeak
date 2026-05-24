@@ -46,8 +46,12 @@ export const au: RegionConfig = {
     defaultDescription:
       "Australia's premium supplier of 3rd-party tested research peptides. HPLC/MS tested, cGMP-grade, fast AU shipping. BPC-157, Semaglutide, Tirzepatide & more.",
     defaultKeywords: [
+      "peptides australia",
       "research peptides Australia",
+      "buy peptides australia",
       "buy peptides AU",
+      "australia research peptides",
+      "peptides au",
       "BPC-157 Australia",
       "semaglutide research",
       "tirzepatide Australia",

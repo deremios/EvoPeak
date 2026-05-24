@@ -359,6 +359,68 @@ export function PeptideLanding({
         </div>
       </section>
 
+      {/* Pricing (optional) */}
+      {sections.pricing && (
+        <section className="bg-white py-16 sm:py-20">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <FadeIn>
+              <p className="text-sm font-black uppercase tracking-[0.28em] text-brand-orange">
+                Australia pricing
+              </p>
+              <h2 className="mt-4 text-3xl font-black tracking-tight text-brand-navy sm:text-5xl">
+                {sections.pricing.title}
+              </h2>
+              <p className="mt-5 max-w-3xl text-base leading-7 text-text-secondary">
+                {sections.pricing.intro}
+              </p>
+            </FadeIn>
+            <div className="mt-10 overflow-x-auto rounded-[2rem] border border-border-default bg-bg-primary">
+              <table className="w-full min-w-[540px] text-left text-sm">
+                <thead>
+                  <tr className="border-b border-border-default bg-white">
+                    <th className="px-6 py-4 font-black uppercase tracking-[0.12em] text-brand-navy">
+                      Option
+                    </th>
+                    <th className="px-6 py-4 font-black uppercase tracking-[0.12em] text-brand-navy">
+                      Price (AUD)
+                    </th>
+                    <th className="px-6 py-4 font-black uppercase tracking-[0.12em] text-brand-navy">
+                      Detail
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {sections.pricing.rows.map((row) => (
+                    <tr
+                      key={row.label}
+                      className="border-b border-border-default last:border-0"
+                    >
+                      <td className="px-6 py-4 font-semibold text-brand-navy">
+                        {row.label}
+                      </td>
+                      <td className="px-6 py-4 font-black text-brand-green">
+                        {row.price}
+                      </td>
+                      <td className="px-6 py-4 text-text-secondary">
+                        {row.detail}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <div className="mt-8">
+              <ShopCta
+                href={landing.shopPath}
+                label={`Buy ${product.name} — Australia`}
+                priceFrom={lowestPrice}
+                variant="secondary"
+              />
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* How to get */}
       <section className="bg-brand-navy py-16 sm:py-20 text-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

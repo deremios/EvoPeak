@@ -61,7 +61,7 @@ export const products: Product[] = [
       { id: "reta-10", productId: "retatrutide", size: "10 mg", price: 459.00, sku: "RETA-10MG", inStock: true },
     ],
     imageUrl: "/images/products/retatrutide.webp",
-    tags: ["glp-1", "gip", "glucagon", "weight-loss", "metabolic"],
+    tags: ["glp-1", "gip", "glucagon", "weight-loss", "metabolic", "retatrutide buy", "retatrutide australia"],
     featured: false,
     published: true,
     createdAt: "2026-04-01",

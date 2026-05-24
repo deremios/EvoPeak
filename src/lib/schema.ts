@@ -82,12 +82,18 @@ export function organizationSchema() {
 
   return {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": ["Organization", "OnlineStore"],
     "@id": `${SITE_URL}#organization`,
     name: region.brandName,
     legalName,
     url: SITE_URL,
     description: region.meta.defaultDescription,
+    areaServed: {
+      "@type": "Country",
+      name: region.country,
+    },
+    currenciesAccepted: region.currency.code,
+    priceRange: "$$",
     address: {
       "@type": "PostalAddress",
       streetAddress: address.street,
@@ -102,6 +108,36 @@ export function organizationSchema() {
       contactType: "customer support",
       areaServed: region.countryCode,
       availableLanguage: "English",
+    },
+  };
+}
+
+export function webApplicationSchema({
+  name,
+  description,
+  path,
+}: {
+  name: string;
+  description: string;
+  path: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "@id": `${absoluteUrl(path)}#webapp`,
+    name,
+    description,
+    url: absoluteUrl(path),
+    applicationCategory: "UtilitiesApplication",
+    operatingSystem: "Web browser",
+    inLanguage: region.locale,
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: region.currency.code,
+    },
+    provider: {
+      "@id": `${SITE_URL}#organization`,
     },
   };
 }

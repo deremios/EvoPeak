@@ -39,6 +39,11 @@ export interface PeptideLandingContent {
     sideEffects: PeptideLandingSection & { items: string[] };
     reconstitution: PeptideLandingSection & { suppliesNote: string };
     howToGet: PeptideLandingSection & { steps: string[] };
+    pricing?: {
+      title: string;
+      intro: string;
+      rows: { label: string; price: string; detail: string }[];
+    };
   };
   faqs: PeptideLandingFaq[];
   relatedProductIds: string[];

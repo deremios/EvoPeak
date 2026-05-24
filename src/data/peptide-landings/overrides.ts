@@ -149,12 +149,14 @@ export const landingOverrides: Record<string, LandingOverrides> = {
     heroEyebrow: "Body Protection Compound-157",
     keywords: [
       "bpc-157",
+      "bpc 157",
       "bpc 157 australia",
       "bpc-157 peptide",
       "bpc-157 dosage",
       "bpc-157 side effects",
       "what is bpc-157",
       "bpc157 australia",
+      "bpc157 in australia",
       "tissue repair peptide",
       "healing peptide australia",
       "research peptides australia",
@@ -245,8 +247,10 @@ export const landingOverrides: Record<string, LandingOverrides> = {
     heroEyebrow: "Copper Tripeptide Complex",
     keywords: [
       "ghk-cu",
+      "ghk",
       "ghk cu australia",
       "copper peptide",
+      "copper ghk peptides",
       "ghk-cu peptide",
       "ghk-cu dosage",
       "copper peptide australia",
@@ -334,8 +338,11 @@ export const landingOverrides: Record<string, LandingOverrides> = {
     heroEyebrow: "Melanocortin Receptor Agonist",
     keywords: [
       "melanotan ii",
+      "melanotan 2",
       "melanotan 2 australia",
+      "melanotan australia",
       "melanotan ii peptide",
+      "mt2",
       "mt2 peptide",
       "melanotan ii dosage",
       "melanotan ii side effects",
@@ -350,12 +357,19 @@ export const landingOverrides: Record<string, LandingOverrides> = {
       "Precursor research compound leading to PT-141 development",
     ],
     relatedProductIds: ["pt-141", "ghk-cu", "selank"],
+    faqs: [
+      {
+        q: "Is Melanotan 2 the same as Melanotan II?",
+        a: "Yes. Melanotan 2 and Melanotan II refer to the same synthetic α-MSH analogue peptide (also abbreviated MT2). Both names are used interchangeably in research literature and supplier catalogues.",
+      },
+    ],
   },
 
   "pt-141": {
     heroEyebrow: "Selective MC4R Agonist (Bremelanotide)",
     keywords: [
       "pt-141",
+      "pt141",
       "pt 141 australia",
       "bremelanotide",
       "pt-141 peptide",
@@ -402,6 +416,7 @@ export const landingOverrides: Record<string, LandingOverrides> = {
       "semax",
       "semax australia",
       "semax peptide",
+      "peptides semax",
       "semax dosage",
       "semax side effects",
       "nootropic peptide australia",
@@ -445,6 +460,7 @@ export const landingOverrides: Record<string, LandingOverrides> = {
     heroEyebrow: "BPC-157 + TB-500 + GHK-Cu Stack",
     keywords: [
       "glow blend",
+      "glow peptide",
       "glow blend australia",
       "glow peptide blend",
       "bpc tb500 ghk blend",
