@@ -2,11 +2,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { getAllLandings, getLandingPath } from "@/data/peptide-landings";
 import { getAllCategories } from "@/lib/products";
-import { getProductBySlug } from "@/lib/products";
+import { getProductById } from "@/lib/products";
 import type { PeptideLandingContent } from "@/types/peptide-landing";
 
 function GuideCard({ landing }: { landing: PeptideLandingContent }) {
-  const product = getProductBySlug(landing.productId);
+  const product = getProductById(landing.productId);
   if (!product) return null;
 
   return (
@@ -56,7 +56,7 @@ export function PeptidesHubContent() {
     .map((category) => ({
       category,
       guides: landings.filter((l) => {
-        const product = getProductBySlug(l.productId);
+        const product = getProductById(l.productId);
         return product?.categoryId === category.id;
       }),
     }))

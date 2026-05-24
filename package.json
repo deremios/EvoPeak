@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "check:product-images": "npx tsx scripts/check-product-images.ts",
-    "compress:product-images": "bash scripts/compress-product-images.sh"
+    "compress:product-images": "bash scripts/compress-product-images.sh",
+    "audit:links": "npx tsx scripts/audit-internal-links.ts"
   },
   "dependencies": {
     "@react-email/components": "^1.0.12",

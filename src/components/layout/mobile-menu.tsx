@@ -7,7 +7,7 @@ import { useCart } from "@/lib/cart-context";
 import { Logo } from "@/components/shared/logo";
 import { researchCollections } from "@/data/collections";
 import { getAllLandings, getLandingPath, getPeptideNavLabel } from "@/data/peptide-landings";
-import { getProductBySlug } from "@/lib/products";
+import { getProductById } from "@/lib/products";
 
 interface MobileMenuProps {
   open: boolean;
@@ -138,7 +138,7 @@ export function MobileMenu({ open, onClose, links }: MobileMenuProps) {
                 All guides
               </Link>
               {getAllLandings().map((landing) => {
-                const product = getProductBySlug(landing.productId);
+                const product = getProductById(landing.productId);
                 const fullName =
                   product?.name ?? landing.heroHeadline.replace(/ Australia$/, "");
                 const label = getPeptideNavLabel(landing.peptideSlug, fullName);

@@ -7,7 +7,7 @@ import { Logo } from "@/components/shared/logo";
 import { MobileMenu } from "./mobile-menu";
 import { researchCollections } from "@/data/collections";
 import { getAllLandings, getLandingPath, getPeptideNavLabel } from "@/data/peptide-landings";
-import { getProductBySlug } from "@/lib/products";
+import { getProductById } from "@/lib/products";
 
 const navLinks = [
   { href: "/shop", label: "Shop" },
@@ -52,7 +52,7 @@ export function Header() {
                     <div className="mt-2 max-h-[min(70vh,24rem)] overflow-y-auto overscroll-contain border-t border-border-default pt-2">
                       <ul className="space-y-0.5">
                         {getAllLandings().map((landing) => {
-                          const product = getProductBySlug(landing.productId);
+                          const product = getProductById(landing.productId);
                           const fullName =
                             product?.name ?? landing.heroHeadline.replace(/ Australia$/, "");
                           const label = getPeptideNavLabel(

@@ -10,6 +10,10 @@ export function getProductBySlug(slug: string): Product | undefined {
   return products.find((p) => p.slug === slug && p.published);
 }
 
+export function getProductById(id: string): Product | undefined {
+  return products.find((p) => p.id === id && p.published);
+}
+
 export function getProductsByCategory(categorySlug: string): Product[] {
   const category = getCategoryBySlug(categorySlug);
   return products.filter(

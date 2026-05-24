@@ -7,7 +7,7 @@ import {
   getLandingByPeptideSlug,
   getLandingPath,
 } from "@/data/peptide-landings";
-import { getProductBySlug } from "@/lib/products";
+import { getProductById } from "@/lib/products";
 import {
   breadcrumbSchema,
   faqSchema,
@@ -49,11 +49,11 @@ export default async function PeptideLandingPage({ params }: Props) {
   const landing = getLandingByPeptideSlug(slug);
   if (!landing) notFound();
 
-  const product = getProductBySlug(landing.productId);
+  const product = getProductById(landing.productId);
   if (!product) notFound();
 
   const relatedProducts = landing.relatedProductIds
-    .map((id) => getProductBySlug(id))
+    .map((id) => getProductById(id))
     .filter((p): p is NonNullable<typeof p> => p !== undefined);
 
   const path = getLandingPath(slug);

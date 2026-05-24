@@ -15,24 +15,11 @@ import {
 import { ArticleToc } from "@/components/blog/article-toc";
 import { RelatedPosts } from "@/components/blog/related-posts";
 import { getCategoryFromTags } from "@/components/blog/blog-list";
+import { getRelatedProductFromTags } from "@/lib/blog-product-links";
 
 interface Props {
   params: Promise<{ slug: string }>;
 }
-
-const TAG_TO_PRODUCT: Record<string, { slug: string; label: string }> = {
-  "bpc-157":        { slug: "bpc-157",    label: "BPC-157" },
-  "tb-500":         { slug: "tb-500",     label: "TB-500" },
-  "glp-1":          { slug: "semaglutide",label: "Semaglutide" },
-  "semaglutide":    { slug: "semaglutide",label: "Semaglutide" },
-  "tirzepatide":    { slug: "tirzepatide",label: "Tirzepatide" },
-  "retatrutide":    { slug: "retatrutide",label: "Retatrutide" },
-  "cjc-1295":       { slug: "cjc-1295",   label: "CJC-1295" },
-  "ipamorelin":     { slug: "ipamorelin", label: "Ipamorelin" },
-  "selank":         { slug: "selank",     label: "Selank" },
-  "semax":          { slug: "semax",      label: "Semax" },
-  "ghk-cu":         { slug: "ghk-cu",     label: "GHK-Cu" },
-};
 
 const CATEGORY_COLORS: Record<string, string> = {
   "Recovery":       "bg-emerald-50 text-emerald-700 border-emerald-200",
@@ -81,9 +68,7 @@ export default async function BlogPostPage({ params }: Props) {
   const category = getCategoryFromTags(post.tags);
   const categoryColor = CATEGORY_COLORS[category] ?? CATEGORY_COLORS["Research Guide"];
 
-  const relatedProduct = post.tags
-    .map((t) => TAG_TO_PRODUCT[t.toLowerCase()])
-    .find(Boolean);
+  const relatedProduct = getRelatedProductFromTags(post.tags);
 
   return (
     <div className="bg-bg-primary min-h-screen">
