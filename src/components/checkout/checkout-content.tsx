@@ -5,9 +5,17 @@ import Link from "next/link";
 import { useCart } from "@/lib/cart-context";
 import { createOrder, calculateShipping } from "@/lib/orders";
 import { formatPrice, region } from "@/config";
+import {
+  AU_STATES,
+  inferStateFromPostcode,
+  isValidAustralianPostcode,
+} from "@/data/australian-address";
 import type { ShippingAddress } from "@/types/order";
 
 type Step = "address" | "review" | "payid";
+
+const fieldClassName =
+  "w-full rounded-lg border border-border-default px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-green/20 focus:border-brand-green";
 
 export function CheckoutContent() {
   const { items, subtotal, clearCart } = useCart();
@@ -47,7 +55,19 @@ export function CheckoutContent() {
 
   function handleAddressSubmit(e: React.FormEvent) {
     e.preventDefault();
+    if (!isValidAustralianPostcode(address.postcode)) return;
     setStep("review");
+  }
+
+  function handlePostcodeChange(value: string) {
+    const postcode = value.replace(/\D/g, "").slice(0, 4);
+    const inferredState = inferStateFromPostcode(postcode);
+
+    setAddress((current) => ({
+      ...current,
+      postcode,
+      state: inferredState ?? current.state,
+    }));
   }
 
   function handlePlaceOrder() {
@@ -110,31 +130,30 @@ export function CheckoutContent() {
                   <input
                     type="text"
                     required
+                    autoComplete="name"
                     value={address.fullName}
                     onChange={(e) =>
                       setAddress({ ...address, fullName: e.target.value })
                     }
-                    className="w-full rounded-lg border border-border-default px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-green/20 focus:border-brand-green"
+                    className={fieldClassName}
                   />
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium text-text-primary mb-1.5">
-                    Address
+                    Street Address
                   </label>
                   <input
                     type="text"
                     required
-                    placeholder="Start typing your address..."
+                    autoComplete="address-line1"
+                    placeholder="e.g. 42 Smith Street"
                     value={address.line1}
                     onChange={(e) =>
                       setAddress({ ...address, line1: e.target.value })
                     }
-                    className="w-full rounded-lg border border-border-default px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-green/20 focus:border-brand-green"
+                    className={fieldClassName}
                   />
-                  <p className="text-xs text-text-muted mt-1">
-                    Google Places autocomplete will be enabled in production
-                  </p>
                 </div>
 
                 <div>
@@ -143,43 +162,34 @@ export function CheckoutContent() {
                   </label>
                   <input
                     type="text"
+                    autoComplete="address-line2"
+                    placeholder="e.g. Unit 3"
                     value={address.line2}
                     onChange={(e) =>
                       setAddress({ ...address, line2: e.target.value })
                     }
-                    className="w-full rounded-lg border border-border-default px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-green/20 focus:border-brand-green"
+                    className={fieldClassName}
                   />
                 </div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-text-primary mb-1.5">
-                      City / Suburb
+                      Suburb
                     </label>
                     <input
                       type="text"
                       required
+                      autoComplete="address-level2"
+                      placeholder="e.g. Surry Hills"
                       value={address.city}
                       onChange={(e) =>
                         setAddress({ ...address, city: e.target.value })
                       }
-                      className="w-full rounded-lg border border-border-default px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-green/20 focus:border-brand-green"
+                      className={fieldClassName}
                     />
                   </div>
-                  <div>
-                    <label className="block text-sm font-medium text-text-primary mb-1.5">
-                      State
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      value={address.state}
-                      onChange={(e) =>
-                        setAddress({ ...address, state: e.target.value })
-                      }
-                      className="w-full rounded-lg border border-border-default px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-green/20 focus:border-brand-green"
-                    />
-                  </div>
+
                   <div>
                     <label className="block text-sm font-medium text-text-primary mb-1.5">
                       Postcode
@@ -187,11 +197,55 @@ export function CheckoutContent() {
                     <input
                       type="text"
                       required
+                      inputMode="numeric"
+                      autoComplete="postal-code"
+                      placeholder="e.g. 2010"
+                      pattern="\d{4}"
+                      title="Enter a 4-digit Australian postcode"
                       value={address.postcode}
+                      onChange={(e) => handlePostcodeChange(e.target.value)}
+                      className={fieldClassName}
+                    />
+                    <p className="text-xs text-text-muted mt-1">
+                      We&apos;ll suggest your state from the postcode.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-text-primary mb-1.5">
+                      State / Territory
+                    </label>
+                    <select
+                      required
+                      autoComplete="address-level1"
+                      value={address.state}
                       onChange={(e) =>
-                        setAddress({ ...address, postcode: e.target.value })
+                        setAddress({ ...address, state: e.target.value })
                       }
-                      className="w-full rounded-lg border border-border-default px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-green/20 focus:border-brand-green"
+                      className={fieldClassName}
+                    >
+                      <option value="" disabled>
+                        Select state
+                      </option>
+                      {AU_STATES.map((state) => (
+                        <option key={state.code} value={state.code}>
+                          {state.name} ({state.code})
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-text-primary mb-1.5">
+                      Country
+                    </label>
+                    <input
+                      type="text"
+                      readOnly
+                      value={region.country}
+                      className={`${fieldClassName} bg-gray-50 text-text-secondary cursor-not-allowed`}
                     />
                   </div>
                 </div>
