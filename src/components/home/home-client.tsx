@@ -1,6 +1,5 @@
 "use client";
 import Link from "next/link";
-import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { region } from "@/config";
@@ -141,16 +140,17 @@ export function HomeClient({ collections }: { collections: ResearchCollection[] 
 
       {/* ── Hero ── */}
       <section className="relative min-h-[600px] overflow-hidden text-white sm:min-h-[720px] lg:min-h-[800px]">
-        {/* Background image – priority loaded for LCP */}
-        <Image
-          src="/images/hero-home.webp"
-          alt="EvoPeak research peptides — vial and box on light laboratory background"
-          fill
-          priority
-          quality={85}
-          sizes="100vw"
-          className="object-cover object-center"
-        />
+        {/* Background – portrait 9:16 on mobile, landscape on sm+ (art direction via picture) */}
+        <picture className="absolute inset-0">
+          <source media="(min-width: 640px)" srcSet="/images/hero-home.webp" type="image/webp" />
+          <img
+            src="/images/hero-home-mobile.webp"
+            alt="EvoPeak research peptides — vial and box on light laboratory background"
+            className="h-full w-full object-cover object-center"
+            fetchPriority="high"
+            decoding="async"
+          />
+        </picture>
         {/* Gradient overlay – lighter so packaging shows through; enough contrast for hero text */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/55" />
         <div className="relative mx-auto flex min-h-[600px] max-w-7xl flex-col items-center justify-center px-4 py-20 text-center sm:min-h-[720px] sm:px-6 sm:py-24 lg:min-h-[800px] lg:px-8 lg:py-28">
