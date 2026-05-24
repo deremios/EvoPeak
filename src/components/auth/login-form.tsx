@@ -3,12 +3,20 @@
 import { useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 
+import { sanitizeRedirectPath } from "@/lib/auth/admin";
+
 type State = "idle" | "loading" | "sent" | "error";
 
-export function LoginForm() {
+export function LoginForm({
+  nextPath = "/account",
+}: {
+  nextPath?: string;
+}) {
   const [email, setEmail] = useState("");
   const [state, setState] = useState<State>("idle");
   const [error, setError] = useState("");
+  const redirectPath = sanitizeRedirectPath(nextPath);
+  const callbackUrl = `${window.location.origin}/auth/callback?next=${encodeURIComponent(redirectPath)}`;
 
   async function handleMagicLink(e: React.FormEvent) {
     e.preventDefault();
@@ -19,7 +27,7 @@ export function LoginForm() {
     const { error: authError } = await supabase.auth.signInWithOtp({
       email,
       options: {
-        emailRedirectTo: `${window.location.origin}/auth/callback`,
+        emailRedirectTo: callbackUrl,
       },
     });
 
@@ -36,7 +44,7 @@ export function LoginForm() {
     await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: `${window.location.origin}/auth/callback`,
+        redirectTo: callbackUrl,
       },
     });
   }

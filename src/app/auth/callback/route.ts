@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { sanitizeRedirectPath } from "@/lib/auth/admin";
 import { createClient } from "@/lib/supabase/server";
 
 function getRedirectOrigin(request: Request): string {
@@ -25,7 +26,7 @@ function getRedirectOrigin(request: Request): string {
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const code = searchParams.get("code");
-  const next = searchParams.get("next") ?? "/account";
+  const next = sanitizeRedirectPath(searchParams.get("next"));
   const origin = getRedirectOrigin(request);
 
   if (code) {

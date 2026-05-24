@@ -1,5 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { getAllLandingSlugs } from "@/data/peptide-landings";
+import { isAdminUser } from "@/lib/auth/admin";
+import { getAdminLoginPath } from "@/lib/auth/admin";
 import { updateSession } from "@/lib/supabase/middleware";
 
 const landingSlugs = getAllLandingSlugs();
@@ -40,9 +42,23 @@ export async function middleware(request: NextRequest) {
 
   const rewritePath = landingRewrites.get(pathname);
 
-  const response = rewritePath
-    ? NextResponse.rewrite(new URL(rewritePath, request.url))
-    : await updateSession(request);
+  if (rewritePath) {
+    return applySecurityHeaders(
+      NextResponse.rewrite(new URL(rewritePath, request.url))
+    );
+  }
+
+  const { response, user } = await updateSession(request);
+
+  if (pathname.startsWith("/admin")) {
+    if (!user || !isAdminUser(user)) {
+      const loginUrl = new URL(getAdminLoginPath(pathname), request.url);
+      if (user) {
+        loginUrl.searchParams.set("error", "unauthorized");
+      }
+      return applySecurityHeaders(NextResponse.redirect(loginUrl));
+    }
+  }
 
   return applySecurityHeaders(response);
 }
