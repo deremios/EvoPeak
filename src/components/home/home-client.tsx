@@ -178,16 +178,16 @@ export function HomeClient({ collections }: { collections: ResearchCollection[] 
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.4 }}
               className="mt-8"
             >
-              <div className="inline-flex flex-col items-center gap-2 rounded-2xl border border-white/25 bg-white px-5 py-3 shadow-lg">
+              <div className="inline-flex items-center gap-2.5 rounded-full border border-white/25 bg-white px-3.5 py-1.5 shadow-lg">
                 <img
                   src="/images/payid-logo.svg"
                   alt="PayID"
                   width={103}
                   height={64}
-                  className="h-10 w-auto"
+                  className="h-6 w-auto"
                 />
-                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-brand-navy/70">
-                  PayID accepted
+                <span className="text-[11px] font-black uppercase tracking-[0.16em] text-brand-navy/80">
+                  Accepted
                 </span>
               </div>
             </motion.div>
