@@ -36,3 +36,13 @@ export function getAllLandings(): PeptideLandingContent[] {
 export function getLandingPath(slug: string): string {
   return `/${slug}-australia`;
 }
+
+/** Compact single-line labels for nav menus */
+export function getPeptideNavLabel(slug: string, fullName: string): string {
+  const short: Record<string, string> = {
+    "cjc-1295-ipamorelin-blend": "CJC-1295 + Ipamorelin",
+    "hgh-fragment-176-191": "HGH Frag 176-191",
+    "bacteriostatic-water": "Bacteriostatic Water",
+  };
+  return short[slug] ?? fullName;
+}

@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useCart } from "@/lib/cart-context";
 import { Logo } from "@/components/shared/logo";
 import { researchCollections } from "@/data/collections";
-import { getAllLandings, getLandingPath } from "@/data/peptide-landings";
+import { getAllLandings, getLandingPath, getPeptideNavLabel } from "@/data/peptide-landings";
 import { getProductBySlug } from "@/lib/products";
 
 interface MobileMenuProps {
@@ -134,14 +134,18 @@ export function MobileMenu({ open, onClose, links }: MobileMenuProps) {
               </Link>
               {getAllLandings().map((landing) => {
                 const product = getProductBySlug(landing.productId);
+                const fullName =
+                  product?.name ?? landing.heroHeadline.replace(/ Australia$/, "");
+                const label = getPeptideNavLabel(landing.peptideSlug, fullName);
                 return (
                   <Link
                     key={landing.peptideSlug}
                     href={getLandingPath(landing.peptideSlug)}
                     onClick={onClose}
-                    className="flex items-center rounded-lg px-3 py-3 pl-6 text-sm font-medium text-text-secondary hover:bg-gray-50 hover:text-brand-green transition-colors"
+                    title={fullName}
+                    className="flex items-center truncate rounded-lg px-3 py-3 pl-6 text-sm font-medium text-text-secondary hover:bg-gray-50 hover:text-brand-green transition-colors"
                   >
-                    {product?.name ?? landing.heroHeadline}
+                    {label}
                   </Link>
                 );
               })}

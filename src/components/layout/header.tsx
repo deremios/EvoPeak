@@ -6,7 +6,7 @@ import { useCart } from "@/lib/cart-context";
 import { Logo } from "@/components/shared/logo";
 import { MobileMenu } from "./mobile-menu";
 import { researchCollections } from "@/data/collections";
-import { getAllLandings, getLandingPath } from "@/data/peptide-landings";
+import { getAllLandings, getLandingPath, getPeptideNavLabel } from "@/data/peptide-landings";
 import { getProductBySlug } from "@/lib/products";
 
 const navLinks = [
@@ -42,30 +42,36 @@ export function Header() {
                   {link.label}
                 </Link>
                 {link.label === "Peptide Guides" && (
-                  <div className="invisible absolute left-1/2 top-full z-50 mt-5 w-[520px] -translate-x-1/2 rounded-3xl border border-border-default bg-white p-5 opacity-0 shadow-2xl transition-all duration-200 group-hover:visible group-hover:opacity-100">
+                  <div className="invisible absolute left-1/2 top-full z-50 mt-5 w-64 -translate-x-1/2 rounded-3xl border border-border-default bg-white p-4 opacity-0 shadow-2xl transition-all duration-200 group-hover:visible group-hover:opacity-100">
                     <Link
                       href="/peptides"
-                      className="block shrink-0 rounded-2xl p-3 font-bold text-brand-navy transition-colors hover:bg-brand-green/5"
+                      className="block shrink-0 rounded-xl px-3 py-2.5 text-sm font-bold text-brand-navy transition-colors hover:bg-brand-green/5"
                     >
                       All peptide guides →
                     </Link>
-                    <div className="mt-3 max-h-[min(70vh,22rem)] overflow-y-auto overscroll-contain border-t border-border-default pt-3">
-                      <div className="grid grid-cols-2 gap-1">
+                    <div className="mt-2 max-h-[min(70vh,24rem)] overflow-y-auto overscroll-contain border-t border-border-default pt-2">
+                      <ul className="space-y-0.5">
                         {getAllLandings().map((landing) => {
                           const product = getProductBySlug(landing.productId);
+                          const fullName =
+                            product?.name ?? landing.heroHeadline.replace(/ Australia$/, "");
+                          const label = getPeptideNavLabel(
+                            landing.peptideSlug,
+                            fullName
+                          );
                           return (
-                            <Link
-                              key={landing.peptideSlug}
-                              href={getLandingPath(landing.peptideSlug)}
-                              className="block rounded-xl px-3 py-2 transition-colors hover:bg-brand-green/5"
-                            >
-                              <p className="text-sm font-semibold leading-snug text-text-primary">
-                                {product?.name ?? landing.heroHeadline}
-                              </p>
-                            </Link>
+                            <li key={landing.peptideSlug}>
+                              <Link
+                                href={getLandingPath(landing.peptideSlug)}
+                                title={fullName}
+                                className="block truncate rounded-lg px-3 py-2 text-sm font-medium text-text-primary transition-colors hover:bg-brand-green/5 hover:text-brand-green"
+                              >
+                                {label}
+                              </Link>
+                            </li>
                           );
                         })}
-                      </div>
+                      </ul>
                     </div>
                   </div>
                 )}
