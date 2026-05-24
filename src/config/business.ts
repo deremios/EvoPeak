@@ -9,6 +9,10 @@ export const business = {
     country: "Australia",
     countryCode: "AU",
   },
+  social: {
+    facebook: "https://www.facebook.com/people/Evopeak-Peptides/61590194858631/",
+    x: "https://x.com/EvopeakAU",
+  },
 } as const;
 
 export function formatBusinessAddress(): string {
