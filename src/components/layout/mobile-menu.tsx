@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import { useCart } from "@/lib/cart-context";
 import { Logo } from "@/components/shared/logo";
@@ -16,46 +17,48 @@ const AUDIENCE_HREFS = new Set(["/men", "/women", "/collections/metabolic-resear
 
 export function MobileMenu({ open, onClose, links }: MobileMenuProps) {
   const { itemCount } = useCart();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    if (open) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!open) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
 
     function handleKey(e: KeyboardEvent) {
       if (e.key === "Escape") onClose();
     }
-    if (open) document.addEventListener("keydown", handleKey);
+    document.addEventListener("keydown", handleKey);
+
     return () => {
-      document.body.style.overflow = "";
+      document.body.style.overflow = previousOverflow;
       document.removeEventListener("keydown", handleKey);
     };
   }, [open, onClose]);
 
-  if (!open) return null;
+  if (!open || !mounted) return null;
 
   const mainLinks = links.filter((l) => !AUDIENCE_HREFS.has(l.href));
 
-  return (
+  return createPortal(
     <div
-      className="fixed inset-0 z-50 md:hidden flex justify-end"
+      className="fixed inset-0 z-[100] md:hidden"
       role="dialog"
       aria-modal="true"
       aria-label="Navigation menu"
     >
-      {/* Backdrop — absolute within the fixed wrapper */}
       <div
-        className="absolute inset-0 bg-black/50"
+        className="absolute inset-0 bg-black/60"
         onClick={onClose}
         aria-hidden="true"
       />
 
-      {/* Panel — relative so it stacks above the backdrop, h-full fills the wrapper */}
-      <div className="relative z-10 flex h-full w-full max-w-sm flex-col bg-white shadow-2xl">
-        {/* Header */}
-        <div className="flex shrink-0 items-center justify-between border-b border-border-default px-5 py-4">
+      <div className="absolute inset-y-0 right-0 grid h-[100dvh] w-full max-w-sm grid-rows-[auto_1fr_auto] bg-white shadow-2xl">
+        <div className="flex items-center justify-between border-b border-border-default px-5 py-4">
           <Logo size="sm" />
           <button
             type="button"
@@ -75,27 +78,28 @@ export function MobileMenu({ open, onClose, links }: MobileMenuProps) {
           </button>
         </div>
 
-        {/* Scrollable nav */}
-        <nav className="min-h-0 flex-1 overflow-y-auto px-5 py-5 space-y-6">
-          {/* Audience shortcuts */}
+        <nav className="min-h-0 overflow-y-auto overscroll-contain px-5 py-5 space-y-6">
           <div className="grid grid-cols-2 gap-3">
             <Link
               href="/men"
               onClick={onClose}
               className="rounded-xl bg-brand-navy px-4 py-4 text-sm font-bold text-white text-center leading-snug"
             >
-              Men&apos;s<br />Research
+              Men&apos;s
+              <br />
+              Research
             </Link>
             <Link
               href="/women"
               onClick={onClose}
               className="rounded-xl bg-brand-orange px-4 py-4 text-sm font-bold text-white text-center leading-snug"
             >
-              Women&apos;s<br />Research
+              Women&apos;s
+              <br />
+              Research
             </Link>
           </div>
 
-          {/* Main nav links */}
           <div>
             <p className="mb-1 px-1 text-[11px] font-bold uppercase tracking-widest text-text-muted">
               Menu
@@ -114,7 +118,6 @@ export function MobileMenu({ open, onClose, links }: MobileMenuProps) {
             </div>
           </div>
 
-          {/* Research collections */}
           <div>
             <p className="mb-1 px-1 text-[11px] font-bold uppercase tracking-widest text-text-muted">
               Research Areas
@@ -134,8 +137,7 @@ export function MobileMenu({ open, onClose, links }: MobileMenuProps) {
           </div>
         </nav>
 
-        {/* Footer CTA buttons */}
-        <div className="shrink-0 border-t border-border-default bg-white px-5 py-4 space-y-2">
+        <div className="border-t border-border-default bg-white px-5 py-4 space-y-2">
           <Link
             href="/account"
             onClick={onClose}
@@ -152,6 +154,7 @@ export function MobileMenu({ open, onClose, links }: MobileMenuProps) {
           </Link>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
