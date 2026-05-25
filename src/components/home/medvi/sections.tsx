@@ -72,11 +72,11 @@ export function QualitySection() {
     <section className="bg-white py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid items-center gap-12 lg:grid-cols-2">
-          <div className="bg-home-blob flex items-center justify-center rounded-[2rem] p-6 sm:p-10">
+          <div className="overflow-hidden rounded-[2rem] shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
             <img
               src="/images/home/evopeak-branded-hero.png"
               alt="EvoPeak branded peptide packaging"
-              className="max-h-[480px] w-full object-contain drop-shadow-lg"
+              className="block w-full"
             />
           </div>
           <div>

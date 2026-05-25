@@ -28,11 +28,11 @@ type GoalSectionProps = {
 
 function SectionImage({ image, fallback, alt }: { image: string; fallback: string; alt: string }) {
   return (
-    <div className="bg-home-blob flex items-center justify-center rounded-[2rem] p-6 sm:p-10">
+    <div className="overflow-hidden rounded-[2rem] bg-home-blob shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
       <img
         src={image}
         alt={alt}
-        className="max-h-[480px] w-full object-contain drop-shadow-lg"
+        className="block w-full"
         onError={(e) => {
           e.currentTarget.src = fallback;
         }}

@@ -22,11 +22,11 @@ function CategoryCard({
       href={href}
       className="group flex min-w-[160px] flex-1 flex-col overflow-hidden rounded-2xl bg-white shadow-[0_8px_30px_rgba(0,0,0,0.08)] transition-transform hover:-translate-y-1 sm:min-w-[180px]"
     >
-      <div className={`flex aspect-[4/3] items-center justify-center p-4 sm:p-6 ${tint}`}>
+      <div className={`flex aspect-[4/3] items-center justify-center overflow-hidden p-3 sm:p-4 ${tint}`}>
         <img
           src={image}
           alt={label}
-          className="max-h-[140px] w-full object-contain drop-shadow-md sm:max-h-[160px]"
+          className="max-h-full max-w-full object-contain"
           onError={(e) => {
             e.currentTarget.src = fallback;
           }}
