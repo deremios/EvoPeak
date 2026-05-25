@@ -111,7 +111,7 @@ export const retatrutideLanding: PeptideLandingContent = {
       content:
         "Researchers in Australia can buy Retatrutide peptide through EvoPeak — a local supplier offering third-party tested research compounds with batch-specific COA documentation, PayID checkout, and domestic shipping from Queensland.",
       steps: [
-        "Browse Retatrutide variants (5 mg and 10 mg) on the EvoPeak product page",
+        "Browse Retatrutide variants (10 mg, 15 mg, 20 mg, and 30 mg) on the EvoPeak product page",
         "Review the certificate of analysis (COA) for HPLC purity and mass spectrometry identity verification",
         "Select your vial size and add to cart — prices include GST with same-day Australian dispatch",
         "Complete checkout via PayID and receive your order with batch-specific quality documentation",
@@ -123,14 +123,24 @@ export const retatrutideLanding: PeptideLandingContent = {
         "EvoPeak Retatrutide pricing is listed in AUD and includes GST. All vials are third-party HPLC/MS tested with batch-specific COA documentation. Prices below are for laboratory research compounds only.",
       rows: [
         {
-          label: "5 mg vial",
-          price: "$259 AUD",
-          detail: "$51.80 per mg — suitable for initial receptor activation and titration studies",
+          label: "10 mg vial",
+          price: "$149 AUD",
+          detail: "$14.90 per mg — entry size for dose-response and titration studies",
         },
         {
-          label: "10 mg vial",
-          price: "$459 AUD",
-          detail: "$45.90 per mg — lower per-mg cost for extended dose-response research protocols",
+          label: "15 mg vial",
+          price: "$199 AUD",
+          detail: "$13.27 per mg — mid-range size for extended research protocols",
+        },
+        {
+          label: "20 mg vial",
+          price: "$229 AUD",
+          detail: "$11.45 per mg — lower per-mg cost for longer-duration studies",
+        },
+        {
+          label: "30 mg vial",
+          price: "$299 AUD",
+          detail: "$9.97 per mg — best per-mg value for high-volume research use",
         },
         {
           label: "Shipping",
@@ -151,7 +161,7 @@ export const retatrutideLanding: PeptideLandingContent = {
     },
     {
       q: "What is the Retatrutide dosage used in research?",
-      a: "Published Phase 2 trial data used weekly subcutaneous doses ranging from 1 mg to 12 mg, with dose escalation every four weeks. Available research vials from EvoPeak are 5 mg and 10 mg. All dosage information is for research reference only.",
+      a: "Published Phase 2 trial data used weekly subcutaneous doses ranging from 1 mg to 12 mg, with dose escalation every four weeks. Available research vials from EvoPeak are 10 mg, 15 mg, 20 mg, and 30 mg. All dosage information is for research reference only.",
     },
     {
       q: "What are the side effects of Retatrutide?",
@@ -171,11 +181,11 @@ export const retatrutideLanding: PeptideLandingContent = {
     },
     {
       q: "How much does Retatrutide cost in Australia?",
-      a: "EvoPeak Retatrutide is priced at $259 AUD for a 5 mg vial and $459 AUD for a 10 mg vial. Prices include GST and cover third-party HPLC/MS testing with batch-specific COA documentation. All pricing is for research compounds only.",
+      a: "EvoPeak Retatrutide is priced at $149 AUD for a 10 mg vial, $199 AUD for 15 mg, $229 AUD for 20 mg, and $299 AUD for 30 mg. Prices include GST and cover third-party HPLC/MS testing with batch-specific COA documentation. All pricing is for research compounds only.",
     },
     {
       q: "Where can I buy Retatrutide peptide in Australia?",
-      a: "Order directly from the EvoPeak shop page at evopeak.io/shop/retatrutide. Select your preferred vial size (5 mg or 10 mg), review the COA, and checkout with PayID for local Australian fulfilment. Same-day dispatch is available for orders placed before the daily cutoff.",
+      a: "Order directly from the EvoPeak shop page at evopeak.io/shop/retatrutide. Select your preferred vial size (10 mg, 15 mg, 20 mg, or 30 mg), review the COA, and checkout with PayID for local Australian fulfilment. Same-day dispatch is available for orders placed before the daily cutoff.",
     },
     {
       q: "Is Retatrutide for sale to Australian researchers?",
@@ -183,7 +193,7 @@ export const retatrutideLanding: PeptideLandingContent = {
     },
     {
       q: "How do I get Retatrutide in Australia for research?",
-      a: "Order directly from the EvoPeak shop page. Select your preferred vial size (5 mg or 10 mg), review the COA, and checkout with local Australian fulfilment. Same-day dispatch is available for orders placed before the daily cutoff.",
+      a: "Order directly from the EvoPeak shop page. Select your preferred vial size (10 mg, 15 mg, 20 mg, or 30 mg), review the COA, and checkout with local Australian fulfilment. Same-day dispatch is available for orders placed before the daily cutoff.",
     },
     {
       q: "Is Retatrutide the same as Semaglutide or Tirzepatide?",

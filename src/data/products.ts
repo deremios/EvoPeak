@@ -57,8 +57,10 @@ export const products: Product[] = [
     researchSummary:
       "Preclinical research demonstrates that triple agonism produces additive effects on energy expenditure via glucagon receptor activation alongside the appetite-modulating effects of GLP-1 and GIP signaling. Phase 2 clinical trial data suggests dose-dependent body weight changes of significant magnitude.",
     variants: [
-      { id: "reta-5", productId: "retatrutide", size: "5 mg", price: 259.00, sku: "RETA-5MG", inStock: true },
-      { id: "reta-10", productId: "retatrutide", size: "10 mg", price: 459.00, sku: "RETA-10MG", inStock: true },
+      { id: "reta-10", productId: "retatrutide", size: "10 mg", price: 149.00, sku: "RETA-10MG", inStock: true },
+      { id: "reta-15", productId: "retatrutide", size: "15 mg", price: 199.00, sku: "RETA-15MG", inStock: true },
+      { id: "reta-20", productId: "retatrutide", size: "20 mg", price: 229.00, sku: "RETA-20MG", inStock: true },
+      { id: "reta-30", productId: "retatrutide", size: "30 mg", price: 299.00, sku: "RETA-30MG", inStock: true },
     ],
     imageUrl: "/images/products/retatrutide.webp",
     tags: ["glp-1", "gip", "glucagon", "weight-loss", "metabolic", "retatrutide buy", "retatrutide australia"],
@@ -119,10 +121,32 @@ export const products: Product[] = [
     researchSummary:
       "Research indicates AOD-9604 stimulates lipolysis and inhibits lipogenesis in adipose tissue models. Unlike full-length hGH, it does not affect IGF-1 levels or insulin sensitivity in preclinical studies. Its mechanism involves interaction with the beta-3 adrenergic receptor pathway.",
     variants: [
-      { id: "aod-5", productId: "aod-9604", size: "5 mg", price: 79.00, sku: "AOD-5MG", inStock: true },
+      { id: "aod-5", productId: "aod-9604", size: "5 mg", price: 84.00, sku: "AOD-5MG", inStock: true },
     ],
     imageUrl: "/images/products/aod-9604.webp",
     tags: ["hgh-fragment", "weight-loss", "lipolysis"],
+    featured: false,
+    published: true,
+    createdAt: "2026-04-01",
+  },
+
+  {
+    id: "5-amino-1mq",
+    name: "5-Amino-1MQ",
+    slug: "5-amino-1mq",
+    categoryId: "weight-loss",
+    alternateName: "NNMT Inhibitor",
+    shortDescription: "Small-molecule NNMT inhibitor for metabolic pathway research.",
+    description:
+      "5-Amino-1MQ (5-amino-1-methylquinolinium) is a small-molecule nicotinamide N-methyltransferase (NNMT) inhibitor studied for its effects on NAD+ metabolism, cellular energy regulation, and adipose tissue models in preclinical research.",
+    researchSummary:
+      "Preclinical research suggests 5-Amino-1MQ inhibits NNMT, affecting nicotinamide metabolism and NAD+ availability in studied cell types. Research has explored effects on adipocyte metabolism, energy balance parameters, and downstream NAD+-dependent signalling pathways.",
+    variants: [
+      { id: "1mq-10", productId: "5-amino-1mq", size: "10 mg", price: 89.00, sku: "1MQ-10MG", inStock: true },
+      { id: "1mq-50", productId: "5-amino-1mq", size: "50 mg", price: 109.00, sku: "1MQ-50MG", inStock: true },
+    ],
+    imageUrl: "/images/product-placeholder.png",
+    tags: ["metabolic", "nnmt", "weight-loss"],
     featured: false,
     published: true,
     createdAt: "2026-04-01",
@@ -142,7 +166,7 @@ export const products: Product[] = [
       "Extensive preclinical research demonstrates BPC-157 accelerates tissue healing via upregulation of growth factor expression (VEGF, EGF), nitric oxide system modulation, and FAK-paxillin pathway activation. Studies show effects on angiogenesis, collagen deposition, and anti-inflammatory pathways across multiple tissue types.",
     variants: [
       { id: "bpc-5", productId: "bpc-157", size: "5 mg", price: 69.00, sku: "BPC-5MG", inStock: true },
-      { id: "bpc-10", productId: "bpc-157", size: "10 mg", price: 119.00, sku: "BPC-10MG", inStock: true },
+      { id: "bpc-10", productId: "bpc-157", size: "10 mg", price: 89.00, sku: "BPC-10MG", inStock: true },
     ],
     imageUrl: "/images/products/bpc-157.webp",
     tags: ["recovery", "healing", "tissue-repair", "popular"],
@@ -163,11 +187,31 @@ export const products: Product[] = [
       "Research shows TB-500 promotes cell migration by upregulating actin polymerisation, which is essential for cell movement and tissue repair. Studies in animal models demonstrate accelerated wound closure, reduced inflammation markers, and improved cardiac function post-ischemic injury. It also shows hair follicle stem cell stimulation.",
     variants: [
       { id: "tb-5", productId: "tb-500", size: "5 mg", price: 69.00, sku: "TB-5MG", inStock: true },
-      { id: "tb-10", productId: "tb-500", size: "10 mg", price: 119.00, sku: "TB-10MG", inStock: true },
+      { id: "tb-10", productId: "tb-500", size: "10 mg", price: 109.00, sku: "TB-10MG", inStock: true },
     ],
     imageUrl: "/images/products/tb-500.webp",
     tags: ["recovery", "healing", "thymosin", "popular"],
     featured: true,
+    published: true,
+    createdAt: "2026-04-01",
+  },
+  {
+    id: "bpc-tb-blend",
+    name: "BPC-157 + TB-500 Blend",
+    slug: "bpc-157-tb-500-blend",
+    categoryId: "blends",
+    alternateName: "Body Protection Compound + Thymosin Beta-4 Stack",
+    shortDescription: "Dual-peptide recovery blend for complementary tissue repair research.",
+    description:
+      "This blend combines BPC-157 and TB-500 in a single vial for research protocols studying complementary tissue repair pathways — BPC-157 for cytoprotection and growth factor signaling, TB-500 for cell migration and actin dynamics.",
+    researchSummary:
+      "BPC-157 and TB-500 target distinct but complementary mechanisms in tissue repair models. Combination research allows investigators to study whether dual-pathway activation produces additive or synergistic effects compared to either compound alone.",
+    variants: [
+      { id: "bpctb-10", productId: "bpc-tb-blend", size: "10 mg", price: 89.00, sku: "BPCTB-10MG", inStock: true },
+    ],
+    imageUrl: "/images/product-placeholder.png",
+    tags: ["blend", "recovery", "bpc-157", "tb-500"],
+    featured: false,
     published: true,
     createdAt: "2026-04-01",
   },
@@ -183,10 +227,30 @@ export const products: Product[] = [
     researchSummary:
       "Research demonstrates that combining a GHRH analogue (CJC-1295) with a GHRP (Ipamorelin) produces synergistic GH release significantly greater than either peptide alone. Ipamorelin is notably selective — it does not significantly affect cortisol, prolactin, or ACTH levels, making it preferred for controlled research settings.",
     variants: [
-      { id: "cjc-ipa-10", productId: "cjc-ipamorelin", size: "5 mg / 5 mg", price: 99.00, sku: "CJCIPA-10MG", inStock: true },
+      { id: "cjc-ipa-10", productId: "cjc-ipamorelin", size: "5 mg / 5 mg", price: 124.00, sku: "CJCIPA-10MG", inStock: true },
     ],
     imageUrl: "/images/products/cjc-ipamorelin.webp",
     tags: ["growth-hormone", "ghrh", "ghrp", "blend", "recovery"],
+    featured: false,
+    published: true,
+    createdAt: "2026-04-01",
+  },
+  {
+    id: "cjc-1295-no-dac",
+    name: "CJC-1295 No DAC",
+    slug: "cjc-1295-no-dac",
+    categoryId: "performance",
+    alternateName: "Modified GRF 1-29",
+    shortDescription: "Short-acting GHRH analogue for pulsatile growth hormone research.",
+    description:
+      "CJC-1295 without DAC (Modified GRF 1-29) is a growth hormone-releasing hormone analogue used in research protocols studying pulsatile GH secretion. Its shorter half-life compared to the DAC variant makes it suitable for protocols requiring discrete GH pulse stimulation.",
+    researchSummary:
+      "Research demonstrates CJC-1295 (no DAC) stimulates GH release via GHRH receptor activation with a half-life of approximately 30 minutes, producing discrete GH pulses rather than sustained elevation. It is commonly studied in combination with selective GHRPs for synergistic GH output.",
+    variants: [
+      { id: "cjc-nodac-10", productId: "cjc-1295-no-dac", size: "10 mg", price: 99.00, sku: "CJCNODAC-10MG", inStock: true },
+    ],
+    imageUrl: "/images/product-placeholder.png",
+    tags: ["growth-hormone", "ghrh", "performance"],
     featured: false,
     published: true,
     createdAt: "2026-04-01",
@@ -204,7 +268,7 @@ export const products: Product[] = [
       "The DAC modification extends the half-life to approximately 6-8 days, compared to 30 minutes for native GHRH. Studies show sustained elevation of GH and IGF-1 levels with less frequent administration. Research indicates a more tonic (rather than pulsatile) GH release pattern compared to non-DAC variants.",
     variants: [
       { id: "cjc-dac-2", productId: "cjc-1295-dac", size: "2 mg", price: 59.00, sku: "CJCDAC-2MG", inStock: true },
-      { id: "cjc-dac-5", productId: "cjc-1295-dac", size: "5 mg", price: 99.00, sku: "CJCDAC-5MG", inStock: true },
+      { id: "cjc-dac-5", productId: "cjc-1295-dac", size: "5 mg", price: 119.00, sku: "CJCDAC-5MG", inStock: true },
     ],
     imageUrl: "/images/products/cjc-1295-dac.webp",
     tags: ["growth-hormone", "ghrh", "recovery"],
@@ -224,10 +288,111 @@ export const products: Product[] = [
     researchSummary:
       "Studies demonstrate GHK-Cu upregulates collagen synthesis, decorin, and glycosaminoglycan production while downregulating metalloproteinases. Genomic research shows it modulates expression of over 4,000 genes, many involved in tissue repair and anti-inflammatory pathways. It also demonstrates antioxidant activity via superoxide dismutase upregulation.",
     variants: [
-      { id: "ghk-50", productId: "ghk-cu", size: "50 mg", price: 89.00, sku: "GHKCU-50MG", inStock: true },
+      { id: "ghk-50", productId: "ghk-cu", size: "50 mg", price: 79.00, sku: "GHKCU-50MG", inStock: true },
     ],
     imageUrl: "/images/products/ghk-cu.webp",
     tags: ["copper-peptide", "skin", "recovery", "collagen"],
+    featured: false,
+    published: true,
+    createdAt: "2026-04-01",
+  },
+  {
+    id: "ipamorelin",
+    name: "Ipamorelin",
+    slug: "ipamorelin",
+    categoryId: "performance",
+    alternateName: "Growth Hormone Releasing Peptide",
+    shortDescription: "Selective GHRP for clean growth hormone axis research.",
+    description:
+      "Ipamorelin is a selective growth hormone-releasing peptide (GHRP) that acts via the ghrelin/GHS-R1a receptor. It is widely preferred in research for its minimal off-target effects on cortisol, prolactin, and ACTH compared to earlier GHRPs.",
+    researchSummary:
+      "Studies show Ipamorelin stimulates GH release in a dose-dependent manner with high selectivity for the GH axis. Research demonstrates synergistic GH output when combined with GHRH analogues such as CJC-1295, with complementary effects on pulse frequency and amplitude.",
+    variants: [
+      { id: "ipa-10", productId: "ipamorelin", size: "10 mg", price: 84.00, sku: "IPA-10MG", inStock: true },
+    ],
+    imageUrl: "/images/product-placeholder.png",
+    tags: ["ghrp", "growth-hormone", "performance"],
+    featured: false,
+    published: true,
+    createdAt: "2026-04-01",
+  },
+  {
+    id: "mots-c",
+    name: "MOTS-C",
+    slug: "mots-c",
+    categoryId: "performance",
+    alternateName: "Mitochondrial-Derived Peptide",
+    shortDescription: "Mitochondrial peptide for metabolic and exercise physiology research.",
+    description:
+      "MOTS-C is a mitochondrial-derived peptide encoded within the 12S rRNA gene of mitochondrial DNA. Research interest has grown around its role in metabolic regulation, glucose homeostasis, and exercise-mimetic effects in preclinical models.",
+    researchSummary:
+      "Preclinical research suggests MOTS-C activates AMPK pathways and modulates glucose and fatty acid metabolism. Studies in animal models demonstrate effects on insulin sensitivity, exercise capacity, and metabolic stress responses independent of traditional endocrine signaling.",
+    variants: [
+      { id: "motsc-10", productId: "mots-c", size: "10 mg", price: 89.00, sku: "MOTSC-10MG", inStock: true },
+      { id: "motsc-40", productId: "mots-c", size: "40 mg", price: 149.00, sku: "MOTSC-40MG", inStock: true },
+    ],
+    imageUrl: "/images/product-placeholder.png",
+    tags: ["mitochondrial", "metabolic", "performance"],
+    featured: false,
+    published: true,
+    createdAt: "2026-04-01",
+  },
+  {
+    id: "kpv",
+    name: "KPV",
+    slug: "kpv",
+    categoryId: "recovery",
+    alternateName: "Lys-Pro-Val (α-MSH Fragment)",
+    shortDescription: "Tripeptide fragment for anti-inflammatory and gut research.",
+    description:
+      "KPV is a tripeptide fragment derived from alpha-melanocyte-stimulating hormone (α-MSH) with research applications in anti-inflammatory and gastrointestinal cytoprotection models. It is studied independently of full-length melanocortin peptides.",
+    researchSummary:
+      "Research demonstrates KPV modulates NF-κB signaling and inflammatory cytokine expression in cell culture and animal models. Studies in gut inflammation models show cytoprotective effects without the pigmentation activity associated with full-length α-MSH analogues.",
+    variants: [
+      { id: "kpv-10", productId: "kpv", size: "10 mg", price: 79.00, sku: "KPV-10MG", inStock: true },
+    ],
+    imageUrl: "/images/product-placeholder.png",
+    tags: ["recovery", "anti-inflammatory", "melanocortin"],
+    featured: false,
+    published: true,
+    createdAt: "2026-04-01",
+  },
+  {
+    id: "ss-31",
+    name: "SS-31",
+    slug: "ss-31",
+    categoryId: "performance",
+    alternateName: "Elamipretide",
+    shortDescription: "Mitochondria-targeting peptide for cellular energy research.",
+    description:
+      "SS-31 (Elamipretide) is a mitochondria-targeting tetrapeptide that concentrates in the inner mitochondrial membrane. It is studied for its effects on mitochondrial function, oxidative stress, and cardioprotection in preclinical and clinical research contexts.",
+    researchSummary:
+      "Research shows SS-31 binds cardiolipin in the inner mitochondrial membrane, stabilising electron transport chain function and reducing reactive oxygen species production. Studies span cardiac ischemia-reperfusion models, skeletal muscle energetics, and age-related mitochondrial dysfunction.",
+    variants: [
+      { id: "ss31-10", productId: "ss-31", size: "10 mg", price: 84.00, sku: "SS31-10MG", inStock: true },
+    ],
+    imageUrl: "/images/product-placeholder.png",
+    tags: ["mitochondrial", "performance", "cardioprotection"],
+    featured: false,
+    published: true,
+    createdAt: "2026-04-01",
+  },
+  {
+    id: "kisspeptin",
+    name: "Kisspeptin",
+    slug: "kisspeptin",
+    categoryId: "performance",
+    alternateName: "Metastin",
+    shortDescription: "Neuropeptide for reproductive endocrine axis research.",
+    description:
+      "Kisspeptin is a neuropeptide that acts as a potent activator of the hypothalamic-pituitary-gonadal axis via KISS1R receptor stimulation. It is widely studied for its role in GnRH pulse generation and reproductive endocrine signaling.",
+    researchSummary:
+      "Research demonstrates Kisspeptin neurons in the arcuate and anteroventral periventricular nuclei are essential for GnRH secretion and puberty onset. Studies show dose-dependent LH and FSH release in animal and human research models, making it a key tool for reproductive endocrine research.",
+    variants: [
+      { id: "kiss-10", productId: "kisspeptin", size: "10 mg", price: 89.00, sku: "KISS-10MG", inStock: true },
+    ],
+    imageUrl: "/images/product-placeholder.png",
+    tags: ["reproductive", "neuropeptide", "performance"],
     featured: false,
     published: true,
     createdAt: "2026-04-01",
@@ -246,6 +411,7 @@ export const products: Product[] = [
     variants: [
       { id: "tesa-2", productId: "tesamorelin", size: "2 mg", price: 69.00, sku: "TESA-2MG", inStock: true },
       { id: "tesa-5", productId: "tesamorelin", size: "5 mg", price: 139.00, sku: "TESA-5MG", inStock: true },
+      { id: "tesa-10", productId: "tesamorelin", size: "10 mg", price: 119.00, sku: "TESA-10MG", inStock: true },
     ],
     imageUrl: "/images/products/tesamorelin.webp",
     tags: ["ghrh", "growth-hormone", "performance", "visceral-fat"],
@@ -297,6 +463,26 @@ export const products: Product[] = [
 
   // ─── COGNITIVE & SPECIALTY ────────────────────────────────────
   {
+    id: "melanotan-i",
+    name: "Melanotan I",
+    slug: "melanotan-i",
+    categoryId: "cognitive",
+    alternateName: "Afamelanotide",
+    shortDescription: "Selective MC1R agonist for pigmentation research.",
+    description:
+      "Melanotan I (Afamelanotide) is a synthetic analogue of alpha-melanocyte-stimulating hormone with selective activity at the MC1R receptor. Unlike Melanotan II, it shows minimal activity at MC3R and MC4R, making it the preferred melanocortin for pigmentation-focused research.",
+    researchSummary:
+      "Research demonstrates Melanotan I activates MC1R with high selectivity, stimulating eumelanin production in melanocyte models. Clinical research has examined its photoprotective effects via increased melanin density, with a more favourable receptor selectivity profile than non-selective melanocortin agonists.",
+    variants: [
+      { id: "mt1-10", productId: "melanotan-i", size: "10 mg", price: 79.00, sku: "MT1-10MG", inStock: true },
+    ],
+    imageUrl: "/images/product-placeholder.png",
+    tags: ["melanocortin", "pigmentation", "specialty"],
+    featured: false,
+    published: true,
+    createdAt: "2026-04-01",
+  },
+  {
     id: "melanotan-ii",
     name: "Melanotan II",
     slug: "melanotan-ii",
@@ -308,7 +494,7 @@ export const products: Product[] = [
     researchSummary:
       "Research demonstrates MT-II activates MC1R (melanogenesis), MC3R (energy homeostasis), MC4R (appetite/sexual function), and MC5R (exocrine function). Studies show dose-dependent increases in eumelanin production in skin cell models. MC4R activation research has revealed effects on erectile function in animal models, leading to the development of PT-141.",
     variants: [
-      { id: "mt2-10", productId: "melanotan-ii", size: "10 mg", price: 49.00, sku: "MT2-10MG", inStock: true },
+      { id: "mt2-10", productId: "melanotan-ii", size: "10 mg", price: 64.00, sku: "MT2-10MG", inStock: true },
     ],
     imageUrl: "/images/products/melanotan-ii.webp",
     tags: ["melanocortin", "pigmentation", "specialty"],
@@ -337,6 +523,87 @@ export const products: Product[] = [
     createdAt: "2026-04-01",
   },
   {
+    id: "dsip",
+    name: "DSIP",
+    slug: "dsip",
+    categoryId: "cognitive",
+    alternateName: "Delta Sleep-Inducing Peptide",
+    shortDescription: "Nonapeptide for sleep architecture and stress response research.",
+    description:
+      "DSIP (Delta Sleep-Inducing Peptide) is a naturally occurring nonapeptide first isolated from rabbit brain tissue. It is studied for its effects on sleep architecture, stress response modulation, and endocrine regulation in preclinical research models.",
+    researchSummary:
+      "Research suggests DSIP modulates slow-wave sleep patterns and normalises disturbed sleep architecture in animal models. Studies also examine effects on ACTH/cortisol rhythms, pain perception thresholds, and oxidative stress markers in various research contexts.",
+    variants: [
+      { id: "dsip-10", productId: "dsip", size: "10 mg", price: 89.00, sku: "DSIP-10MG", inStock: true },
+      { id: "dsip-15", productId: "dsip", size: "15 mg", price: 99.00, sku: "DSIP-15MG", inStock: true },
+    ],
+    imageUrl: "/images/product-placeholder.png",
+    tags: ["sleep", "nootropic", "specialty"],
+    featured: false,
+    published: true,
+    createdAt: "2026-04-01",
+  },
+  {
+    id: "oxytocin",
+    name: "Oxytocin",
+    slug: "oxytocin",
+    categoryId: "cognitive",
+    alternateName: "OT",
+    shortDescription: "Neurohypophyseal peptide for social bonding and stress research.",
+    description:
+      "Oxytocin is a nine-amino-acid peptide hormone and neuropeptide produced in the hypothalamus. It is extensively studied for its roles in social bonding, trust behaviour, stress modulation, and reproductive physiology in research models.",
+    researchSummary:
+      "Research demonstrates Oxytocin acts via OXTR receptors in the brain and periphery, modulating social cognition, anxiety-related behaviour, and autonomic stress responses. Studies span rodent social behaviour models, maternal bonding research, and neuroendocrine stress axis investigation.",
+    variants: [
+      { id: "oxy-1", productId: "oxytocin", size: "10 mg", price: 69.00, sku: "OXY-10MG", inStock: true },
+    ],
+    imageUrl: "/images/product-placeholder.png",
+    tags: ["neuropeptide", "social", "specialty"],
+    featured: false,
+    published: true,
+    createdAt: "2026-04-01",
+  },
+  {
+    id: "nad-plus",
+    name: "NAD+",
+    slug: "nad-plus",
+    categoryId: "cognitive",
+    alternateName: "Nicotinamide Adenine Dinucleotide",
+    shortDescription: "Coenzyme for cellular energy and longevity pathway research.",
+    description:
+      "NAD+ (Nicotinamide Adenine Dinucleotide) is a critical coenzyme in redox reactions and a substrate for sirtuins, PARPs, and CD38. Research interest centres on its role in cellular energy metabolism, DNA repair, and age-related NAD+ decline.",
+    researchSummary:
+      "Studies show NAD+ levels decline with age and metabolic stress, affecting sirtuin activity and mitochondrial function. Research examines NAD+ precursor supplementation and direct NAD+ administration in models of metabolic dysfunction, neurodegeneration, and cellular senescence.",
+    variants: [
+      { id: "nad-500", productId: "nad-plus", size: "500 mg", price: 119.00, sku: "NAD-500MG", inStock: true },
+    ],
+    imageUrl: "/images/product-placeholder.png",
+    tags: ["longevity", "metabolic", "specialty"],
+    featured: false,
+    published: true,
+    createdAt: "2026-04-01",
+  },
+  {
+    id: "glutathione",
+    name: "Glutathione",
+    slug: "glutathione",
+    categoryId: "cognitive",
+    alternateName: "GSH (Reduced Glutathione)",
+    shortDescription: "Tripeptide antioxidant for oxidative stress research.",
+    description:
+      "Glutathione (GSH) is the most abundant intracellular antioxidant tripeptide, composed of glutamate, cysteine, and glycine. It is studied for its central role in redox homeostasis, detoxification, and immune function in cellular and animal research models.",
+    researchSummary:
+      "Research demonstrates Glutathione neutralises reactive oxygen species directly and serves as a cofactor for glutathione peroxidase and glutathione S-transferase enzymes. Studies examine GSH depletion in oxidative stress models and the effects of exogenous GSH on cellular viability and inflammatory markers.",
+    variants: [
+      { id: "gsh-1500", productId: "glutathione", size: "1500 mg", price: 99.00, sku: "GSH-1500MG", inStock: true },
+    ],
+    imageUrl: "/images/product-placeholder.png",
+    tags: ["antioxidant", "specialty", "recovery"],
+    featured: false,
+    published: true,
+    createdAt: "2026-04-01",
+  },
+  {
     id: "selank",
     name: "Selank",
     slug: "selank",
@@ -349,7 +616,7 @@ export const products: Product[] = [
       "Research demonstrates Selank modulates BDNF and serotonin expression in the hippocampus and frontal cortex. Studies show anxiolytic effects comparable to benzodiazepines but without sedation, dependence, or withdrawal in animal models. It also upregulates IL-6 expression and modulates the balance of T-helper cell subtypes.",
     variants: [
       { id: "sel-5", productId: "selank", size: "5 mg", price: 49.00, sku: "SEL-5MG", inStock: true },
-      { id: "sel-10", productId: "selank", size: "10 mg", price: 79.00, sku: "SEL-10MG", inStock: true },
+      { id: "sel-10", productId: "selank", size: "10 mg", price: 64.00, sku: "SEL-10MG", inStock: true },
     ],
     imageUrl: "/images/products/selank.webp",
     tags: ["nootropic", "cognitive", "anxiolytic"],
@@ -370,7 +637,7 @@ export const products: Product[] = [
       "Studies show Semax increases BDNF, NGF, and TrkB expression in the hippocampus and cortex. Research demonstrates neuroprotective effects in ischemia models via inhibition of nitric oxide synthase and lipid peroxidation. Cognitive studies in animal models show improved memory consolidation and attention without stimulant-like side effects.",
     variants: [
       { id: "sem-5", productId: "semax", size: "5 mg", price: 49.00, sku: "SEM-5MG", inStock: true },
-      { id: "sem-10", productId: "semax", size: "10 mg", price: 79.00, sku: "SEM-10MG", inStock: true },
+      { id: "sem-10", productId: "semax", size: "10 mg", price: 69.00, sku: "SEM-10MG", inStock: true },
     ],
     imageUrl: "/images/products/semax.webp",
     tags: ["nootropic", "cognitive", "neuroprotective"],
@@ -390,7 +657,8 @@ export const products: Product[] = [
     researchSummary:
       "Research by Dr. Vladimir Khavinson demonstrates Epithalon activates telomerase in human somatic cells, enabling elongation of telomeres in fibroblast cultures. Studies in animal models show increased maximum lifespan, restored melatonin cycling, and improved neuroendocrine function in aged subjects. It also demonstrates antioxidant gene expression modulation.",
     variants: [
-      { id: "epi-10", productId: "epithalon", size: "10 mg", price: 59.00, sku: "EPI-10MG", inStock: true },
+      { id: "epi-10", productId: "epithalon", size: "10 mg", price: 69.00, sku: "EPI-10MG", inStock: true },
+      { id: "epi-50", productId: "epithalon", size: "50 mg", price: 99.00, sku: "EPI-50MG", inStock: true },
     ],
     imageUrl: "/images/products/epithalon.webp",
     tags: ["telomerase", "longevity", "specialty", "pineal"],
@@ -412,11 +680,32 @@ export const products: Product[] = [
     researchSummary:
       "Each component targets complementary mechanisms: BPC-157 activates VEGF/EGF and the FAK-paxillin pathway, TB-500 promotes actin polymerisation and cell motility, and GHK-Cu modulates 4,000+ genes involved in tissue remodelling. The combination aims to provide comprehensive coverage of wound healing, anti-inflammatory, and regenerative research pathways.",
     variants: [
-      { id: "glow-1", productId: "glow-blend", size: "70 mg total", price: 249.00, compareAtPrice: 327.00, sku: "GLOW-70MG", inStock: true },
+      { id: "glow-1", productId: "glow-blend", size: "70 mg total", price: 249.00, compareAtPrice: 277.00, sku: "GLOW-70MG", inStock: true },
     ],
     imageUrl: "/images/products/glow-blend.webp",
     tags: ["blend", "recovery", "bpc-157", "tb-500", "ghk-cu", "popular"],
     featured: true,
+    published: true,
+    createdAt: "2026-04-01",
+  },
+
+  {
+    id: "klow",
+    name: "KLOW",
+    slug: "klow",
+    categoryId: "blends",
+    alternateName: "KPV + BPC-157 + TB-500 + GHK-Cu Recovery Stack",
+    shortDescription: "Four-peptide recovery blend for comprehensive tissue repair research.",
+    description:
+      "The KLOW blend combines KPV, BPC-157, TB-500, and GHK-Cu in a single vial — four compounds targeting complementary recovery pathways including anti-inflammatory signaling, cytoprotection, cell migration, and collagen gene expression modulation.",
+    researchSummary:
+      "Each component addresses distinct mechanisms: KPV for anti-inflammatory NF-κB modulation, BPC-157 for growth factor and cytoprotective pathways, TB-500 for actin-mediated cell migration, and GHK-Cu for tissue remodelling gene expression. The combination provides broad coverage of regenerative research pathways.",
+    variants: [
+      { id: "klow-80", productId: "klow", size: "80 mg total", price: 169.00, sku: "KLOW-80MG", inStock: true },
+    ],
+    imageUrl: "/images/product-placeholder.png",
+    tags: ["blend", "recovery", "bpc-157", "tb-500", "ghk-cu", "kpv"],
+    featured: false,
     published: true,
     createdAt: "2026-04-01",
   },

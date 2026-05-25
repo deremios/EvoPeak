@@ -64,7 +64,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     retatrutide: {
       title: `Buy Retatrutide Australia — Research Peptide — ${region.brandName}`,
       description:
-        "Buy Retatrutide research peptide in Australia from $259 AUD. Triple GLP-1/GIP/Glucagon agonist with HPLC/MS testing, batch COA, PayID checkout, and local dispatch. Research use only.",
+        "Buy Retatrutide research peptide in Australia from $149 AUD. Triple GLP-1/GIP/Glucagon agonist with HPLC/MS testing, batch COA, PayID checkout, and local dispatch. Research use only.",
       keywords: [
         "retatrutide",
         "buy retatrutide australia",
