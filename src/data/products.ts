@@ -145,7 +145,7 @@ export const products: Product[] = [
       { id: "1mq-10", productId: "5-amino-1mq", size: "10 mg", price: 89.00, sku: "1MQ-10MG", inStock: true },
       { id: "1mq-50", productId: "5-amino-1mq", size: "50 mg", price: 109.00, sku: "1MQ-50MG", inStock: true },
     ],
-    imageUrl: "/images/product-placeholder.png",
+    imageUrl: "/images/products/5-amino-1mq.webp",
     tags: ["metabolic", "nnmt", "weight-loss"],
     featured: false,
     published: true,
@@ -209,7 +209,7 @@ export const products: Product[] = [
     variants: [
       { id: "bpctb-10", productId: "bpc-tb-blend", size: "10 mg", price: 89.00, sku: "BPCTB-10MG", inStock: true },
     ],
-    imageUrl: "/images/product-placeholder.png",
+    imageUrl: "/images/products/bpc-tb-blend.webp",
     tags: ["blend", "recovery", "bpc-157", "tb-500"],
     featured: false,
     published: true,
@@ -249,7 +249,7 @@ export const products: Product[] = [
     variants: [
       { id: "cjc-nodac-10", productId: "cjc-1295-no-dac", size: "10 mg", price: 99.00, sku: "CJCNODAC-10MG", inStock: true },
     ],
-    imageUrl: "/images/product-placeholder.png",
+    imageUrl: "/images/products/cjc-1295-no-dac.webp",
     tags: ["growth-hormone", "ghrh", "performance"],
     featured: false,
     published: true,
@@ -310,7 +310,7 @@ export const products: Product[] = [
     variants: [
       { id: "ipa-10", productId: "ipamorelin", size: "10 mg", price: 84.00, sku: "IPA-10MG", inStock: true },
     ],
-    imageUrl: "/images/product-placeholder.png",
+    imageUrl: "/images/products/ipamorelin.webp",
     tags: ["ghrp", "growth-hormone", "performance"],
     featured: false,
     published: true,
@@ -331,7 +331,7 @@ export const products: Product[] = [
       { id: "motsc-10", productId: "mots-c", size: "10 mg", price: 89.00, sku: "MOTSC-10MG", inStock: true },
       { id: "motsc-40", productId: "mots-c", size: "40 mg", price: 149.00, sku: "MOTSC-40MG", inStock: true },
     ],
-    imageUrl: "/images/product-placeholder.png",
+    imageUrl: "/images/products/mots-c.webp",
     tags: ["mitochondrial", "metabolic", "performance"],
     featured: false,
     published: true,
@@ -351,7 +351,7 @@ export const products: Product[] = [
     variants: [
       { id: "kpv-10", productId: "kpv", size: "10 mg", price: 79.00, sku: "KPV-10MG", inStock: true },
     ],
-    imageUrl: "/images/product-placeholder.png",
+    imageUrl: "/images/products/kpv.webp",
     tags: ["recovery", "anti-inflammatory", "melanocortin"],
     featured: false,
     published: true,
@@ -371,7 +371,7 @@ export const products: Product[] = [
     variants: [
       { id: "ss31-10", productId: "ss-31", size: "10 mg", price: 84.00, sku: "SS31-10MG", inStock: true },
     ],
-    imageUrl: "/images/product-placeholder.png",
+    imageUrl: "/images/products/ss-31.webp",
     tags: ["mitochondrial", "performance", "cardioprotection"],
     featured: false,
     published: true,
@@ -391,7 +391,7 @@ export const products: Product[] = [
     variants: [
       { id: "kiss-10", productId: "kisspeptin", size: "10 mg", price: 89.00, sku: "KISS-10MG", inStock: true },
     ],
-    imageUrl: "/images/product-placeholder.png",
+    imageUrl: "/images/products/kisspeptin.webp",
     tags: ["reproductive", "neuropeptide", "performance"],
     featured: false,
     published: true,
@@ -476,7 +476,7 @@ export const products: Product[] = [
     variants: [
       { id: "mt1-10", productId: "melanotan-i", size: "10 mg", price: 79.00, sku: "MT1-10MG", inStock: true },
     ],
-    imageUrl: "/images/product-placeholder.png",
+    imageUrl: "/images/products/melanotan-i.webp",
     tags: ["melanocortin", "pigmentation", "specialty"],
     featured: false,
     published: true,
@@ -537,7 +537,7 @@ export const products: Product[] = [
       { id: "dsip-10", productId: "dsip", size: "10 mg", price: 89.00, sku: "DSIP-10MG", inStock: true },
       { id: "dsip-15", productId: "dsip", size: "15 mg", price: 99.00, sku: "DSIP-15MG", inStock: true },
     ],
-    imageUrl: "/images/product-placeholder.png",
+    imageUrl: "/images/products/dsip.webp",
     tags: ["sleep", "nootropic", "specialty"],
     featured: false,
     published: true,
@@ -557,7 +557,7 @@ export const products: Product[] = [
     variants: [
       { id: "oxy-1", productId: "oxytocin", size: "10 mg", price: 69.00, sku: "OXY-10MG", inStock: true },
     ],
-    imageUrl: "/images/product-placeholder.png",
+    imageUrl: "/images/products/oxytocin.webp",
     tags: ["neuropeptide", "social", "specialty"],
     featured: false,
     published: true,
@@ -577,7 +577,7 @@ export const products: Product[] = [
     variants: [
       { id: "nad-500", productId: "nad-plus", size: "500 mg", price: 119.00, sku: "NAD-500MG", inStock: true },
     ],
-    imageUrl: "/images/product-placeholder.png",
+    imageUrl: "/images/products/nad-plus.webp",
     tags: ["longevity", "metabolic", "specialty"],
     featured: false,
     published: true,
@@ -597,7 +597,7 @@ export const products: Product[] = [
     variants: [
       { id: "gsh-1500", productId: "glutathione", size: "1500 mg", price: 99.00, sku: "GSH-1500MG", inStock: true },
     ],
-    imageUrl: "/images/product-placeholder.png",
+    imageUrl: "/images/products/glutathione.webp",
     tags: ["antioxidant", "specialty", "recovery"],
     featured: false,
     published: true,
@@ -703,7 +703,7 @@ export const products: Product[] = [
     variants: [
       { id: "klow-80", productId: "klow", size: "80 mg total", price: 169.00, sku: "KLOW-80MG", inStock: true },
     ],
-    imageUrl: "/images/product-placeholder.png",
+    imageUrl: "/images/products/klow.webp",
     tags: ["blend", "recovery", "bpc-157", "tb-500", "ghk-cu", "kpv"],
     featured: false,
     published: true,
