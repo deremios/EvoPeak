@@ -1,8 +1,8 @@
 import Link from "next/link";
-import Image from "next/image";
 import { getAllLandings, getLandingPath } from "@/data/peptide-landings";
 import { getAllCategories } from "@/lib/products";
 import { getProductById } from "@/lib/products";
+import { ProductImage } from "@/components/shop/product-image";
 import type { PeptideLandingContent } from "@/types/peptide-landing";
 
 function GuideCard({ landing }: { landing: PeptideLandingContent }) {
@@ -14,9 +14,9 @@ function GuideCard({ landing }: { landing: PeptideLandingContent }) {
       href={getLandingPath(landing.peptideSlug)}
       className="group flex flex-col overflow-hidden rounded-[1.75rem] border border-border-default bg-white transition-all duration-300 hover:-translate-y-1 hover:border-brand-green/30 hover:shadow-xl"
     >
-      <div className="relative aspect-[16/10] overflow-hidden bg-bg-primary">
-        <Image
-          src={landing.heroImage}
+      <div className="relative aspect-[4/3] overflow-hidden bg-white">
+        <ProductImage
+          src={product.imageUrl}
           alt={`${product.name} Australia guide`}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
