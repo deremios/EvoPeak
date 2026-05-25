@@ -72,3 +72,25 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* Homepage MEDVi-style tokens */
+.home-medvi {
+  --home-hero-from: #1b3d32;
+  --home-hero-to: #2a5244;
+  --home-accent-mint: #9dc4aa;
+  --home-text-charcoal: #242220;
+  --home-blob-sage: #d4e4d9;
+  --home-cta-green: #1b3d32;
+  --home-chip-bg: #f5f5f5;
+  font-family: var(--font-red-hat), ui-sans-serif, system-ui, sans-serif;
+  color: var(--home-text-charcoal);
+  background: #ffffff;
+}
+
+.home-medvi .text-home-charcoal { color: var(--home-text-charcoal); }
+.home-medvi .text-home-mint { color: var(--home-accent-mint); }
+.home-medvi .bg-home-hero {
+  background: linear-gradient(165deg, var(--home-hero-from) 0%, var(--home-hero-to) 100%);
+}
+.home-medvi .bg-home-blob { background-color: var(--home-blob-sage); }
+.home-medvi .bg-home-cta { background-color: var(--home-cta-green); }

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Red_Hat_Text } from "next/font/google";
 import "@/styles/globals.css";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
@@ -16,6 +16,12 @@ const inter = Inter({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-inter",
+});
+
+const redHatText = Red_Hat_Text({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-red-hat",
 });
 
 export const metadata: Metadata = {
@@ -43,7 +49,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang={region.locale} className={inter.variable}>
+    <html lang={region.locale} className={`${inter.variable} ${redHatText.variable}`}>
       <head>
         <GoogleAnalytics />
         <script

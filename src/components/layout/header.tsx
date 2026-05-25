@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useCart } from "@/lib/cart-context";
 import { Logo } from "@/components/shared/logo";
 import { MobileMenu } from "./mobile-menu";
@@ -22,14 +23,32 @@ const navLinks = [
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
   const { itemCount } = useCart();
+  const isHome = pathname === "/";
+  const transparent = isHome && !scrolled;
+
+  useEffect(() => {
+    if (!isHome) return;
+    const onScroll = () => setScrolled(window.scrollY > 48);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [isHome]);
 
   return (
-    <header className="sticky top-0 z-50 bg-bg-white border-b border-border-default backdrop-blur-sm bg-white/95">
+    <header
+      className={`sticky top-0 z-50 transition-colors duration-300 ${
+        transparent
+          ? "border-b border-transparent bg-transparent"
+          : "border-b border-border-default bg-white/95 backdrop-blur-sm"
+      }`}
+    >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Logo size="md" />
+          <Logo size="md" invert={transparent} />
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-7">
@@ -37,7 +56,11 @@ export function Header() {
               <div key={link.href} className="group relative">
                 <Link
                   href={link.href}
-                  className="text-sm font-medium text-text-secondary hover:text-brand-green transition-colors"
+                  className={`text-sm font-medium transition-colors ${
+                    transparent
+                      ? "text-white/85 hover:text-white"
+                      : "text-text-secondary hover:text-brand-green"
+                  }`}
                 >
                   {link.label}
                 </Link>
@@ -109,13 +132,21 @@ export function Header() {
           <div className="hidden md:flex items-center gap-4">
             <Link
               href="/account"
-              className="text-sm font-medium text-text-secondary hover:text-brand-green transition-colors"
+              className={`text-sm font-medium transition-colors ${
+                transparent
+                  ? "text-white/85 hover:text-white"
+                  : "text-text-secondary hover:text-brand-green"
+              }`}
             >
               Account
             </Link>
             <Link
               href="/cart"
-              className="inline-flex items-center justify-center rounded-lg bg-brand-green px-4 py-2 text-sm font-medium text-white hover:bg-brand-green-light transition-colors"
+              className={`inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
+                transparent
+                  ? "bg-white text-[#1b3d32] hover:bg-white/90"
+                  : "bg-brand-green text-white hover:bg-brand-green-light"
+              }`}
             >
               Cart{itemCount > 0 && ` (${itemCount})`}
             </Link>
@@ -125,7 +156,11 @@ export function Header() {
           <button
             type="button"
             onClick={() => setMobileOpen(true)}
-            className="md:hidden inline-flex items-center justify-center rounded-md p-2 text-text-secondary hover:text-brand-green"
+            className={`md:hidden inline-flex items-center justify-center rounded-md p-2 transition-colors ${
+              transparent
+                ? "text-white hover:text-white/80"
+                : "text-text-secondary hover:text-brand-green"
+            }`}
             aria-label="Open menu"
           >
             <svg

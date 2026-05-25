@@ -33,7 +33,9 @@ export function Logo({ size = "md", invert = false }: LogoProps) {
       <span className={invert ? "text-white" : "text-brand-green"}>
         {primary}
       </span>
-      {secondary && <span className="text-brand-orange">{secondary}</span>}
+      {secondary && (
+        <span className={invert ? "text-white" : "text-brand-orange"}>{secondary}</span>
+      )}
     </Link>
   );
 }
