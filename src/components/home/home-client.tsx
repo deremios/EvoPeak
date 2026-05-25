@@ -38,6 +38,12 @@ const steps = [
   { number: "04", title: "Order for research", body: "Checkout with local Australian fulfilment and research-only positioning visible through the buying flow." },
 ];
 
+const retatrutideBenefits = [
+  { title: "Appetite & intake", body: "GLP-1 and GIP receptor agonism modulates satiety signalling and glucose-dependent insulin secretion." },
+  { title: "Energy expenditure", body: "Glucagon receptor activation adds thermogenesis and hepatic fatty acid oxidation — the key differentiator from dual agonists." },
+  { title: "Body composition", body: "Published trials report dose-dependent reductions in body weight alongside improvements in waist circumference." },
+];
+
 const menCards = [
   { title: "Metabolic Pathways", body: "GLP-1, GIP, amylin, and lipolysis compounds.", href: "/collections/metabolic-research" },
   { title: "GH Axis Signaling", body: "GHRH, GHRP, and GH-fragment compounds by mechanism.", href: "/collections/performance-gh-axis" },
@@ -222,30 +228,49 @@ export function HomeClient({ collections }: { collections: ResearchCollection[] 
         </StaggerGrid>
       </section>
 
-      {/* ── Formulas Built For You + product flatlay ── */}
+      {/* ── Retatrutide weight loss research ── */}
       <section className="overflow-hidden bg-[#f5f1e8] py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <FadeIn direction="left">
-              <p className="text-sm font-black uppercase tracking-[0.3em] text-brand-orange">Formulas Built For You</p>
+              <p className="text-sm font-black uppercase tracking-[0.3em] text-brand-orange">Triple Agonist Research</p>
               <h2 className="mt-6 text-4xl font-black leading-tight tracking-[-0.04em] text-brand-navy sm:text-6xl">
-                We help researchers take control of product discovery.
+                Weight loss benefits of Retatrutide.
               </h2>
               <p className="mt-6 max-w-lg text-lg leading-8 text-text-secondary">
-                A catalog built around pathways, quality documentation, and research use case — so you spend less time searching and more time studying.
+                Retatrutide (LY3437943) is a triple GLP-1, GIP, and glucagon receptor agonist — the most advanced incretin compound in published clinical research. Its glucagon component adds thermogenesis and hepatic lipid oxidation on top of the appetite and glucose effects seen with dual agonists.
               </p>
-              <Link href="/shop" className="mt-8 inline-flex items-center gap-2 rounded-full bg-brand-navy px-7 py-3.5 text-sm font-black uppercase tracking-[0.16em] text-white transition-all hover:bg-brand-green hover:shadow-xl">
-                Browse catalog
-                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
-              </Link>
+              <div className="mt-8 space-y-4">
+                {retatrutideBenefits.map((item) => (
+                  <div key={item.title} className="rounded-2xl border border-black/8 bg-white/60 px-5 py-4">
+                    <p className="text-sm font-black uppercase tracking-[0.14em] text-brand-navy">{item.title}</p>
+                    <p className="mt-1.5 text-sm leading-6 text-text-secondary">{item.body}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-8 rounded-2xl border border-brand-green/25 bg-brand-green/5 px-5 py-5">
+                <p className="text-sm font-black uppercase tracking-[0.14em] text-brand-green">Phase 3 TRIUMPH-1 findings</p>
+                <p className="mt-2 text-sm leading-7 text-text-secondary">
+                  Topline results from the pivotal Phase 3 TRIUMPH-1 trial reported dose-dependent weight loss at 80 weeks: <strong className="font-bold text-brand-navy">19.0%</strong> at 4&nbsp;mg, <strong className="font-bold text-brand-navy">25.9%</strong> at 9&nbsp;mg, and <strong className="font-bold text-brand-navy">28.3%</strong> at 12&nbsp;mg. In a pre-specified extension, participants on the 12&nbsp;mg dose reached an average <strong className="font-bold text-brand-navy">30.3%</strong> reduction at 104 weeks, with 45.3% achieving ≥30% total weight loss.
+                </p>
+              </div>
+              <div className="mt-8 flex flex-wrap gap-4">
+                <Link href="/shop/retatrutide" className="inline-flex items-center gap-2 rounded-full bg-brand-navy px-7 py-3.5 text-sm font-black uppercase tracking-[0.16em] text-white transition-all hover:bg-brand-green hover:shadow-xl">
+                  Shop Retatrutide
+                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+                </Link>
+                <Link href="/peptides/retatrutide" className="inline-flex items-center gap-2 rounded-full border border-brand-navy/30 px-7 py-3.5 text-sm font-black uppercase tracking-[0.16em] text-brand-navy transition-all hover:border-brand-green hover:text-brand-green">
+                  Read the guide
+                </Link>
+              </div>
             </FadeIn>
             <FadeIn direction="right" delay={0.12}>
               <div className="relative overflow-hidden rounded-[2.5rem]">
-                <img src="/images/product-flatlay.webp" alt="EvoPeak research compounds — laboratory flatlay" className="w-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                <img src="/images/peptides/retatrutide-mechanism.png" alt="Retatrutide triple agonist mechanism — GLP-1, GIP, and glucagon receptor pathways" className="w-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                 <div className="absolute bottom-6 left-6 right-6">
                   <span className="rounded-full border border-white/30 bg-black/40 px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-white backdrop-blur">
-                    Research use only — laboratory compounds
+                    GLP-1 · GIP · Glucagon — triple agonist
                   </span>
                 </div>
               </div>
