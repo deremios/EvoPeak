@@ -34,9 +34,9 @@ export const researchCollections: ResearchCollection[] = [
     seoDescription:
       "Browse metabolic research peptides including Semaglutide, Tirzepatide, Retatrutide, Cagrisema, AOD-9604, and related compounds. Third-party tested and shipped from Australia for laboratory research use only.",
     productIds: [
+      "retatrutide",
       "semaglutide",
       "tirzepatide",
-      "retatrutide",
       "cagrisema",
       "liraglutide",
       "aod-9604",

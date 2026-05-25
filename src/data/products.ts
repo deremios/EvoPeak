@@ -3,6 +3,29 @@ import type { Product } from "@/types/product";
 export const products: Product[] = [
   // ─── WEIGHT LOSS ──────────────────────────────────────────────
   {
+    id: "retatrutide",
+    name: "Retatrutide",
+    slug: "retatrutide",
+    categoryId: "weight-loss",
+    alternateName: "Triple Agonist (GLP-1/GIP/Glucagon)",
+    shortDescription: "Triple incretin agonist for advanced metabolic pathway research.",
+    description:
+      "Retatrutide is a novel triple hormone receptor agonist targeting GLP-1, GIP, and glucagon receptors simultaneously. It represents the next generation of incretin-based research compounds. Early research suggests a broader metabolic impact than dual or single agonists.",
+    researchSummary:
+      "Preclinical research demonstrates that triple agonism produces additive effects on energy expenditure via glucagon receptor activation alongside the appetite-modulating effects of GLP-1 and GIP signaling. Phase 2 clinical trial data suggests dose-dependent body weight changes of significant magnitude.",
+    variants: [
+      { id: "reta-10", productId: "retatrutide", size: "10 mg", price: 149.00, sku: "RETA-10MG", inStock: true },
+      { id: "reta-15", productId: "retatrutide", size: "15 mg", price: 199.00, sku: "RETA-15MG", inStock: true },
+      { id: "reta-20", productId: "retatrutide", size: "20 mg", price: 229.00, sku: "RETA-20MG", inStock: true },
+      { id: "reta-30", productId: "retatrutide", size: "30 mg", price: 299.00, sku: "RETA-30MG", inStock: true },
+    ],
+    imageUrl: "/images/products/retatrutide.webp",
+    tags: ["glp-1", "gip", "glucagon", "weight-loss", "metabolic", "retatrutide buy", "retatrutide australia"],
+    featured: true,
+    published: true,
+    createdAt: "2026-04-01",
+  },
+  {
     id: "semaglutide",
     name: "Semaglutide",
     slug: "semaglutide",
@@ -42,29 +65,6 @@ export const products: Product[] = [
     imageUrl: "/images/products/tirzepatide.webp",
     tags: ["glp-1", "gip", "weight-loss", "metabolic", "popular"],
     featured: true,
-    published: true,
-    createdAt: "2026-04-01",
-  },
-  {
-    id: "retatrutide",
-    name: "Retatrutide",
-    slug: "retatrutide",
-    categoryId: "weight-loss",
-    alternateName: "Triple Agonist (GLP-1/GIP/Glucagon)",
-    shortDescription: "Triple incretin agonist for advanced metabolic pathway research.",
-    description:
-      "Retatrutide is a novel triple hormone receptor agonist targeting GLP-1, GIP, and glucagon receptors simultaneously. It represents the next generation of incretin-based research compounds. Early research suggests a broader metabolic impact than dual or single agonists.",
-    researchSummary:
-      "Preclinical research demonstrates that triple agonism produces additive effects on energy expenditure via glucagon receptor activation alongside the appetite-modulating effects of GLP-1 and GIP signaling. Phase 2 clinical trial data suggests dose-dependent body weight changes of significant magnitude.",
-    variants: [
-      { id: "reta-10", productId: "retatrutide", size: "10 mg", price: 149.00, sku: "RETA-10MG", inStock: true },
-      { id: "reta-15", productId: "retatrutide", size: "15 mg", price: 199.00, sku: "RETA-15MG", inStock: true },
-      { id: "reta-20", productId: "retatrutide", size: "20 mg", price: 229.00, sku: "RETA-20MG", inStock: true },
-      { id: "reta-30", productId: "retatrutide", size: "30 mg", price: 299.00, sku: "RETA-30MG", inStock: true },
-    ],
-    imageUrl: "/images/products/retatrutide.webp",
-    tags: ["glp-1", "gip", "glucagon", "weight-loss", "metabolic", "retatrutide buy", "retatrutide australia"],
-    featured: false,
     published: true,
     createdAt: "2026-04-01",
   },

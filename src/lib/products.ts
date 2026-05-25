@@ -2,6 +2,12 @@ import { products } from "@/data/products";
 import { categories } from "@/data/categories";
 import type { Product, SortOption } from "@/types/product";
 
+const PRIORITY_PRODUCT_IDS = ["retatrutide"];
+
+function getCatalogIndex(product: Product): number {
+  return products.findIndex((item) => item.id === product.id);
+}
+
 export function getAllProducts(): Product[] {
   return products.filter((p) => p.published);
 }
@@ -51,7 +57,20 @@ export function sortProducts(items: Product[], sort: SortOption): Product[] {
       );
     case "popular":
     default:
-      return sorted.sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
+      return sorted.sort((a, b) => {
+        const aPriority = PRIORITY_PRODUCT_IDS.indexOf(a.id);
+        const bPriority = PRIORITY_PRODUCT_IDS.indexOf(b.id);
+        if (aPriority !== -1 || bPriority !== -1) {
+          const aRank = aPriority === -1 ? PRIORITY_PRODUCT_IDS.length : aPriority;
+          const bRank = bPriority === -1 ? PRIORITY_PRODUCT_IDS.length : bPriority;
+          if (aRank !== bRank) return aRank - bRank;
+        }
+
+        const featuredDiff = (b.featured ? 1 : 0) - (a.featured ? 1 : 0);
+        if (featuredDiff !== 0) return featuredDiff;
+
+        return getCatalogIndex(a) - getCatalogIndex(b);
+      });
   }
 }
 
