@@ -28,7 +28,8 @@ export function Header() {
   const { itemCount } = useCart();
   const isHome = pathname === "/";
   const isBlog = pathname === "/blog";
-  const hasTransparentHero = isHome || isBlog;
+  const isBundles = pathname === "/bundles";
+  const hasTransparentHero = isHome || isBlog || isBundles;
   const transparent = hasTransparentHero && !scrolled;
 
   useEffect(() => {
