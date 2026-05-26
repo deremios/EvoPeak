@@ -15,7 +15,7 @@ const sortOptions: { value: SortOption; label: string }[] = [
 ];
 
 const selectClass =
-  "rounded-lg border border-border-default bg-white px-3 py-2 text-sm text-text-primary focus:outline-none focus:ring-2 focus:ring-brand-green/20 focus:border-brand-green shrink-0";
+  "rounded-full border border-black/8 bg-[#fafafa] px-4 py-2.5 text-sm text-home-charcoal focus:border-[#1b3d32]/40 focus:outline-none focus:ring-2 focus:ring-[#1b3d32]/10 shrink-0";
 
 function SearchInput({
   query,
@@ -25,9 +25,9 @@ function SearchInput({
   onChange: (value: string) => void;
 }) {
   return (
-    <div className="relative flex-1 min-w-[200px]">
+    <div className="relative min-w-[200px] flex-1">
       <svg
-        className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted"
+        className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-home-charcoal/45"
         fill="none"
         viewBox="0 0 24 24"
         strokeWidth="2"
@@ -44,7 +44,7 @@ function SearchInput({
         placeholder="Search peptides..."
         value={query}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full pl-10 pr-4 py-2.5 rounded-lg border border-border-default bg-white text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-brand-green/20 focus:border-brand-green transition-colors"
+        className="w-full rounded-full border border-black/8 bg-[#fafafa] py-2.5 pl-11 pr-4 text-sm text-home-charcoal placeholder:text-home-charcoal/45 transition-colors focus:border-[#1b3d32]/40 focus:outline-none focus:ring-2 focus:ring-[#1b3d32]/10"
       />
     </div>
   );
@@ -85,7 +85,7 @@ export function ShopContent() {
 
   return (
     <div>
-      <div className="mb-6 space-y-3">
+      <div className="mb-8 space-y-4">
         <div className="flex flex-col gap-3 lg:flex-row lg:items-center">
           <SearchInput query={query} onChange={setQuery} />
           <div className="flex flex-wrap items-center gap-2">
@@ -132,20 +132,20 @@ export function ShopContent() {
             </select>
           </div>
         </div>
-        <p className="text-sm text-text-muted">
+        <p className="text-sm text-home-charcoal/60">
           {filtered.length} product{filtered.length !== 1 ? "s" : ""}
         </p>
       </div>
 
       {filtered.length === 0 ? (
-        <div className="text-center py-16">
-          <p className="text-text-muted text-lg">No products found.</p>
-          <p className="text-text-muted text-sm mt-2">
+        <div className="rounded-[2rem] border border-black/6 bg-[#fafafa] py-16 text-center">
+          <p className="text-lg text-home-charcoal/65">No products found.</p>
+          <p className="mt-2 text-sm text-home-charcoal/50">
             Try adjusting your search or category filter.
           </p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {filtered.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
