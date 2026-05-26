@@ -11,37 +11,32 @@ export function CollectionCard({
   return (
     <Link
       href={`/collections/${collection.slug}`}
-      className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+      className="group flex flex-col overflow-hidden rounded-[2rem] border border-black/6 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)]"
     >
-      <div
-        className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${collection.color}`}
-      />
-      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-green">
+      <p className="text-xs font-medium uppercase tracking-[0.14em] text-home-charcoal/55">
         {collection.eyebrow}
       </p>
-      <h3 className="mt-4 text-2xl font-bold tracking-tight text-text-primary">
+      <h3 className="mt-4 text-xl font-normal text-home-charcoal transition-colors group-hover:text-[#1b3d32]">
         {collection.name}
       </h3>
-      <p className="mt-3 text-sm leading-6 text-text-secondary">
-        {collection.description}
-      </p>
-      <div className="mt-6 flex flex-wrap gap-2">
+      <p className="mt-3 flex-1 text-sm leading-6 text-home-charcoal/65">{collection.description}</p>
+      <div className="mt-5 flex flex-wrap gap-2">
         {collection.highlights.slice(0, 2).map((highlight) => (
           <span
             key={highlight}
-            className="rounded-full bg-brand-green/10 px-3 py-1 text-xs font-medium text-brand-green"
+            className="rounded-full border border-black/8 bg-[#f5f5f5] px-3 py-1 text-xs text-home-charcoal/75"
           >
             {highlight}
           </span>
         ))}
       </div>
-      <span className="mt-7 inline-flex items-center text-sm font-semibold text-brand-navy transition-colors group-hover:text-brand-green">
+      <span className="mt-6 inline-flex items-center text-sm font-medium text-[#1b3d32]">
         {cta}
         <svg
           className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1"
           fill="none"
           viewBox="0 0 24 24"
-          strokeWidth="1.8"
+          strokeWidth="2"
           stroke="currentColor"
         >
           <path

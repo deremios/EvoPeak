@@ -30,7 +30,8 @@ export function Header() {
   const isBlog = pathname === "/blog";
   const isBundles = pathname === "/bundles";
   const isCollection = pathname.startsWith("/collections/");
-  const hasTransparentHero = isHome || isBlog || isBundles || isCollection;
+  const isAudience = pathname === "/men" || pathname === "/women";
+  const hasTransparentHero = isHome || isBlog || isBundles || isCollection || isAudience;
   const transparent = hasTransparentHero && !scrolled;
 
   useEffect(() => {
