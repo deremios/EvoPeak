@@ -27,15 +27,17 @@ export function Header() {
   const pathname = usePathname();
   const { itemCount } = useCart();
   const isHome = pathname === "/";
-  const transparent = isHome && !scrolled;
+  const isBlog = pathname === "/blog";
+  const hasTransparentHero = isHome || isBlog;
+  const transparent = hasTransparentHero && !scrolled;
 
   useEffect(() => {
-    if (!isHome) return;
+    if (!hasTransparentHero) return;
     const onScroll = () => setScrolled(window.scrollY > 48);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, [isHome]);
+  }, [hasTransparentHero]);
 
   return (
     <header

@@ -37,14 +37,6 @@ const TAG_CATEGORY: Record<string, string> = {
   "buying": "Research Guide",
 };
 
-const CATEGORY_STYLES: Record<string, { badge: string; dot: string; border: string }> = {
-  "Recovery":      { badge: "bg-emerald-50 text-emerald-700 border border-emerald-200", dot: "bg-emerald-500", border: "group-hover:border-emerald-200" },
-  "Weight Loss":   { badge: "bg-orange-50 text-orange-700 border border-orange-200",   dot: "bg-orange-500",  border: "group-hover:border-orange-200" },
-  "Performance":   { badge: "bg-blue-50 text-blue-700 border border-blue-200",         dot: "bg-blue-500",    border: "group-hover:border-blue-200" },
-  "Cognitive":     { badge: "bg-purple-50 text-purple-700 border border-purple-200",   dot: "bg-purple-500",  border: "group-hover:border-purple-200" },
-  "Research Guide":{ badge: "bg-slate-50 text-slate-600 border border-slate-200",      dot: "bg-slate-400",   border: "group-hover:border-slate-200" },
-};
-
 export function getCategoryFromTags(tags: string[]): string {
   for (const tag of tags) {
     const cat = TAG_CATEGORY[tag.toLowerCase()];
@@ -60,54 +52,48 @@ export function BlogList() {
   if (posts.length === 0) return null;
 
   const [featured, ...rest] = posts;
-  const featuredCategory = getCategoryFromTags(featured.tags);
-  const featuredStyle = CATEGORY_STYLES[featuredCategory];
 
   return (
     <div className="space-y-12">
-      {/* ── Featured Post ── */}
+      {/* Featured Post */}
       <Link href={`/blog/${featured.slug}`} className="group block">
-        <div className="rounded-3xl overflow-hidden bg-white border border-border-default shadow-sm hover:shadow-xl transition-all duration-300">
+        <div className="overflow-hidden rounded-[2rem] border border-black/6 bg-white shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-300 hover:shadow-[0_12px_40px_rgba(0,0,0,0.1)]">
           <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr]">
-            {/* Image */}
-            <div className="relative overflow-hidden min-h-[280px] lg:min-h-[420px]">
+            <div className="relative min-h-[280px] overflow-hidden lg:min-h-[420px]">
               <Image
                 src={featured.ogImage || DEFAULT_IMAGE}
                 alt={featured.title}
                 fill
                 priority
                 sizes="(min-width: 1024px) 60vw, 100vw"
-                className="object-cover group-hover:scale-105 transition-transform duration-700"
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-black/10" />
-              <div className="absolute top-5 left-5">
-                <span className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold backdrop-blur-sm ${featuredStyle.badge}`}>
-                  <span className={`h-1.5 w-1.5 rounded-full ${featuredStyle.dot}`} />
-                  {featuredCategory}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-black/10" />
+              <div className="absolute left-5 top-5">
+                <span className="inline-flex items-center rounded-full border border-white/30 bg-black/30 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">
+                  {getCategoryFromTags(featured.tags)}
                 </span>
               </div>
             </div>
 
-            {/* Content */}
-            <div className="p-8 lg:p-10 xl:p-14 flex flex-col justify-center">
-              <div className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-green uppercase tracking-widest mb-4">
-                <span className="h-px w-4 bg-brand-green" />
+            <div className="flex flex-col justify-center p-8 lg:p-10 xl:p-14">
+              <p className="mb-4 text-xs font-medium uppercase tracking-[0.2em] text-home-charcoal/60">
                 Featured Research
-              </div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-text-primary leading-tight group-hover:text-brand-green transition-colors">
+              </p>
+              <h2 className="text-2xl font-normal leading-tight text-home-charcoal transition-colors group-hover:text-[#1b3d32] sm:text-3xl">
                 {featured.title}
               </h2>
-              <p className="mt-4 text-text-secondary leading-relaxed line-clamp-4">
+              <p className="mt-4 line-clamp-4 leading-relaxed text-home-charcoal/70">
                 {featured.excerpt}
               </p>
 
-              <div className="mt-8 flex items-center justify-between">
-                <div className="text-xs text-text-muted space-x-2">
+              <div className="mt-8 flex items-center justify-between gap-4">
+                <div className="space-x-2 text-xs text-home-charcoal/50">
                   <time>{formatDate(new Date(featured.createdAt))}</time>
                   <span>·</span>
                   <span>{getReadingTime(featured.content)} min read</span>
                 </div>
-                <span className="inline-flex items-center gap-1.5 rounded-lg bg-brand-green px-4 py-2 text-sm font-semibold text-white group-hover:bg-brand-green-light transition-colors">
+                <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-home-cta px-5 py-2.5 text-sm font-medium text-white transition group-hover:opacity-90">
                   Read now →
                 </span>
               </div>
@@ -116,49 +102,45 @@ export function BlogList() {
         </div>
       </Link>
 
-      {/* ── 3-Column Grid ── */}
+      {/* Grid */}
       {rest.length > 0 && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7">
           {rest.map((post) => {
             const category = getCategoryFromTags(post.tags);
-            const style = CATEGORY_STYLES[category];
             const readingTime = getReadingTime(post.content);
 
             return (
               <Link
                 key={post.id}
                 href={`/blog/${post.slug}`}
-                className={`group flex flex-col bg-white rounded-2xl border border-border-default overflow-hidden hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 ${style.border}`}
+                className="group flex flex-col overflow-hidden rounded-[1.5rem] border border-black/6 bg-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)]"
               >
-                {/* Thumbnail */}
-                <div className="relative aspect-video overflow-hidden bg-bg-primary">
+                <div className="relative aspect-video overflow-hidden bg-[#fafafa]">
                   <Image
                     src={post.ogImage || DEFAULT_IMAGE}
                     alt={post.title}
                     fill
                     sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-                  <div className="absolute top-3 left-3">
-                    <span className={`inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-[11px] font-semibold backdrop-blur-sm ${style.badge}`}>
-                      <span className={`h-1.5 w-1.5 rounded-full ${style.dot}`} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/15 to-transparent" />
+                  <div className="absolute left-3 top-3">
+                    <span className="inline-flex items-center rounded-full border border-black/8 bg-white/90 px-2.5 py-0.5 text-[11px] font-medium text-home-charcoal/80 backdrop-blur-sm">
                       {category}
                     </span>
                   </div>
                 </div>
 
-                {/* Content */}
-                <div className="flex flex-col flex-1 p-5">
-                  <h3 className="font-bold text-text-primary leading-snug line-clamp-2 group-hover:text-brand-green transition-colors">
+                <div className="flex flex-1 flex-col p-5">
+                  <h3 className="line-clamp-2 font-normal leading-snug text-home-charcoal transition-colors group-hover:text-[#1b3d32]">
                     {post.title}
                   </h3>
-                  <p className="mt-2 text-sm text-text-secondary leading-relaxed line-clamp-3 flex-1">
+                  <p className="mt-2 line-clamp-3 flex-1 text-sm leading-relaxed text-home-charcoal/65">
                     {post.excerpt}
                   </p>
-                  <div className="mt-4 flex items-center justify-between text-xs text-text-muted pt-4 border-t border-border-default">
+                  <div className="mt-4 flex items-center justify-between border-t border-black/6 pt-4 text-xs text-home-charcoal/50">
                     <time>{formatDate(new Date(post.createdAt))}</time>
-                    <span className="font-semibold text-brand-green">{readingTime} min →</span>
+                    <span className="font-medium text-[#1b3d32]">{readingTime} min →</span>
                   </div>
                 </div>
               </Link>
