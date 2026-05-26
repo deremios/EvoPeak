@@ -6,13 +6,16 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { region } from "@/config";
 import { QualityProof } from "@/components/collections/quality-proof";
+import { PeptideGuideHero } from "@/components/peptides/peptide-guide-hero";
 import { ShopCta } from "@/components/peptides/shop-cta";
-import { TrustpilotBand } from "@/components/shared/trustpilot-band";
+import { TrustIconStrip } from "@/components/home/medvi/primitives";
+import { trustItems } from "@/components/home/home-data";
 import { FadeIn } from "@/components/shared/fade-in";
 import { getLandingByPeptideSlug, getLandingPath } from "@/data/peptide-landings";
 import type { PeptideLandingContent } from "@/types/peptide-landing";
 import type { Product } from "@/types/product";
 import { getLowestPrice } from "@/lib/products";
+import { ProductImage } from "@/components/shop/product-image";
 
 function FaqItem({ q, a, index }: { q: string; a: string; index: number }) {
   const ref = useRef<HTMLElement>(null);
@@ -27,21 +30,20 @@ function FaqItem({ q, a, index }: { q: string; a: string; index: number }) {
         ease: [0.22, 1, 0.36, 1],
         delay: index * 0.06,
       }}
-      className="border-b border-border-default py-8 last:border-0"
+      className="border-b border-black/6 py-8 last:border-0"
     >
-      <h3 className="text-xl font-black text-brand-navy sm:text-2xl">{q}</h3>
-      <p className="mt-3 max-w-3xl text-base leading-7 text-text-secondary">
-        {a}
-      </p>
+      <h3 className="text-xl font-normal text-home-charcoal sm:text-2xl">{q}</h3>
+      <p className="mt-3 max-w-3xl text-base leading-7 text-home-charcoal/65">{a}</p>
     </motion.article>
   );
 }
 
-function ContentBlock({ text }: { text: string }) {
+function ContentBlock({ text, theme = "light" }: { text: string; theme?: "light" | "dark" }) {
+  const textClass = theme === "dark" ? "text-white/85" : "text-home-charcoal/65";
   return (
     <>
       {text.split("\n\n").map((paragraph, i) => (
-        <p key={i} className="mt-4 first:mt-0 text-base leading-7 text-text-secondary">
+        <p key={i} className={`mt-4 first:mt-0 text-base leading-7 ${textClass}`}>
           {paragraph}
         </p>
       ))}
@@ -51,28 +53,30 @@ function ContentBlock({ text }: { text: string }) {
 
 function RelatedPeptideCard({ product }: { product: Product }) {
   const hasLanding = !!getLandingByPeptideSlug(product.slug);
-  const href = hasLanding
-    ? getLandingPath(product.slug)
-    : `/shop/${product.slug}`;
+  const href = hasLanding ? getLandingPath(product.slug) : `/shop/${product.slug}`;
 
   return (
     <Link
       href={href}
-      className="group flex flex-col overflow-hidden rounded-[1.75rem] border border-border-default bg-white transition-all duration-300 hover:-translate-y-1 hover:border-brand-green/30 hover:shadow-xl"
+      className="group flex flex-col overflow-hidden rounded-[2rem] border border-black/6 bg-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)]"
     >
-      <div className="relative aspect-[4/3] overflow-hidden bg-bg-primary">
-        <img
-          src="/images/product-placeholder.png"
+      <div className="relative aspect-[4/3] overflow-hidden bg-[#E8F3EC]">
+        <ProductImage
+          src={product.imageUrl}
           alt={product.name}
-          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          fill
+          sizes="(max-width: 768px) 100vw, 33vw"
+          className="object-contain p-6 transition-transform duration-500 group-hover:scale-105"
         />
       </div>
       <div className="flex flex-1 flex-col p-5">
-        <h3 className="text-lg font-black text-brand-navy">{product.name}</h3>
-        <p className="mt-2 flex-1 text-sm leading-6 text-text-secondary line-clamp-2">
+        <h3 className="text-lg font-normal text-home-charcoal group-hover:text-[#1b3d32]">
+          {product.name}
+        </h3>
+        <p className="mt-2 flex-1 text-sm leading-6 text-home-charcoal/65 line-clamp-2">
           {product.shortDescription}
         </p>
-        <span className="mt-4 text-xs font-black uppercase tracking-[0.18em] text-brand-green">
+        <span className="mt-4 text-sm font-medium text-[#1b3d32]">
           {hasLanding ? "View guide →" : "View product →"}
         </span>
       </div>
@@ -86,103 +90,23 @@ interface PeptideLandingProps {
   relatedProducts: Product[];
 }
 
-export function PeptideLanding({
-  landing,
-  product,
-  relatedProducts,
-}: PeptideLandingProps) {
+export function PeptideLanding({ landing, product, relatedProducts }: PeptideLandingProps) {
   const lowestPrice = getLowestPrice(product);
   const { sections } = landing;
 
   return (
-    <div className="bg-[#f5f1e8] text-text-primary">
-      {/* Hero */}
-      <section
-        className={`relative min-h-[560px] overflow-hidden bg-gradient-to-br ${landing.gradient} text-white`}
-      >
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.10),transparent_30%),radial-gradient(circle_at_bottom_left,rgba(90,200,120,0.14),transparent_28%)]" />
-        <div className="absolute inset-0 opacity-20">
-          <Image
-            src={landing.heroImage}
-            alt={`${product.name} research peptide`}
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-center"
-          />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30" />
-        <div className="relative mx-auto flex min-h-[560px] max-w-7xl flex-col justify-end px-4 pb-14 sm:px-6 sm:pb-20 lg:px-8">
-          <nav className="mb-8 flex items-center gap-2 text-sm text-white/50">
-            <Link href="/" className="hover:text-white transition-colors">
-              Home
-            </Link>
-            <span>/</span>
-            <span className="text-white/90">{landing.heroHeadline}</span>
-          </nav>
-          <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
-            <div>
-              <p className="text-sm font-black uppercase tracking-[0.28em] text-brand-orange">
-                {landing.heroEyebrow}
-              </p>
-              <h1 className="mt-5 max-w-4xl text-5xl font-black leading-[0.95] tracking-[-0.04em] sm:text-7xl">
-                {landing.heroHeadline}
-              </h1>
-              <p className="mt-6 max-w-2xl text-lg leading-8 text-white/75">
-                {landing.heroSubheadline}
-              </p>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                <ShopCta
-                  href={landing.shopPath}
-                  label={landing.ctaLabel}
-                  priceFrom={lowestPrice}
-                />
-                <a
-                  href="#dosage"
-                  className="inline-flex items-center justify-center rounded-full border border-white/40 px-9 py-4 text-sm font-black uppercase tracking-[0.18em] text-white hover:bg-white/15 transition-colors"
-                >
-                  Dosage guide
-                </a>
-              </div>
-            </div>
-            <div className="rounded-[2rem] border border-white/10 bg-white/10 p-6 backdrop-blur sm:p-8">
-              <p className="text-xs font-black uppercase tracking-[0.25em] text-brand-orange">
-                Quick facts
-              </p>
-              <ul className="mt-5 space-y-4">
-                {[
-                  product.alternateName && `Also known as: ${product.alternateName}`,
-                  `Form: Lyophilised powder (>99% purity)`,
-                  `Variants: ${product.variants.map((v) => v.size).join(", ")}`,
-                  `🇦🇺 ${region.shipping.domesticEstimate}`,
-                ]
-                  .filter(Boolean)
-                  .map((item) => (
-                    <li
-                      key={item as string}
-                      className="flex gap-3 text-sm leading-6 text-white/80"
-                    >
-                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-orange" />
-                      {item}
-                    </li>
-                  ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+    <div className="home-medvi min-h-screen bg-white text-home-charcoal">
+      <PeptideGuideHero landing={landing} product={product} lowestPrice={lowestPrice} />
+      <TrustIconStrip items={trustItems} />
 
-      <TrustpilotBand />
-
-      {/* What is */}
       <section className="py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
             <FadeIn>
-              <p className="text-sm font-black uppercase tracking-[0.28em] text-brand-green">
+              <p className="text-xs font-medium uppercase tracking-[0.2em] text-home-charcoal/60">
                 Overview
               </p>
-              <h2 className="mt-4 text-3xl font-black tracking-tight text-brand-navy sm:text-5xl">
+              <h2 className="mt-4 text-[clamp(1.75rem,4vw,2.75rem)] font-normal text-home-charcoal">
                 {sections.whatIs.title}
               </h2>
               <ContentBlock text={sections.whatIs.content} />
@@ -196,7 +120,7 @@ export function PeptideLanding({
             </FadeIn>
             {sections.whatIs.image && (
               <FadeIn delay={0.15}>
-                <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] border border-border-default">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] border border-black/6">
                   <Image
                     src={sections.whatIs.image}
                     alt={sections.whatIs.title}
@@ -211,13 +135,14 @@ export function PeptideLanding({
         </div>
       </section>
 
-      {/* Mechanism */}
-      <section className="bg-white py-16 sm:py-20">
+      <section className="border-t border-black/6 bg-[#fafafa] py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className={`grid gap-10 ${sections.mechanism.image ? "lg:grid-cols-2 lg:items-center" : ""}`}>
+          <div
+            className={`grid gap-10 ${sections.mechanism.image ? "lg:grid-cols-2 lg:items-center" : ""}`}
+          >
             {sections.mechanism.image && (
               <FadeIn>
-                <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] border border-border-default bg-bg-primary">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] border border-black/6 bg-white">
                   <Image
                     src={sections.mechanism.image}
                     alt={`${product.name} mechanism diagram`}
@@ -229,20 +154,17 @@ export function PeptideLanding({
               </FadeIn>
             )}
             <FadeIn delay={sections.mechanism.image ? 0.1 : 0}>
-              <p className="text-sm font-black uppercase tracking-[0.28em] text-brand-orange">
+              <p className="text-xs font-medium uppercase tracking-[0.2em] text-home-charcoal/60">
                 Mechanism
               </p>
-              <h2 className="mt-4 text-3xl font-black tracking-tight text-brand-navy sm:text-5xl">
+              <h2 className="mt-4 text-[clamp(1.75rem,4vw,2.75rem)] font-normal text-home-charcoal">
                 {sections.mechanism.title}
               </h2>
               <ContentBlock text={sections.mechanism.content} />
               <ul className="mt-6 space-y-3">
                 {sections.mechanism.bullets.map((bullet) => (
-                  <li
-                    key={bullet}
-                    className="flex gap-3 text-sm leading-6 text-text-secondary"
-                  >
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-green" />
+                  <li key={bullet} className="flex gap-3 text-sm leading-6 text-home-charcoal/65">
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-home-mint" />
                     {bullet}
                   </li>
                 ))}
@@ -252,44 +174,38 @@ export function PeptideLanding({
         </div>
       </section>
 
-      {/* Dosage */}
-      <section id="dosage" className="py-16 sm:py-20">
+      <section id="dosage" className="scroll-mt-20 py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <FadeIn>
-            <p className="text-sm font-black uppercase tracking-[0.28em] text-brand-green">
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-home-charcoal/60">
               Research reference
             </p>
-            <h2 className="mt-4 text-3xl font-black tracking-tight text-brand-navy sm:text-5xl">
+            <h2 className="mt-4 text-[clamp(1.75rem,4vw,2.75rem)] font-normal text-home-charcoal">
               {sections.dosage.title}
             </h2>
-            <p className="mt-5 max-w-3xl text-base leading-7 text-text-secondary">
+            <p className="mt-5 max-w-3xl text-base leading-7 text-home-charcoal/65">
               {sections.dosage.intro}
             </p>
           </FadeIn>
-          <div className="mt-10 overflow-x-auto rounded-[2rem] border border-border-default bg-white">
+          <div className="mt-10 overflow-x-auto rounded-[2rem] border border-black/6 bg-white">
             <table className="w-full min-w-[540px] text-left text-sm">
               <thead>
-                <tr className="border-b border-border-default bg-bg-primary">
-                  <th className="px-6 py-4 font-black uppercase tracking-[0.12em] text-brand-navy">
+                <tr className="border-b border-black/6 bg-[#fafafa]">
+                  <th className="px-6 py-4 text-xs font-medium uppercase tracking-[0.12em] text-home-charcoal">
                     Protocol tier
                   </th>
-                  <th className="px-6 py-4 font-black uppercase tracking-[0.12em] text-brand-navy">
+                  <th className="px-6 py-4 text-xs font-medium uppercase tracking-[0.12em] text-home-charcoal">
                     Published research detail
                   </th>
                 </tr>
               </thead>
               <tbody>
                 {sections.dosage.rows.map((row, i) => (
-                  <tr
-                    key={row.label}
-                    className={i % 2 === 0 ? "bg-white" : "bg-bg-primary/50"}
-                  >
-                    <td className="px-6 py-4 font-semibold text-text-primary whitespace-nowrap">
+                  <tr key={row.label} className={i % 2 === 0 ? "bg-white" : "bg-[#fafafa]/80"}>
+                    <td className="px-6 py-4 font-medium text-home-charcoal whitespace-nowrap">
                       {row.label}
                     </td>
-                    <td className="px-6 py-4 text-text-secondary leading-6">
-                      {row.detail}
-                    </td>
+                    <td className="px-6 py-4 text-home-charcoal/65 leading-6">{row.detail}</td>
                   </tr>
                 ))}
               </tbody>
@@ -310,47 +226,43 @@ export function PeptideLanding({
         </div>
       </section>
 
-      {/* Side effects + Reconstitution */}
-      <section className="bg-white py-16 sm:py-20">
+      <section className="border-t border-black/6 bg-[#fafafa] py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-8 md:grid-cols-2">
-            <article className="rounded-[2rem] border border-border-default bg-bg-primary p-6 sm:p-8">
-              <p className="text-sm font-black uppercase tracking-[0.28em] text-brand-orange">
+            <article className="rounded-[2rem] border border-black/6 bg-white p-6 sm:p-8">
+              <p className="text-xs font-medium uppercase tracking-[0.2em] text-home-charcoal/60">
                 Safety research
               </p>
-              <h2 className="mt-4 text-2xl font-black text-brand-navy sm:text-3xl">
+              <h2 className="mt-4 text-2xl font-normal text-home-charcoal sm:text-3xl">
                 {sections.sideEffects.title}
               </h2>
               <ContentBlock text={sections.sideEffects.content} />
               <ul className="mt-6 space-y-3">
                 {sections.sideEffects.items.map((item) => (
-                  <li
-                    key={item}
-                    className="flex gap-3 text-sm leading-6 text-text-secondary"
-                  >
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-orange" />
+                  <li key={item} className="flex gap-3 text-sm leading-6 text-home-charcoal/65">
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-home-mint" />
                     {item}
                   </li>
                 ))}
               </ul>
             </article>
-            <article className="rounded-[2rem] border border-border-default bg-bg-primary p-6 sm:p-8">
-              <p className="text-sm font-black uppercase tracking-[0.28em] text-brand-green">
+            <article className="rounded-[2rem] border border-black/6 bg-white p-6 sm:p-8">
+              <p className="text-xs font-medium uppercase tracking-[0.2em] text-home-charcoal/60">
                 Handling
               </p>
-              <h2 className="mt-4 text-2xl font-black text-brand-navy sm:text-3xl">
+              <h2 className="mt-4 text-2xl font-normal text-home-charcoal sm:text-3xl">
                 {sections.reconstitution.title}
               </h2>
               <ContentBlock text={sections.reconstitution.content} />
-              <p className="mt-4 text-sm leading-6 text-text-secondary">
+              <p className="mt-4 text-sm leading-6 text-home-charcoal/65">
                 {sections.reconstitution.suppliesNote}
               </p>
               <Link
                 href="/shop/bacteriostatic-water"
-                className="mt-6 inline-flex items-center gap-2 text-sm font-black uppercase tracking-[0.15em] text-brand-green hover:text-brand-green-light transition-colors"
+                className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-[#1b3d32] hover:underline"
               >
                 Shop bacteriostatic water
-                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor">
+                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                 </svg>
               </Link>
@@ -359,51 +271,41 @@ export function PeptideLanding({
         </div>
       </section>
 
-      {/* Pricing (optional) */}
       {sections.pricing && (
-        <section className="bg-white py-16 sm:py-20">
+        <section className="py-16 sm:py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <FadeIn>
-              <p className="text-sm font-black uppercase tracking-[0.28em] text-brand-orange">
+              <p className="text-xs font-medium uppercase tracking-[0.2em] text-home-charcoal/60">
                 Australia pricing
               </p>
-              <h2 className="mt-4 text-3xl font-black tracking-tight text-brand-navy sm:text-5xl">
+              <h2 className="mt-4 text-[clamp(1.75rem,4vw,2.75rem)] font-normal text-home-charcoal">
                 {sections.pricing.title}
               </h2>
-              <p className="mt-5 max-w-3xl text-base leading-7 text-text-secondary">
+              <p className="mt-5 max-w-3xl text-base leading-7 text-home-charcoal/65">
                 {sections.pricing.intro}
               </p>
             </FadeIn>
-            <div className="mt-10 overflow-x-auto rounded-[2rem] border border-border-default bg-bg-primary">
+            <div className="mt-10 overflow-x-auto rounded-[2rem] border border-black/6 bg-[#fafafa]">
               <table className="w-full min-w-[540px] text-left text-sm">
                 <thead>
-                  <tr className="border-b border-border-default bg-white">
-                    <th className="px-6 py-4 font-black uppercase tracking-[0.12em] text-brand-navy">
+                  <tr className="border-b border-black/6 bg-white">
+                    <th className="px-6 py-4 text-xs font-medium uppercase tracking-[0.12em] text-home-charcoal">
                       Option
                     </th>
-                    <th className="px-6 py-4 font-black uppercase tracking-[0.12em] text-brand-navy">
+                    <th className="px-6 py-4 text-xs font-medium uppercase tracking-[0.12em] text-home-charcoal">
                       Price (AUD)
                     </th>
-                    <th className="px-6 py-4 font-black uppercase tracking-[0.12em] text-brand-navy">
+                    <th className="px-6 py-4 text-xs font-medium uppercase tracking-[0.12em] text-home-charcoal">
                       Detail
                     </th>
                   </tr>
                 </thead>
                 <tbody>
                   {sections.pricing.rows.map((row) => (
-                    <tr
-                      key={row.label}
-                      className="border-b border-border-default last:border-0"
-                    >
-                      <td className="px-6 py-4 font-semibold text-brand-navy">
-                        {row.label}
-                      </td>
-                      <td className="px-6 py-4 font-black text-brand-green">
-                        {row.price}
-                      </td>
-                      <td className="px-6 py-4 text-text-secondary">
-                        {row.detail}
-                      </td>
+                    <tr key={row.label} className="border-b border-black/6 last:border-0">
+                      <td className="px-6 py-4 font-medium text-home-charcoal">{row.label}</td>
+                      <td className="px-6 py-4 font-medium text-[#1b3d32]">{row.price}</td>
+                      <td className="px-6 py-4 text-home-charcoal/65">{row.detail}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -421,29 +323,28 @@ export function PeptideLanding({
         </section>
       )}
 
-      {/* How to get */}
-      <section className="bg-brand-navy py-16 sm:py-20 text-white">
+      <section className="bg-home-hero py-16 text-white sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
             <div>
-              <p className="text-sm font-black uppercase tracking-[0.28em] text-brand-orange">
+              <p className="text-xs font-medium uppercase tracking-[0.2em] text-white/70">
                 Australia
               </p>
-              <h2 className="mt-4 text-3xl font-black tracking-tight sm:text-5xl">
+              <h2 className="mt-4 text-[clamp(1.75rem,4vw,2.75rem)] font-normal leading-tight">
                 {sections.howToGet.title}
               </h2>
-              <ContentBlock text={sections.howToGet.content} />
+              <ContentBlock text={sections.howToGet.content} theme="dark" />
             </div>
             <ol className="space-y-4">
               {sections.howToGet.steps.map((step, i) => (
                 <li
                   key={step}
-                  className="flex gap-4 rounded-[1.5rem] border border-white/10 bg-white/5 p-5 backdrop-blur"
+                  className="flex gap-4 rounded-[1.5rem] border border-white/15 bg-white/10 p-5 backdrop-blur"
                 >
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-orange text-sm font-black">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-home-mint text-sm font-medium text-[#1b3d32]">
                     {i + 1}
                   </span>
-                  <p className="text-sm leading-6 text-white/80">{step}</p>
+                  <p className="text-sm leading-6 text-white/85">{step}</p>
                 </li>
               ))}
             </ol>
@@ -461,11 +362,10 @@ export function PeptideLanding({
 
       <QualityProof />
 
-      {/* Blog links */}
       {landing.relatedBlogSlugs && landing.relatedBlogSlugs.length > 0 && (
         <section className="py-12 sm:py-16">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <p className="text-sm font-black uppercase tracking-[0.28em] text-brand-green">
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-home-charcoal/60">
               Further reading
             </p>
             <div className="mt-6 flex flex-wrap gap-4">
@@ -473,7 +373,7 @@ export function PeptideLanding({
                 <Link
                   key={slug}
                   href={`/blog/${slug}`}
-                  className="rounded-full border border-border-default bg-white px-6 py-3 text-sm font-semibold text-brand-navy hover:border-brand-green/40 hover:text-brand-green transition-colors"
+                  className="rounded-full border border-black/8 bg-[#fafafa] px-6 py-3 text-sm font-medium text-home-charcoal transition hover:border-[#1b3d32]/30 hover:text-[#1b3d32]"
                 >
                   Read: {slug.replace(/-/g, " ")}
                 </Link>
@@ -483,13 +383,10 @@ export function PeptideLanding({
         </section>
       )}
 
-      {/* FAQ */}
-      <section className="py-16 sm:py-20">
+      <section className="border-t border-black/6 py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <p className="text-sm font-black uppercase tracking-[0.28em] text-brand-orange">
-            FAQ
-          </p>
-          <h2 className="mt-4 text-3xl font-black tracking-tight text-brand-navy sm:text-5xl">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-home-charcoal/60">FAQ</p>
+          <h2 className="mt-4 text-[clamp(1.75rem,4vw,2.75rem)] font-normal text-home-charcoal">
             {product.name} — Common Questions
           </h2>
           <div className="mt-10">
@@ -500,14 +397,13 @@ export function PeptideLanding({
         </div>
       </section>
 
-      {/* Related peptides */}
       {relatedProducts.length > 0 && (
-        <section className="bg-white py-16 sm:py-20">
+        <section className="border-t border-black/6 bg-[#fafafa] py-16 sm:py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <p className="text-sm font-black uppercase tracking-[0.28em] text-brand-green">
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-home-charcoal/60">
               Related compounds
             </p>
-            <h2 className="mt-4 text-3xl font-black tracking-tight text-brand-navy sm:text-4xl">
+            <h2 className="mt-4 text-[clamp(1.75rem,4vw,2.75rem)] font-normal text-home-charcoal">
               Explore related research peptides
             </h2>
             <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -519,15 +415,14 @@ export function PeptideLanding({
         </section>
       )}
 
-      {/* Final CTA */}
-      <section className="bg-brand-navy py-16 sm:py-20 text-white">
-        <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-black tracking-tight sm:text-5xl">
-            Ready to order {product.name}?
+      <section className="bg-home-hero py-16 text-center text-white sm:py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-[clamp(1.75rem,4vw,2.75rem)] font-normal leading-tight">
+            Ready to order <span className="text-home-mint">{product.name}?</span>
           </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/70">
-            Third-party HPLC/MS tested with batch-specific COA documentation.
-            Shipped from Australia for laboratory research use only.
+          <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/80">
+            Third-party HPLC/MS tested with batch-specific COA documentation. Shipped from
+            Australia for laboratory research use only.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <ShopCta
@@ -538,7 +433,7 @@ export function PeptideLanding({
             />
             <Link
               href="/guide"
-              className="inline-flex items-center justify-center rounded-full border border-white/40 px-9 py-4 text-sm font-black uppercase tracking-[0.18em] text-white hover:bg-white/15 transition-colors"
+              className="inline-flex items-center justify-center rounded-full border border-white/40 px-8 py-3.5 text-sm font-medium text-white transition hover:bg-white/10"
             >
               Research guide
             </Link>
